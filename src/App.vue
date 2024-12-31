@@ -6,7 +6,7 @@ import Footer from "./components/FooterBar.vue";
 <template>
   <Nav />
 
-  <div>
+  <div id = "body">
     <router-view></router-view>
   </div>
 
@@ -14,5 +14,8 @@ import Footer from "./components/FooterBar.vue";
 </template>
 
 <style scoped>
-
+  #body {
+    background-color: #967BB6;
+    height: 100vh;
+  }
 </style>
