@@ -15,7 +15,7 @@ import Footer from "./components/FooterBar.vue";
 
 <style scoped>
   *{
-    background-color: #967BB6;
+    background-color: #7d9a41;
     height: 100vh;
   }
 </style>
