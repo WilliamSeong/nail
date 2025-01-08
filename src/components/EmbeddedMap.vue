@@ -14,16 +14,25 @@
 
       const nailbyyoung = document.createElement('img');
       nailbyyoung.src = markerimg;
-      nailbyyoung.style.width = '50px'; // Set appropriate size
-      nailbyyoung.style.height = '50px';
+      nailbyyoung.style.width = '40px';
+      nailbyyoung.style.height = '40px';
       nailbyyoung.style.objectFit = 'cover';
       nailbyyoung.style.borderRadius = '50%';
 
-      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
+      const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
+
+      const glyphSvgPinElement = new PinElement({
+        glyph: nailbyyoung,
+        background: '#FFFFFF',
+        borderColor: '#000000',
+        scale: 2
+      });
+
+
       const marker = new AdvancedMarkerElement({
         map,
         position: { lat: 40.7784935, lng: -73.9809166 },
-        content: nailbyyoung,
+        content: glyphSvgPinElement.element,
         title: 'Nail by young marker image',
       });
     };
