@@ -4,13 +4,13 @@ import Footer from "./components/FooterBar.vue";
 </script>
 
 <template>
-  <Nav />
-
-  <div id = "body">
-    <router-view></router-view>
+  <div class="page-container">
+    <Nav />
+    <div class="content-wrap">
+      <router-view></router-view>
+    </div>
+    <Footer />
   </div>
-
-  <Footer />
 </template>
 
 <style scoped>
@@ -18,7 +18,12 @@ import Footer from "./components/FooterBar.vue";
     margin: 0;
     box-sizing: border-box;
     background-color: white;
-    height: 100vh;
-    width: auto;
   }
+
+  .page-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 </style>

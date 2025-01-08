@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import Map from "./EmbeddedMap.vue";
+import Sliding from "./SlidingImages.vue"
 </script>
 
 <template>
-  <div id="first">
-    <div class="images">
-    <img class="header-img" src="../assets/nail-img-1.jpg">
-    <img class="header-img" src="../assets/nail-img-2.jpg">
-    <img class="header-img" src="../assets/nail-img-3.jpg">
-    </div>
+  <div>
+    <Sliding />
   </div>
-  <Map />
+  <div>
+    <Map />
+  </div>
+  <div>
+    <p> You've got mail</p>
+  </div>
 </template>
 
 <style>

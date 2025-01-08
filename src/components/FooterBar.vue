@@ -11,18 +11,20 @@
 </template>
 
 <style>
-.footer-bar {
-  width: 100%;
-  background-color: #333;
-  color: white;
-}
+  #footer-bar {
+    width: 100%;
+    height: 10vh;
+    background-color: #333;
+    color: white;
+    margin-top: auto;
+  }
 
-#copyright {
-  display: inline-block;
-}
+  #copyright {
+    display: inline-block;
+  }
 
-#instagram-logo {
-  width: 25px;
-  display: inline-block;
-}
+  #instagram-logo {
+    width: 25px;
+    display: inline-block;
+  }
 </style>

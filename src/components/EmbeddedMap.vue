@@ -28,8 +28,7 @@
         scale: 2
       });
 
-
-      const marker = new AdvancedMarkerElement({
+      new AdvancedMarkerElement({
         map,
         position: { lat: 40.7784935, lng: -73.9809166 },
         content: glyphSvgPinElement.element,
@@ -52,5 +51,6 @@
 #map {
   width: 30vw;
   padding-bottom: 30%;
+  margin: auto;
   }
 </style>
