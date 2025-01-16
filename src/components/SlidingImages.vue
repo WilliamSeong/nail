@@ -11,7 +11,7 @@ const direction = ref('right')
 
 function nextImage() {
   state.value = false
-  index.value++
+  index.value+= 3
   direction.value = 'right'
   setTimeout(() => {
     state.value = true
@@ -20,7 +20,7 @@ function nextImage() {
 
 function previousImage() {
   state.value = false
-  index.value = (index.value - 1 + img.length) % img.length // in case we go negative
+  index.value = (index.value - 3 + img.length) % img.length // in case we go negative
   direction.value = 'left'
   setTimeout(() => {
     state.value = true
@@ -34,7 +34,13 @@ const img = [img1, img2, img3, img4]
 
   <div id="slides">
     <Transition  :name="direction === 'right' ? 'slide-fade-reverse' : 'slide-fade'">
-      <img v-if="state" class="header-img" :src="img[index % img.length]" alt="nail">
+      <img v-if="state" class="header-img" :src="img[(index) % img.length]" alt="nail">
+    </Transition>
+    <Transition  :name="direction === 'right' ? 'slide-fade-reverse' : 'slide-fade'">
+      <img v-if="state" class="header-img" :src="img[(index+1) % img.length]" alt="nail">
+    </Transition>
+    <Transition  :name="direction === 'right' ? 'slide-fade-reverse' : 'slide-fade'">
+      <img v-if="state" class="header-img" :src="img[(index+2) % img.length]" alt="nail">
     </Transition>
   </div>
   <div class="button-container">
@@ -43,6 +49,8 @@ const img = [img1, img2, img3, img4]
   </div>
 
 </template>
+
+<!-- On button click, the direction is being assigned and the state is changed to false -->
 
 <style>
 
@@ -85,9 +93,12 @@ const img = [img1, img2, img3, img4]
   cursor: grab;
 }
 
+/* Transitions */
+
+/* Clicking the left button */
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all .5s linear;
 }
 
 .slide-fade-enter-from {
@@ -110,9 +121,10 @@ const img = [img1, img2, img3, img4]
   opacity: 0;
 }
 
+/* Clicking the right button */
 .slide-fade-reverse-enter-active,
 .slide-fade-reverse-leave-active {
-  transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all .5s linear;
 }
 
 .slide-fade-reverse-enter-from {
