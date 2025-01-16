@@ -36,15 +36,31 @@ async function token() {
     const data = await response.json();
     console.log(data);
   }
-
   // refresh token: 1//01b-VG4B5WkZZCgYIARAAGAESNwF-L9Ir8xKzZe-TCjncpf9e-9ZK87rTI77WP11o5nRJjfERTKwuMWl33aljbhit-_CvpvizlZI
 
 }
 
 async function send(){
-  const urlParams = new URLSearchParams(window.location.hash.substring(1));
-  const accessToken = urlParams.get('access_token');
-  console.log(accessToken)
+  const refreshToken = "1//01b-VG4B5WkZZCgYIARAAGAESNwF-L9Ir8xKzZe-TCjncpf9e-9ZK87rTI77WP11o5nRJjfERTKwuMWl33aljbhit-_CvpvizlZI"
+  console.log("Refresh Token", refreshToken)
+
+  const response = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      refresh_token: refreshToken,
+      client_id: '306538060271-j967kuikaptabd4oq96kuck4oftnvj5o.apps.googleusercontent.com',
+      client_secret: 'secret',
+      grant_type: 'refresh_token'
+    })
+  });
+
+  const token = await response.json();
+  const accessToken = token.access_token;
+  console.log("Access Token", accessToken)
+
 
   const emailElement = document.getElementById('email') as HTMLInputElement
   const message = emailElement ? emailElement.value : 'Hello World'
