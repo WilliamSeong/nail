@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv'
 
 const server = express();
 const port = 3000;
@@ -40,9 +41,10 @@ server.listen(port, () => {
     return console.log(`Express is listening at http://localhost:${port}`);
 });
 
-const refreshToken = "1//01b-VG4B5WkZZCgYIARAAGAESNwF-L9Ir8xKzZe-TCjncpf9e-9ZK87rTI77WP11o5nRJjfERTKwuMWl33aljbhit-_CvpvizlZI"
-const clientId = "306538060271-j967kuikaptabd4oq96kuck4oftnvj5o.apps.googleusercontent.com"
-const clientSecret = "secret"
+dotenv.config();
+const clientId = process.env.CLIENT_ID as string;
+const clientSecret = process.env.CLIENT_SECRET as string;
+const refreshToken = process.env.REFRESH_TOKEN as string;
 
 async function getAccessToken() {
   const response = await fetch('https://oauth2.googleapis.com/token', {
@@ -84,6 +86,7 @@ async function send(message: string, accessToken: string) {
     .replace(/=+$/, '');
   // console.log("Encoded message: ", encodedMessage);
 
+  // Send message
   const response = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages/send', {
     method: 'POST',
     headers: {
