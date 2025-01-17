@@ -9,6 +9,7 @@
         <li><router-link to="/menu">Menu</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
         <li><router-link to="/contacta">ContactA</router-link></li>
+        <li><router-link to="/contactb">ContactB</router-link></li>
       </ul>
     </div>
   </div>

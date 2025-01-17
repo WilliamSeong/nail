@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Map from "./EmbeddedMap.vue";
 import Sliding from "./SlidingImages.vue"
+import Backend from "./BackendTest.vue"
 </script>
 
 <template>
@@ -9,6 +10,9 @@ import Sliding from "./SlidingImages.vue"
   </div>
   <div>
     <Map />
+  </div>
+  <div>
+    <Backend />
   </div>
   <div>
     <p> You've got mail</p>

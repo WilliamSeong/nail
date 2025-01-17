@@ -7,6 +7,7 @@ import Home from "./components/HomePage.vue";
 import Menu from "./components/MenuPage.vue";
 import Contact from "./components/ContactInfo.vue";
 import ContactA from "./components/ContactAnonymous.vue"
+import ContactB from "./components/ContactThird.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,7 +15,8 @@ const router = createRouter({
       { path: '/', component: Home},
       { path: '/menu', component: Menu},
       { path: '/contact', component: Contact },
-      { path: '/contacta', component: ContactA}
+      { path: '/contacta', component: ContactA},
+      { path: '/contactb', component: ContactB}
   ]
 });
 
