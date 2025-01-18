@@ -17,6 +17,8 @@
     background-color: #333;
     color: white;
     margin-top: auto;
+    display: flex;
+    align-items: flex-end;
   }
 
   #copyright {
@@ -24,7 +26,7 @@
   }
 
   #instagram-logo {
-    width: 25px;
-    display: inline-block;
+    max-height: 5vh;
+    width: auto;
   }
 </style>

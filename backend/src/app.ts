@@ -9,19 +9,40 @@ server.use(cors({
   origin: 'http://localhost:5173',
 }));
 
-server.get('/', (req, res) => {
-  res.send('Hello, World!');
-  console.log("GET request received");
-});
+// Getting RefreshToken just in case
 
-server.post('/api', (req, res) => {
-  res.send("Goodbye, World!")
-  req.on('data', (data) => {
-    const { name, age } = JSON.parse(data.toString());
-    console.log(name, age);
-  });
+server.post('/token', async (req, res) => {
   console.log('POST request received');
+  req.on('data', (data) => {
+    const { code } = JSON.parse(data.toString());
+    console.log(code);
+
+    getRefreshToken(code);
+
+  });
 })
+
+async function getRefreshToken(code : string) {
+  const response = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      code: code,
+      client_id: process.env.CLIENT_ID as string,
+      client_secret: process.env.CLIENT_SECRET as string,
+      redirect_uri: 'http://localhost:5173/contacta',
+      grant_type: 'authorization_code'
+    })
+  })
+  .then(response => response.json())
+  .then(data => {const token = data.refresh_token; console.log(token);})
+  .catch((error) => {console.error('Error:', error);
+  });
+}
+
+// Sending message from frontend
 
 server.post('/send', async (req, res) => {
 
