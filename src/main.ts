@@ -8,6 +8,7 @@ import Menu from "./components/MenuPage.vue";
 import Contact from "./components/ContactInfo.vue";
 import ContactA from "./components/ContactAnonymous.vue"
 import ContactB from "./components/ContactThird.vue"
+import Media from "./components/MediaCollection.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,7 +17,8 @@ const router = createRouter({
       { path: '/menu', component: Menu},
       { path: '/contact', component: Contact },
       { path: '/contacta', component: ContactA},
-      { path: '/contactb', component: ContactB}
+      { path: '/contactb', component: ContactB},
+      { path: '/media', component: Media}
   ]
 });
 
