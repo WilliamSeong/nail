@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
+  import { ref, onMounted, onBeforeUnmount, defineProps } from 'vue';
 
   import img1 from "../assets/nail-media/nail-media-1.jpeg";
   import img2 from "../assets/nail-media/nail-media-2.jpeg";
@@ -17,11 +17,30 @@
   import CarouselControls from './carousel/CarouselControls.vue';
   import CarouselIndicators from './carousel/CarouselIndicators.vue';
 
-  const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-
   const currentSlide = ref(0);
   const slideInterval = ref<number | undefined>(undefined);
   const direction = ref('slide-right');
+
+  const props = defineProps({
+    // slides: {
+    //   type: Array,
+    //   required: true
+    // },
+    controls: {
+      type: Boolean,
+      default: true
+    },
+    indicators: {
+      type: Boolean,
+      default: true
+    },
+    interval: {
+      type: Number,
+      default: 5000
+    }
+  });
+
+  const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
   function setCurrentSlide(nextSlide: number){
     currentSlide.value = nextSlide;
@@ -35,7 +54,7 @@
     stopSlideTimer();
     slideInterval.value = setInterval(() => {
       next();
-    }, 3000)
+    }, props.interval);
   }
 
   function stopSlideTimer() {
@@ -78,6 +97,7 @@
   <div class="carousel">
     <div class="carousel-inner">
       <CarouselIndicators
+        v-if="indicators"
         :imgs="slides"
         :currentIndex="currentSlide"
         @switch="switchSlide($event)"
@@ -94,6 +114,7 @@
         @mouseout="startSlideTimer"
       />
       <CarouselControls
+        v-if="controls"
         @prev="prev"
         @next="next"/>
     </div>
