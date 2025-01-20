@@ -20,6 +20,8 @@
   const currentSlide = ref(0);
   const slideInterval = ref<number | undefined>(undefined);
   const direction = ref('slide-right');
+  const showIndicators = ref(false);
+  const showControls = ref(false);
 
   const props = defineProps({
     // slides: {
@@ -69,17 +71,15 @@
   });
 
   function prev(step = -1) {
-    const prevSlide = currentSlide.value > 0 ? currentSlide.value - step : slides.length - 1;
+    const prevSlide = currentSlide.value > 0 ? currentSlide.value + step : slides.length - 1;
     setCurrentSlide(prevSlide);
     setDirection('slide-left');
-    startSlideTimer()
   }
 
   function next(step = 1) {
     const nextSlide = currentSlide.value < slides.length - 1 ? currentSlide.value + step : 0;
     setCurrentSlide(nextSlide);
     setDirection('slide-right');
-    startSlideTimer()
   }
 
   function switchSlide(index : number){
@@ -87,17 +87,49 @@
     if (step > 0){
       next(step)
     } else if (step < 0){
-      prev(-step)
+      prev(step)
     }
+  }
+
+  function offHover(){
+    startSlideTimer();
+    setIndicatorOff();
+    setControlOff();
+  };
+
+  function onHover(){
+    stopSlideTimer();
+    setIndicatorOn();
+    setControlOn();
+  };
+
+  function setIndicatorOn() {
+    showIndicators.value = true;
+  }
+
+  function setIndicatorOff() {
+    showIndicators.value = false;
+  }
+
+
+  function setControlOn() {
+    showControls.value = true;
+  }
+
+  function setControlOff() {
+    showControls.value = false;
   }
 
 </script>
 
 <template>
-  <div class="carousel">
+  <div class="carousel"
+    @mouseenter="onHover"
+    @mouseleave="offHover">
     <div class="carousel-inner">
+
       <CarouselIndicators
-        v-if="indicators"
+        v-if="props.indicators && showIndicators"
         :imgs="slides"
         :currentIndex="currentSlide"
         @switch="switchSlide($event)"
@@ -110,11 +142,10 @@
         :current-slide="currentSlide"
         :index="index"
         :direction="direction"
-        @mouseenter="stopSlideTimer"
-        @mouseout="startSlideTimer"
+
       />
       <CarouselControls
-        v-if="controls"
+        v-if="props.controls && showControls"
         @prev="prev"
         @next="next"/>
     </div>

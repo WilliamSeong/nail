@@ -14,7 +14,11 @@ defineEmits(['mouseenter', 'mouseout'])
 
 <template>
   <transition :name="direction">
-    <div class="carousel-item" v-show="currentSlide === index" @mouseenter="$emit('mouseenter')" @mouseout="$emit('mouseout')">
+    <div
+      class="carousel-item"
+      v-show="currentSlide === index"
+      @mouseenter="$emit('mouseenter')"
+      @mouseleave="$emit('mouseout')">
           <img
             :src="slide"
             alt="nail"
