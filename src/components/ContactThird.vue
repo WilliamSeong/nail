@@ -6,7 +6,7 @@
     const message = emailElement ? emailElement.value : 'Hello World'
     console.log(message)
 
-    const response = await fetch('http://localhost:3000/send', {
+    await fetch('http://localhost:3000/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

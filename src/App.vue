@@ -9,7 +9,7 @@ import Footer from "./components/FooterBar.vue";
     <div class="content-wrap">
       <router-view></router-view>
     </div>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 

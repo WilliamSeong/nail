@@ -23,7 +23,7 @@ server.post('/token', async (req, res) => {
 })
 
 async function getRefreshToken(code : string) {
-  const response = await fetch('https://oauth2.googleapis.com/token', {
+  await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'

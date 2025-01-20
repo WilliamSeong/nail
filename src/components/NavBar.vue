@@ -11,6 +11,7 @@
         <li><router-link to="/contacta">ContactA</router-link></li>
         <li><router-link to="/contactb">ContactB</router-link></li>
         <li><router-link to="/media">Media</router-link></li>
+        <li><router-link to="/carousel">Carousel</router-link></li>
       </ul>
     </div>
   </div>

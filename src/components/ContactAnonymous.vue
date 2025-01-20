@@ -15,7 +15,7 @@
 
     console.log(code);
 
-    const response = await fetch("http://localhost:3000/token", {
+    await fetch("http://localhost:3000/token", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
