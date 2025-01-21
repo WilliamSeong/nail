@@ -28,11 +28,12 @@ defineProps<{
     left: 50%;
     bottom: .5em;
     z-index: 2;
+    align-items: center;
   }
 
   .carousel-indicator-item {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border: none;
     background: #fff;
     margin: 0.2em;

@@ -10,6 +10,7 @@ import ContactA from "./components/ContactAnonymous.vue"
 import ContactB from "./components/ContactThird.vue"
 import Media from "./components/MediaCollection.vue"
 import Carousel from "./components/ImageCarousel.vue"
+import Test from "./components/TestComponent.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -20,7 +21,8 @@ const router = createRouter({
       { path: '/contacta', component: ContactA},
       { path: '/contactb', component: ContactB},
       { path: '/media', component: Media},
-      { path: '/carousel', component: Carousel}
+      { path: '/carousel', component: Carousel},
+      { path: '/test', component: Test}
   ]
 });
 

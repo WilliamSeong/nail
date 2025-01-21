@@ -3,8 +3,10 @@
 </script>
 
 <template>
-  <button class="carousel-control left" @click="$emit('prev')">&lt;</button>
-  <button class="carousel-control right" @click="$emit('next')">&gt;</button>
+  <div class="carousel-controls">
+    <button class="carousel-control left" @click="$emit('prev')">&lt;</button>
+    <button class="carousel-control right" @click="$emit('next')">&gt;</button>
+  </div>
 </template>
 
 <style>
@@ -14,10 +16,11 @@
     display: inline-block;
     position: absolute;
     top: calc(50% - 10px);
-    height: 30px;
-    width: 10px;
+    height: 20px;
+    width: 20px;
     color: #f3f3f3;
     cursor: pointer;
+    border-radius: 50%;
   }
 
   .left{

@@ -1,17 +1,7 @@
 <script setup lang="ts">
 
   import { ref, onMounted, onBeforeUnmount, defineProps } from 'vue';
-
-  import img1 from "../assets/nail-media/nail-media-1.jpeg";
-  import img2 from "../assets/nail-media/nail-media-2.jpeg";
-  import img3 from "../assets/nail-media/nail-media-3.jpeg";
-  import img4 from "../assets/nail-media/nail-media-4.jpeg";
-  import img5 from "../assets/nail-media/nail-media-5.jpeg";
-  import img6 from "../assets/nail-media/nail-media-6.jpeg";
-  import img7 from "../assets/nail-media/nail-media-7.jpeg";
-  import img8 from "../assets/nail-media/nail-media-8.jpeg";
-  import img9 from "../assets/nail-media/nail-media-9.jpeg";
-  import img10 from "../assets/nail-media/nail-media-10.jpeg";
+  import type { PropType } from 'vue';
 
   import CarouselItem from "./carousel/CarouselItem.vue";
   import CarouselControls from './carousel/CarouselControls.vue';
@@ -24,26 +14,23 @@
   const showControls = ref(false);
 
   const props = defineProps({
-    // slides: {
-    //   type: Array,
-    //   required: true
-    // },
+    slides: {
+      type: Array as PropType<string[]>,
+      required: true
+    },
     controls: {
       type: Boolean,
-      default: true
+      default: false
     },
     indicators: {
       type: Boolean,
-      default: true
+      default: false
     },
     interval: {
       type: Number,
       default: 5000
     }
   });
-
-  const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-
   function setCurrentSlide(nextSlide: number){
     currentSlide.value = nextSlide;
   }
@@ -71,13 +58,13 @@
   });
 
   function prev(step = -1) {
-    const prevSlide = currentSlide.value > 0 ? currentSlide.value + step : slides.length - 1;
+    const prevSlide = currentSlide.value > 0 ? currentSlide.value + step : props.slides.length - 1;
     setCurrentSlide(prevSlide);
     setDirection('slide-left');
   }
 
   function next(step = 1) {
-    const nextSlide = currentSlide.value < slides.length - 1 ? currentSlide.value + step : 0;
+    const nextSlide = currentSlide.value < props.slides.length - 1 ? currentSlide.value + step : 0;
     setCurrentSlide(nextSlide);
     setDirection('slide-right');
   }
@@ -123,31 +110,34 @@
 </script>
 
 <template>
-  <div class="carousel"
-    @mouseenter="onHover"
-    @mouseleave="offHover">
-    <div class="carousel-inner">
-
-      <CarouselIndicators
-        v-if="props.indicators && showIndicators"
-        :imgs="slides"
-        :currentIndex="currentSlide"
-        @switch="switchSlide($event)"
-      />
+  <div class="carousel">
+    <div class="carousel-inner"
+      @mouseenter="onHover"
+      @mouseleave="offHover">
 
       <CarouselItem
-        v-for="(slide, index) in slides"
+        v-for="(slide, index) in props.slides"
         :key="`item-${index}`"
         :slide="slide"
         :current-slide="currentSlide"
         :index="index"
         :direction="direction"
-
       />
-      <CarouselControls
-        v-if="props.controls && showControls"
-        @prev="prev"
-        @next="next"/>
+
+      <Transition name="fade-in">
+        <CarouselControls
+          v-if="props.controls && showControls"
+          @prev="prev"
+          @next="next"/>
+      </Transition>
+
+      <Transition name="fade-in">
+        <CarouselIndicators
+          v-if="props.indicators && showIndicators"
+          :imgs="slides"
+          :currentIndex="currentSlide"
+          @switch="switchSlide($event)"/>
+      </Transition>
     </div>
   </div>
 </template>
@@ -164,5 +154,18 @@
     width: 200px;
     height: 200px;
     overflow: hidden;
+  }
+
+  .fade-in-enter-active,
+  .fade-in-leave-active {
+    transition: all .5s;
+  }
+
+  .fade-in-enter-from{
+    opacity: 0;
+  }
+
+  .fade-in-leave-to {
+    opacity: 0;
   }
 </style>
