@@ -12,9 +12,11 @@
     "https://picsum.photos/id/245/200/300",
     "https://picsum.photos/id/246/200/300"
     ]
+
 </script>
 
 <template>
+
   <div class="test-component">
     <div>
       <button
@@ -24,6 +26,7 @@
       </button>
     </div>
   </div>
+
 </template>
 
 <style scoped>
