@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <Carousel :slides="slides" @interval="3000" indicators controls/>
+  <Carousel :slides="slides" :interval="3000" indicators controls/>
   <Map />
   <Backend />
 </template>

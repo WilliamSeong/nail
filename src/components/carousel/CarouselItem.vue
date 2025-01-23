@@ -50,18 +50,18 @@ defineEmits(['mouseenter', 'mouseout'])
   }
 
   .slide-right-enter-from {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 
   .slide-right-leave-to {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 
   .slide-left-enter-from {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 
   .slide-left-leave-to {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 </style>

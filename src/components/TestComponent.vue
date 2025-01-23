@@ -24,10 +24,10 @@
 <template>
   <div class="indicators-container">
     <TransitionGroup :name="slideDirection">
-      <button v-for="(n, index) in 3"
+      <button v-for="(n, index) in 5"
               :key="currentSlide + n"
               class="indicators"
-              @click="handleSlide(index - ~~(3/2))">
+              @click="handleSlide(index - ~~(5/2))">
       </button>
     </TransitionGroup>
   </div>
@@ -64,6 +64,7 @@
     opacity: 1;
 }
 
+/* Transitions */
 .slide-left-move,
 .slide-right-move {
     transition: transform 1s;

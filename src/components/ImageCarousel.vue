@@ -60,17 +60,17 @@
   function prev(step = -1) {
     const prevSlide = currentSlide.value > 0 ? currentSlide.value + step : props.slides.length - 1;
     setCurrentSlide(prevSlide);
-    setDirection('slide-left');
+    setDirection('slide-right');
   }
 
   function next(step = 1) {
     const nextSlide = currentSlide.value < props.slides.length - 1 ? currentSlide.value + step : 0;
     setCurrentSlide(nextSlide);
-    setDirection('slide-right');
+    setDirection('slide-left');
   }
 
   function switchSlide(index : number){
-    const step = index-currentSlide.value
+    const step = currentSlide.value + index
     if (step > 0){
       next(step)
     } else if (step < 0){

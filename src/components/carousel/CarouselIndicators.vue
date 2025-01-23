@@ -1,22 +1,43 @@
 <script setup lang="ts">
 
-defineEmits(['switch'])
+  import { ref } from 'vue';
 
-defineProps<{
-  imgs: string[]
-  currentIndex: number
-}>()
+  defineEmits(['switch'])
+
+  defineProps<{
+    imgs: string[]
+    currentIndex: number
+  }>()
+
+  const currentSlide = ref(0);
+      const slideDirection = ref('slide-left')
+
+      function handleSlide(index : number, imgs : number) {
+        slideDirection.value = index > 0 ? 'slide-left' : 'slide-right'
+        currentSlide.value = (currentSlide.value + (index) + imgs) % imgs;
+      }
 </script>
 
 <template>
   <div class="carousel-indicators">
-    <button
+    <!-- <button
       class="carousel-indicator-item"
       :class="{active: currentIndex === index}"
       v-for="(item, index) in imgs"
       :key="index"
       @click="$emit('switch', index)"
-    ></button>
+    ></button> -->
+
+    <br />
+
+    <TransitionGroup :name="slideDirection">
+      <button
+        v-for="(n, index) in 5"
+        :key="currentSlide + n"
+        class="indicators"
+        @click="handleSlide(index - ~~(5/2), imgs.length);$emit('switch', index - ~~(5/2)); console.log(index - ~~(5/2))">
+      </button>
+    </TransitionGroup>
   </div>
 </template>
 
@@ -41,7 +62,67 @@ defineProps<{
     cursor: pointer
   }
 
+  .indicators {
+    width: 12px;
+    height: 12px;
+    border: none;
+    background: #fff;
+    margin: 0.2em;
+    opacity: .5;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .indicators:hover {
+      opacity: 1;
+  }
+
   .active {
     opacity: 1;
+  }
+
+  /* Transitions */
+
+  .slide-left-move,
+  .slide-right-move {
+      transition: transform 1s;
+  }
+
+  .slide-left-enter-active {
+      transition: all 1s;
+  }
+
+  .slide-left-leave-active {
+      transition: all 1s;
+      position: absolute;
+  }
+
+  .slide-left-enter-from {
+      transform: translateX(30px);
+      opacity: 0;
+  }
+
+  .slide-left-leave-to {
+      transform: translateX(-30px);
+      opacity: 0;
+  }
+
+  .slide-right-enter-active {
+      transition: all 1s;
+  }
+
+  .slide-right-leave-active {
+      transition: all 1s;
+      position: absolute;
+  }
+
+  .slide-right-enter-from {
+      transform: translateX(-30px);
+      opacity: 0;
+  }
+
+  .slide-right-leave-to {
+      transform: translateX(30px);
+      opacity: 0;
   }
 </style>
