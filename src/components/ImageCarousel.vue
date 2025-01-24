@@ -142,7 +142,6 @@
   </div>
 </template>
 
-
 <style>
   .carousel{
     display: flex;
@@ -151,8 +150,8 @@
 
   .carousel-inner{
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 500px;
+    height: 500px;
     overflow: hidden;
   }
 

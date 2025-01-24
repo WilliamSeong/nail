@@ -35,6 +35,7 @@
         v-for="(n, index) in 5"
         :key="currentSlide + n"
         class="indicators"
+        :class="{active: index === ~~(5/2)}"
         @click="handleSlide(index - ~~(5/2), imgs.length);$emit('switch', index - ~~(5/2)); console.log(index - ~~(5/2))">
       </button>
     </TransitionGroup>

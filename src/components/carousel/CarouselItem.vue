@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+  import { defineProps } from 'vue'
 
-defineProps<{
-  slide: string
-  currentSlide: number
-  index: number
-  direction: string
-}>()
+  defineProps<{
+    slide: string
+    currentSlide: number
+    index: number
+    direction: string
+  }>()
 
-defineEmits(['mouseenter', 'mouseout'])
+  defineEmits(['mouseenter', 'mouseout'])
 
 </script>
 
@@ -34,11 +34,12 @@ defineEmits(['mouseenter', 'mouseout'])
     left: 0;
     right: 0;
     bottom: 0;
+    inset: 0;
   }
 
-  img{
-    width: 200px;
-    height: 200px;
+  .carousel-image{
+    width: 500px;
+    height: 500px;
     object-fit: cover;
   }
 
