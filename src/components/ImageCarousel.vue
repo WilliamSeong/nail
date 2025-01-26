@@ -150,8 +150,8 @@
 
   .carousel-inner{
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     overflow: hidden;
   }
 

@@ -38,8 +38,8 @@
   }
 
   .carousel-image{
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
   }
 

@@ -3,6 +3,12 @@
 
 <template>
   <div id="header">
+    <div id="logo">
+      <h1>Nail by Young</h1>
+    </div>
+    <div id="header-line">
+      <hr/>
+    </div>
     <div id="contents">
       <ul>
         <li><router-link to="/">Home</router-link></li>
@@ -17,44 +23,66 @@
 
 </template>
 
-<style scoped>
+<style>
 
-#header{
-  background-color: #967BB6;
-  height: auto;
-  text-align: center;
-  width: auto;
-}
+  *{
+    box-sizing: border-box;
+  }
 
-#contents{
-  margin: 0 auto;
-  padding: 10px;
-}
+  #header{
+    background-color: #967BB6;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
 
-ul{
-  display: inline-block;
-  list-style: none;
-}
+  #logo{
+    text-align: center;
+    color: white;
+    font-family: 'Papyrus', fantasy;
+  }
 
-li:hover {
-  border: white 2px solid;
-  border-radius: 10px;
-  padding: 0px 8px;
-}
+  #header-line{
+    width: 80vw;
+    margin: auto;
+  }
 
-li{
-  display: inline;
-  font-size: 3vw;
-  list-style-type: none;
-  margin: 10px;
-  padding: 0px 10px;
-  text-align: center;
-}
+  #contents{
+    margin-top: auto;
+    margin-left: 10vw;
+    padding: 1vh;
+  }
 
-a{
-  color: #F2F2F2;
-  padding: 0;
-  text-decoration: none;
-}
+  ul{
+    display: inline-block;
+    list-style: none;
+  }
+
+  li:hover {
+    /* border: white 2px solid; */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 0px 8px;
+  }
+
+  li{
+    display: inline;
+    font-size: 1vw;
+    list-style-type: none;
+    margin: 10px;
+    padding: 0px 8px;
+    text-align: center;
+  }
+
+  a{
+    color: #F2F2F2;
+    padding: 0;
+    text-decoration: none;
+  }
+
+  li:hover a{
+    color: #967BB6;
+  }
 
 </style>

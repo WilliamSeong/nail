@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import Map from "./EmbeddedMap.vue";
   import Carousel from "./ImageCarousel.vue"
-  import Backend from "./BackendTest.vue"
 
   import img1 from "../assets/nail-media/nail-media-1.jpeg";
   import img2 from "../assets/nail-media/nail-media-2.jpeg";
@@ -15,33 +14,25 @@
   import img10 from "../assets/nail-media/nail-media-10.jpeg";
   const slides = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
+
 </script>
 
 <template>
+  <img class="home-img" src="https://picsum.photos/1000"/>
   <Carousel :slides="slides" :interval="3000" indicators controls/>
   <Map />
-  <Backend />
 </template>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-#first {
-  display: flex;
-}
+  .home-img {
+    width: 100%;
+    height: auto;
+  }
 
-.images {
-  height: 20%;
-  width: 100%;
-  display: inline-block;
-}
-
-.header-img {
-  width: 33.33%;
-  display: inline-block;
-}
 </style>

@@ -53,8 +53,8 @@
   }
 
   .carousel-indicator-item {
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     border: none;
     background: #fff;
     margin: 0.2em;
@@ -64,8 +64,8 @@
   }
 
   .indicators {
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     border: none;
     background: #fff;
     margin: 0.2em;
@@ -89,26 +89,30 @@
       transition: transform 1s;
   }
 
-  .slide-left-enter-active {
+  .slide-left-enter-active,
+  .slide-right-enter-active {
       transition: all 1s;
   }
 
-  .slide-left-leave-active {
+  .slide-left-leave-active,
+  .slide-right-leave-active {
       transition: all 1s;
       position: absolute;
   }
 
-  .slide-left-enter-from {
+  .slide-left-enter-from,
+  .slide-right-leave-to {
       transform: translateX(30px);
       opacity: 0;
   }
 
-  .slide-left-leave-to {
+  .slide-left-leave-to,
+  .slide-right-enter-from {
       transform: translateX(-30px);
       opacity: 0;
   }
 
-  .slide-right-enter-active {
+  /* .slide-right-enter-active {
       transition: all 1s;
   }
 
@@ -125,5 +129,5 @@
   .slide-right-leave-to {
       transform: translateX(30px);
       opacity: 0;
-  }
+  } */
 </style>
