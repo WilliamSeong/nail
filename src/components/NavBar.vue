@@ -68,7 +68,7 @@
 
   li{
     display: inline;
-    font-size: 1vw;
+    font-size: 1.5vw;
     list-style-type: none;
     margin: 10px;
     padding: 0px 8px;
