@@ -6,7 +6,7 @@
     const concealDiv = document.querySelector('.conceal-div') as HTMLElement
     const revealDiv = document.querySelector('.reveal-div') as HTMLElement
     concealDiv.style.transform = `translateY(${scrollPosition}px)`
-    revealDiv.style.transform = `translateY(-${scrollPosition * 0.1}px)`
+    // revealDiv.style.transform = `translateY(-${scrollPosition * .01}px)`
   }
 
   onMounted(() => {
@@ -22,7 +22,7 @@
 
   <div class="conceal-reveal-div">
     <div class="conceal-div">
-      <img class="home-img" src="https://picsum.photos/2000/1000"/>
+      <img class="home-img" src="https://picsum.photos/2000/500"/>
     </div>
 
     <div class="reveal-div">
@@ -62,7 +62,7 @@
     left: 0;
     right: 0;
     transform: translateY(0);
-    background-color: #967BB6;
+    background-color: white;
     z-index: 1;
   }
 

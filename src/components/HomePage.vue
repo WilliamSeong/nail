@@ -18,9 +18,16 @@
 </script>
 
 <template>
-  <img class="home-img" src="https://picsum.photos/1000"/>
-  <Carousel :slides="slides" :interval="3000" indicators controls/>
-  <Map />
+  <div class="home-container">
+    <div class="home-first">
+      <img class="home-img" src="https://picsum.photos/1000"/>
+    </div>
+  </div>
+  
+  
+  
+  <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>
+  <Map /> -->
 </template>
 
 <style>
@@ -30,9 +37,17 @@
     box-sizing: border-box;
   }
 
+  .home-container{
+    min-height: 1000vh;
+  }
+
+  .home-first{
+    min-height: 100vh;
+  }
+
   .home-img {
     width: 100%;
-    height: auto;
+    max-height: 100vh;
   }
 
 </style>
