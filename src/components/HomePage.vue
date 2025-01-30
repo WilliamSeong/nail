@@ -2,6 +2,7 @@
   import { onMounted, onUnmounted } from 'vue';
   import Map from "./EmbeddedMap.vue";
   import Carousel from "./ImageCarousel.vue"
+  import Nav from "./NavBar.vue"
 
   const slides = ["../assets/nail-media/nail-media-1.jpeg",
                   "../assets/nail-media/nail-media-2.jpeg",
@@ -20,9 +21,9 @@
     const foreground = document.querySelector('.foreground') as HTMLElement
     const background = document.querySelector('.background') as HTMLElement
 
-    const vhInPixels = window.innerHeight * 1
+    const vhInPixels = window.innerHeight * 0.1
 
-    background.style.transform = `translateY(${vhInPixels - scrollPosition}px)`
+    background.style.transform = `translateY(${vhInPixels - (scrollPosition * 0.5) }px)`
   }
 
   onMounted(() => {
@@ -38,8 +39,11 @@
 <template>
   <div class="home-container">
     <div class="home-first">
-      <!-- <img class="home-first-img" src="https://picsum.photos/1000"/> -->
-       <p>Image</p>
+      <div class="home-nav">
+        <Nav />
+      </div>
+      <img class="home-first-img" src="https://picsum.photos/5000"/>
+       <!-- <p>Image</p> -->
     </div>
     <div class = "home-second">
       <h3>
@@ -65,16 +69,31 @@
     </div>
     <div class="home-third">
       <div class="foreground">
-
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+          Libero, blanditiis accusantium laudantium at reiciendis quidem 
+          ratione porro explicabo iste veritatis tempore magnam. Enim 
+          placeat obcaecati eum sequi deserunt cumque amet reiciendis, 
+          error necessitatibus sunt accusamus temporibus sit dolor non 
+          cupiditate reprehenderit molestiae modi corrupti consectetur 
+          blanditiis nemo eius! Maiores odio ex possimus, amet architecto 
+          rerum quia commodi praesentium, exercitationem temporibus 
+          omnis sed eos magnam? Amet, commodi? Natus iusto dolorum provident 
+          fugiat magni consequuntur dicta repellendus similique veniam? 
+          Tempore maiores reprehenderit recusandae ipsum fuga tenetur 
+          cupiditate maxime. Placeat laboriosam perspiciatis suscipit 
+          voluptatum, soluta, magni facilis doloremque officia est, vel 
+          natus quibusdam?
+        </p>
       </div>
 
       <div class="background">
         <img class="home-third-image" src="https://picsum.photos/5000"/>
       </div>
     </div>
+    <div class="home-fourth">
+
+    </div>
   </div>
-
-
 
   <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>
   <Map /> -->
@@ -92,26 +111,31 @@
   }
 
   .home-first{
-    min-height: 100vh;
-    max-height: 100vh;
-    line-height: 0;
+    height: 60vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    position: relative;
+  }
 
+  .home-nav{
+    position: absolute;
+    z-index: 1;
   }
 
   .home-first-img {
-    width: 100%;
-    max-height: 100vh;
+    width: 100vw;
+    height: 60vh;
+    position: absolute;
+    z-index: 0
   }
 
   .home-second{
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 60vh;
     margin: auto;
-    background: paleturquoise;
+    background: #967BB6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,34 +149,50 @@
   }
 
   .home-third{
-    height: 400vh;
+    height: 100vh;
     position: relative;
     z-index: 0
   }
 
   .foreground{
     position: absolute;
-    top: 25vh;
-    left: 25vw;
-    height: 50vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: lavender;
-    width: 50vw;
+    height: 50vmin;
+    width: 50vmin;
     z-index: 1;
+  }
 
+  .foreground p{
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2vh;
   }
 
   .background{
     position: absolute;
     top: 0;
     left: 0;
-    height: 400vh;
+    height: 100vh;
     width: 100vw;
     z-index: 0;
   }
 
   .home-third-image{
     width: 100vw;
-    height: 400vh;
+    height: 200vh;
+  }
+
+  .home-fourth{
+    height: 50vh;
+    background: black;
+    position: relative;
+    z-index: 1;
   }
 
 </style>

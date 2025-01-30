@@ -30,22 +30,39 @@
   }
 
   #header{
-    background-color: #967BB6;
-    height: 20vh;
+    background-color: rgba(0,0,0,0);
+    height: 10vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     position: relative;
+    transition-duration: 500ms;
+    transition-duration: background;
+  }
+
+  #header:hover{
+    background:  rgba(150, 123, 182, 0.5)
+  }
+
+  #header:hover hr{
+    visibility: visible;
   }
 
   #logo{
     text-align: center;
-    color: white;
+    color: black;
     font-family: 'Papyrus', fantasy;
   }
 
+  #header:hover #logo{
+    color: white;
+  }
+
   #header-line{
-    width: 80vw;
+    width: 40vw;
     margin: auto;
+    visibility: hidden;
+    transition-duration: 500ms;
   }
 
   #contents{
@@ -76,9 +93,13 @@
   }
 
   a{
-    color: #F2F2F2;
+    color: black;
     padding: 0;
     text-decoration: none;
+  }
+
+  #header:hover a{
+    color: white;
   }
 
   li:hover a{
