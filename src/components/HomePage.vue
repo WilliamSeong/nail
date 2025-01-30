@@ -3,6 +3,7 @@
   import Map from "./EmbeddedMap.vue";
   import Carousel from "./ImageCarousel.vue"
   import Nav from "./NavBar.vue"
+  import Contact from "./ContactThird.vue";
 
   const slides = ["../assets/nail-media/nail-media-1.jpeg",
                   "../assets/nail-media/nail-media-2.jpeg",
@@ -38,14 +39,21 @@
 
 <template>
   <div class="home-container">
+
+
     <div class="home-first">
       <div class="home-nav">
         <Nav />
       </div>
-      <img class="home-first-img" src="https://picsum.photos/5000"/>
+      <img class="home-first-img" src="https://picsum.photos/seed/6/5000"/>
        <!-- <p>Image</p> -->
     </div>
+
+
     <div class = "home-second">
+      <h1>
+        Lorem ipsum dolor sit amet.
+      </h1>
       <h3>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         Hic, assumenda, dolor maxime ut non id deleniti mollitia
@@ -67,31 +75,28 @@
         recusandae fugiat nemo dolores?
       </h3>
     </div>
+
+
     <div class="home-third">
       <div class="foreground">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-          Libero, blanditiis accusantium laudantium at reiciendis quidem 
-          ratione porro explicabo iste veritatis tempore magnam. Enim 
-          placeat obcaecati eum sequi deserunt cumque amet reiciendis, 
-          error necessitatibus sunt accusamus temporibus sit dolor non 
-          cupiditate reprehenderit molestiae modi corrupti consectetur 
-          blanditiis nemo eius! Maiores odio ex possimus, amet architecto 
-          rerum quia commodi praesentium, exercitationem temporibus 
-          omnis sed eos magnam? Amet, commodi? Natus iusto dolorum provident 
-          fugiat magni consequuntur dicta repellendus similique veniam? 
-          Tempore maiores reprehenderit recusandae ipsum fuga tenetur 
-          cupiditate maxime. Placeat laboriosam perspiciatis suscipit 
-          voluptatum, soluta, magni facilis doloremque officia est, vel 
-          natus quibusdam?
-        </p>
+        <h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, itaque!
+        </h1>
       </div>
 
       <div class="background">
-        <img class="home-third-image" src="https://picsum.photos/5000"/>
+        <img class="home-third-image" src="https://picsum.photos/seed/4/5000"/>
       </div>
     </div>
+
+
     <div class="home-fourth">
 
+    </div>
+
+
+    <div class="home-fifth">
+      <Contact />
     </div>
   </div>
 
@@ -135,21 +140,30 @@
     width: 100vw;
     height: 60vh;
     margin: auto;
-    background: #967BB6;
+    background: rgb(161, 229, 164);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 1;
   }
 
+  .home-second h1{
+    text-align: center;
+    margin-bottom: 2vh;
+    font-size: 5vmin;
+  }
+
   .home-second h3{
     text-align: center;
-    width: 50vw;
+    width: 30vw;
     z-index: 1;
+    font-family: 'Papyrus', 'Fantasy';
+    font-siZe: 1.5vmin;
   }
 
   .home-third{
-    height: 100vh;
+    height: 60vh;
     position: relative;
     z-index: 0
   }
@@ -159,19 +173,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: lavender;
+    background:  rgb(161, 229, 164, 0);
     height: 50vmin;
     width: 50vmin;
     z-index: 1;
   }
 
-  .foreground p{
+  .foreground h1{
     height: 100%;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
-    font-size: 2vh;
+    font-size: 3vmin;
+    color:  rgb(161, 229, 164);
   }
 
   .background{
@@ -185,14 +200,22 @@
 
   .home-third-image{
     width: 100vw;
-    height: 200vh;
+    height: 140vh;
   }
 
   .home-fourth{
-    height: 50vh;
-    background: black;
+    height: 60vh;
+    background: rgb(255,105,97);
     position: relative;
     z-index: 1;
+  }
+
+  .home-fifth{
+    background: rgb(167, 199, 231);
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 </style>

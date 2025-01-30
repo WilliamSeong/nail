@@ -41,7 +41,7 @@
   }
 
   #header:hover{
-    background:  rgba(150, 123, 182, 0.5)
+    background:  rgb(161, 229, 164)
   }
 
   #header:hover hr{
@@ -50,7 +50,7 @@
 
   #logo{
     text-align: center;
-    color: black;
+    color:  rgb(161, 229, 164);
     font-family: 'Papyrus', fantasy;
   }
 
@@ -85,7 +85,7 @@
 
   li{
     display: inline;
-    font-size: 1.5vw;
+    font-size: 1vw;
     list-style-type: none;
     margin: 10px;
     padding: 0px 8px;
@@ -93,7 +93,7 @@
   }
 
   a{
-    color: black;
+    color:  rgb(161, 229, 164);
     padding: 0;
     text-decoration: none;
   }
@@ -103,7 +103,7 @@
   }
 
   li:hover a{
-    color: #967BB6;
+    color: #A1E5A4;
   }
 
 </style>

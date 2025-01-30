@@ -47,10 +47,11 @@ async function getRefreshToken(code : string) {
 server.post('/send', async (req, res) => {
 
   const accessToken = await getAccessToken();
+  console.log("Got access token: ", accessToken)
 
   req.on('data', (data) => {
-    const { message } = JSON.parse(data.toString());
-    console.log(message);
+    const { name, email, message } = JSON.parse(data.toString());
+    console.log(name, email, message);
 
     send(message, accessToken);
   });
@@ -68,6 +69,7 @@ const clientSecret = process.env.CLIENT_SECRET as string;
 const refreshToken = process.env.REFRESH_TOKEN as string;
 
 async function getAccessToken() {
+  console.log("Calling getAccessTokeen");
   const response = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: {
@@ -80,6 +82,7 @@ async function getAccessToken() {
       grant_type: 'refresh_token'
     })
   });
+  console.log("response is: ", response);
   const token = await response.json();
   const accessToken = token.access_token;
 
