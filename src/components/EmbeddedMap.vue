@@ -48,11 +48,10 @@
 </template>
 
 <style>
-
-  .body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#map {
+  width: 30vw;
+  padding-bottom: 30%;
+  margin: auto;
   }
 
   #map {

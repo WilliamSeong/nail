@@ -103,11 +103,10 @@
     <div class="home-sixth">
       <Map />
     </div>
-    <!-- <div class="home-footer">
-      <Foot />
-    </div> -->
   </div>
-  <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>-->
+
+  <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>
+  <Map /> -->
 </template>
 
 <style>
@@ -115,10 +114,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: 1px solid red;
   }
 
   .home-container{
-    height: auto;
+    height: 1000vh;
   }
 
   .home-first{
@@ -130,6 +130,7 @@
   }
 
   .home-nav{
+    width: 100%;
     position: absolute;
     z-index: 1;
   }
