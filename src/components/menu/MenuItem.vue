@@ -1,0 +1,45 @@
+<script setup lang="ts">
+
+    defineProps({
+        name: String,
+        price: String
+    })
+
+</script>
+
+<template>
+    <div class="menu-item">
+            <span class="item-name">{{name}}</span>
+            <span class="dots"></span>
+            <span class="item-price">${{price}}</span>
+    </div>
+</template>
+
+<style>
+
+    .menu-item{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+        gap: 8px;
+        align-items: baseline;
+    }
+
+    .item-name{
+        color: black;
+        font-size: 2vmin;
+    }
+
+    .dots{
+        border-bottom: 2px dotted #999;
+        flex-grow: 1;
+        position: relative;
+        align-self: flex-end;
+        margin-bottom: 0.5em;
+    }
+
+    .item-price{
+        color: black;
+    }
+</style>

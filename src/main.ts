@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import './types/google-maps.d.ts';
 
 import Home from "./components/HomePage.vue";
-import Menu from "./components/MenuPage.vue";
+import Menu from "./components/menu/MenuPage.vue";
 import Contact from "./components/ContactInfo.vue";
 import ContactA from "./components/ContactAnonymous.vue"
 import ContactB from "./components/ContactThird.vue"

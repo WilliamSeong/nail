@@ -60,7 +60,7 @@
 
   .contact{
     width: 25%;
-    height: 50%;
+    height: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,6 +75,11 @@
     justify-content: center;
     text-align: center;
   }
+
+  .contact-left p{
+    font-size: 1vmax;
+  }
+
   .contact-right{
     width: 50%;
     height: 100%;
@@ -93,7 +98,7 @@
     outline: none;
     border-style:solid;
     border-width: 1px;
-    font-size: .5vmax;
+    font-size: 1vmax;
     color: white;
     font-family:'Times New Roman', Times, serif;
   }
@@ -107,7 +112,7 @@
     outline: none;
     border-style:solid;
     border-width: 1px;
-    font-size: .5vmax;
+    font-size: 1vmax;
     color: white;
     font-family:'Times New Roman', Times, serif;
   }
@@ -123,7 +128,7 @@
     outline: none;
     border-style:solid;
     border-width: 1px;
-    font-size: .5vmax;
+    font-size: .75vmax;
     resize: none;
     color: white;
     font-family:'Times New Roman', Times, serif;
@@ -141,7 +146,7 @@
 
   .button{
     width: 40%;
-    height: 20%;
+    height: 10%;
     border-style: solid;
     border-width: 0;
     background: rgb(161, 229, 164);
