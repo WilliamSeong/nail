@@ -104,10 +104,10 @@
       <div class="home-menu">
         <div class="home-menu-left">
 
-          <h1>Manicure</h1>
-          <h1>Pedicure</h1>
-          <h1>Waxing</h1>
-          <h1>And more...!</h1>
+          <router-link to="/menu"><h1>Manicure</h1></router-link>
+          <router-link to="/menu"><h1>Pedicure</h1></router-link>
+          <router-link to="/menu"><h1>Waxing</h1></router-link>
+          <router-link to="/menu"><h1>And more...!</h1></router-link>
 
         </div>
 
@@ -258,13 +258,15 @@
     justify-content: space-between;
   }
 
-  .home-menu-left h1{
+  .home-menu-left a{
     margin: 1vh;
     padding: 5vh;
     width: 80%;
     text-align: center;
     border-radius: min(32px, 3vw);
     background: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    color: black;
   }
 
   .home-menu-right{

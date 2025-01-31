@@ -136,8 +136,13 @@
     background: url("https://picsum.photos/seed/21/5000")
   }
 
-  .menu-nav:hover .menu-page{
-    background:rgb(161, 229, 164)
+  .menu-nav{
+    background: rgb(161, 229, 164);
+  }
+
+  .menu-nav a,
+  .menu-nav h1{
+    color: black;
   }
 
   .menu-container{
