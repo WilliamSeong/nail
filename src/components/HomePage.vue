@@ -98,10 +98,12 @@
     <div class="home-fifth">
       <Contact />
     </div>
-  </div>
 
-  <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>
-  <Map /> -->
+    <div class="home-sixth">
+      <Map />
+    </div>
+  </div>
+  <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>-->
 </template>
 
 <style>
@@ -112,7 +114,7 @@
   }
 
   .home-container{
-    height: 1000vh;
+    height: auto;
   }
 
   .home-first{

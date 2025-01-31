@@ -49,7 +49,7 @@
 
 <style>
 #map {
-  width: 30vw;
+  width: 100vw;
   padding-bottom: 30%;
   margin: auto;
   }
