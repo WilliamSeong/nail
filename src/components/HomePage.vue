@@ -6,16 +6,27 @@
   import Foot from "./FooterBar.vue"
   import Contact from "./ContactThird.vue";
 
-  const slides = ["../assets/nail-media/nail-media-1.jpeg",
-                  "../assets/nail-media/nail-media-2.jpeg",
-                  "../assets/nail-media/nail-media-3.jpeg",
-                  "../assets/nail-media/nail-media-4.jpeg",
-                  "../assets/nail-media/nail-media-5.jpeg",
-                  "../assets/nail-media/nail-media-6.jpeg",
-                  "../assets/nail-media/nail-media-7.jpeg",
-                  "../assets/nail-media/nail-media-8.jpeg",
-                  "../assets/nail-media/nail-media-9.jpeg",
-                  "../assets/nail-media/nail-media-10.jpeg"
+  import nail1 from "../assets/nail-media/nail-media-1.jpeg"
+  import nail2 from "../assets/nail-media/nail-media-2.jpeg"
+  import nail3 from "../assets/nail-media/nail-media-3.jpeg"
+  import nail4 from "../assets/nail-media/nail-media-4.jpeg"
+  import nail5 from "../assets/nail-media/nail-media-5.jpeg"
+  import nail6 from "../assets/nail-media/nail-media-6.jpeg"
+  import nail7 from "../assets/nail-media/nail-media-7.jpeg"
+  import nail8 from "../assets/nail-media/nail-media-8.jpeg"
+  import nail9 from "../assets/nail-media/nail-media-9.jpeg"
+  import nail10 from "../assets/nail-media/nail-media-10.jpeg"
+
+  const slides = [nail1,
+                  nail2,
+                  nail3,
+                  nail4,
+                  nail5,
+                  nail6,
+                  nail7,
+                  nail8,
+                  nail9,
+                  nail10
                 ];
 
   const handleScroll = (): void => {
@@ -40,8 +51,6 @@
 
 <template>
   <div class="home-container">
-
-
     <div class="home-first">
       <div class="home-nav">
         <Nav />
@@ -93,45 +102,33 @@
 
     <div class="home-fourth">
       <div class="home-menu">
-        <ul>
-          <li>Reflexology massage</li>
-          <li>Toe nail fill-in</li>
-          <li>Hand and toe nail fill-in</li>
-          <li>Manicure and pedicure</li>
-          <li>Nail polish change</li>
-          <li>Hand polish change</li>
-          <li>Nail polish removal</li>
-          <li>Hand polish removal</li>
-          <li>Nail repair</li>
-          <li>Nail fill-in</li>
-          <li>Hand nail fill-in</li>
-          <li>Manicure</li>
-          <li>Pedicure</li>
-          <li>Toe polish change</li>
-          <li>Hand and toe polish change</li>
-          <li>Toe polish removal</li>
-          <li>Hand and toe polish removal</li>
-          <li>Waxing</li>
-        </ul>
+        <div class="home-menu-left">
+
+          <h1>Manicure</h1>
+          <h1>Pedicure</h1>
+          <h1>Waxing</h1>
+          <h1>And more...!</h1>
+
+        </div>
+
+        <div class="home-menu-right">
+            <Carousel :slides="slides" :interval="3000" indicators controls/>
+        </div>
       </div>
     </div>
 
-
     <div class="home-fifth">
-      <Contact />
+      <Map />
     </div>
 
     <div class="home-sixth">
-      <Map />
+      <Contact />
     </div>
 
     <div class="home-seventh">
       <Foot />
     </div>
   </div>
-
-  <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>
-  <Map /> -->
 </template>
 
 <style>
@@ -139,8 +136,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* outline: 1px solid red; */
-    transition: 1000ms;
+    /* outline: 1px solid red;
+    transition: 1000ms; */
   }
 
   .home-container{
@@ -246,11 +243,40 @@
     justify-content: center;
   }
 
-  .home-menu ul{
-    list-style: none;
+  .home-menu{
+    width: 80%;
+    height: 100%;
+    display: flex;
   }
 
-  .home-fifth{
+  .home-menu-left{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .home-menu-left h1{
+    margin: 1vh;
+    padding: 5vh;
+    width: 80%;
+    text-align: center;
+    border-radius: min(32px, 3vw);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .home-menu-right{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .home-sixth{
     background: rgb(167, 199, 231);
     height: 60vh;
     display: flex;

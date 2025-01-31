@@ -146,13 +146,17 @@
   .carousel{
     display: flex;
     justify-content: center;
+    width: 70%;
+    aspect-ratio: 1 / 1;
   }
 
   .carousel-inner{
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    border-radius: min(32px, 4vw);
+
   }
 
   .fade-in-enter-active,

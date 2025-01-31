@@ -11,16 +11,14 @@
 
 <style>
   .carousel-control{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     border: none;
     display: inline-block;
     position: absolute;
-    top: calc(50% - 10px);
-    height: 20px;
-    width: 20px;
-    color: #f3f3f3;
+    height: 100%;
+    width: 10%;
+    color: black;
     cursor: pointer;
-    border-radius: 50%;
   }
 
   .left{
