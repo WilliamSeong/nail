@@ -235,7 +235,7 @@
 
   .home-fourth{
     height: 60vh;
-    background: rgb(255,105,97);
+    background:rgb(161, 229, 164);
     position: relative;
     z-index: 1;
     display: flex;
@@ -277,7 +277,7 @@
 
 
   .home-sixth{
-    background: rgb(167, 199, 231);
+    background:rgb(161, 229, 164);
     height: 60vh;
     display: flex;
     align-items: center;

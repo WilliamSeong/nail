@@ -149,7 +149,7 @@
     height: 10%;
     border-style: solid;
     border-width: 0;
-    background: rgb(161, 229, 164);
+    background: rgb(255, 233, 175);
     transition: 1000ms
   }
 
