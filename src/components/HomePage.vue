@@ -3,6 +3,7 @@
   import Map from "./EmbeddedMap.vue";
   import Carousel from "./ImageCarousel.vue"
   import Nav from "./NavBar.vue"
+  import Foot from "./FooterBar.vue"
   import Contact from "./ContactThird.vue";
 
   const slides = ["../assets/nail-media/nail-media-1.jpeg",
@@ -54,7 +55,7 @@
       <h1>
         Lorem ipsum dolor sit amet.
       </h1>
-      <h3>
+      <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         Hic, assumenda, dolor maxime ut non id deleniti mollitia
         modi laudantium maiores aut quaerat ipsam. Impedit, ex.
@@ -73,7 +74,7 @@
         tempore debitis maiores delectus numquam nesciunt
         exercitationem veniam, illum magni officia animi unde eius
         recusandae fugiat nemo dolores?
-      </h3>
+      </p>
     </div>
 
 
@@ -102,6 +103,9 @@
     <div class="home-sixth">
       <Map />
     </div>
+    <!-- <div class="home-footer">
+      <Foot />
+    </div> -->
   </div>
   <!-- <Carousel :slides="slides" :interval="3000" indicators controls/>-->
 </template>
@@ -131,7 +135,7 @@
   }
 
   .home-first-img {
-    width: 100vw;
+    width: 100%;
     height: 60vh;
     position: absolute;
     z-index: 0
@@ -139,9 +143,8 @@
 
   .home-second{
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 60vh;
-    margin: auto;
     background: rgb(161, 229, 164);
     display: flex;
     flex-direction: column;
@@ -156,7 +159,7 @@
     font-size: 5vmin;
   }
 
-  .home-second h3{
+  .home-second p{
     text-align: center;
     width: 30vw;
     z-index: 1;
@@ -165,9 +168,9 @@
   }
 
   .home-third{
-    height: 60vh;
+    height: 80vh;
     position: relative;
-    z-index: 0
+    z-index: 0;
   }
 
   .foreground{
@@ -196,13 +199,14 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     z-index: 0;
   }
 
   .home-third-image{
-    width: 100vw;
-    height: 140vh;
+    width: 100%;
+    height: 200vh;
+    object-fit: cover;
   }
 
   .home-fourth{

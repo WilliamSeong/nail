@@ -48,9 +48,15 @@
 </template>
 
 <style>
-#map {
-  width: 100vw;
-  padding-bottom: 30%;
-  margin: auto;
+
+  .body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+
+  #map {
+    width: 100%;
+    height: 50vh;
+    }
 </style>
