@@ -9,6 +9,11 @@ server.use(cors({
   origin: 'http://localhost:5173',
 }));
 
+server.listen(port, () => {
+  return console.log(`Express is listening at http://localhost:${port}`);
+});
+
+
 // Getting RefreshToken just in case
 
 server.post('/token', async (req, res) => {
@@ -53,15 +58,11 @@ server.post('/send', async (req, res) => {
     const { name, email, message } = JSON.parse(data.toString());
     console.log(name, email, message);
 
-    send(message, accessToken);
+    send(name, email, message, accessToken);
   });
   console.log('POST request received');
   res.send("Message sent!")
 })
-
-server.listen(port, () => {
-    return console.log(`Express is listening at http://localhost:${port}`);
-});
 
 dotenv.config();
 const clientId = process.env.CLIENT_ID as string;
@@ -89,19 +90,21 @@ async function getAccessToken() {
   return accessToken;
 }
 
-async function send(message: string, accessToken: string) {
+async function send(name: string ,email: string ,message: string, accessToken: string) {
   console.log("Sending message: ", message);
   console.log("Access token: ", accessToken);
+  const time = new Date();
 
   // MIME message construction
   const messageParts = [
     'MIME-Version: 1.0',
-    'From: "William Seong" <seongwilliam@gmail.com>',
+    'From: "William Seong" <willerseong@gmail.com>',
     'To: <seongwilliam@gmail.com>',
-    'Subject: Test Email',
+    'Cc: <' + email + ">",
+    'Subject:' + time,
     'Content-Type: text/plain; charset=UTF-8',
     '',
-    message
+    `${name}\n${message}`
   ].join('\r\n');
   // console.log("Message parts: ", messageParts);
   const encodedMessage = btoa(messageParts)

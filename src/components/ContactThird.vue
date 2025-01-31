@@ -2,7 +2,9 @@
 
   import { ref } from 'vue';
 
-  const inputValue = ref('');
+  const nameValue = ref('');
+  const emailValue = ref('');
+  const messageValue = ref('')
 
   async function send() {
     console.log("Test")
@@ -15,7 +17,6 @@
     const nameString = nameElement.value;
     const emailString = emailElement.value;
     const messageString = messageElement.value
-    console.log("The message is:", messageString)
 
     if (nameString != "" && emailString != "" && messageString != ""){
       await fetch('http://localhost:3000/send', {
@@ -47,8 +48,8 @@
     </div>
     
     <div class="contact-right">
-      <input id="name" class="name" placeholder="Name">
-      <input id="email" class="email" placeholder="Email" v-model="inputValue" :class="{ 'bg-red-100': inputValue === '' }"/>
+      <input id="name" class="name" placeholder="Name" v-model="nameValue" :class="{ 'empty': nameValue === ''}"/>
+      <input id="email" class="email" placeholder="Email" v-model="emailValue" :class="{ 'empty': emailValue === ''}"/>
       <textarea id="message" class="message" placeholder="Message"/>
       <button class="button" @click="send">Submit</button>
     </div>
@@ -57,93 +58,98 @@
 
 <style>
 
-.contact{
-  width: 25%;
-  height: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
+  .contact{
+    width: 25%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 
-.contact-left{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.contact-right{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+  .contact-left{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .contact-right{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-.name{
-  background: transparent;
-  width: 90%;
-  height:10%;
-  margin: 1vmin;
-  border-color: white;
-  outline: none;
-  border-style:solid;
-  border-width: 1px;
-  font-size: .5vmax;
-  color: white;
-}
+  .name{
+    background: transparent;
+    width: 90%;
+    height:10%;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: .5vmax;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+  }
 
-.email{
-  background: transparent;
-  width: 90%;
-  height:10%;
-  margin: 1vmin;
-  border-color: white;
-  outline: none;
-  border-style:solid;
-  border-width: 1px;
-  font-size: .5vmax;
-  color: white;
-}
+  .email{
+    background: transparent;
+    width: 90%;
+    height:10%;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: .5vmax;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+  }
 
-.message{
-  background: transparent;
-  max-width: 90%;
-  min-width: 90%;
-  max-height: 50%;
-  min-height: 50%;
-  margin: 1vmin;
-  border-color: white;
-  outline: none;
-  border-style:solid;
-  border-width: 1px;
-  font-size: .5vmax;
-  resize: none;
-  color: white;
-}
+  .message{
+    background: transparent;
+    max-width: 90%;
+    min-width: 90%;
+    max-height: 50%;
+    min-height: 50%;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: .5vmax;
+    resize: none;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    padding: 2px;
+  }
 
-.bg-red-100{
-  background: pink;
-  border-color: red;
-}
+  .empty{
+    background: rgba(255,0,0,0.1);
+    border-color: rgb(255,0,0);
+  }
 
-::placeholder{
-  color: white;
-}
+  ::placeholder{
+    color: white;
+  }
 
-.button{
-  width: 50%;
-  height: 10%;
-  border-style: solid;
-  border-width: 0;
-  background: rgb(161, 229, 164);
-}
+  .button{
+    width: 40%;
+    height: 20%;
+    border-style: solid;
+    border-width: 0;
+    background: rgb(161, 229, 164);
+    transition: 1000ms
+  }
 
-.button:hover{
-  background: white;
-}
+  .button:hover{
+    background: white;
+  }
 
 </style>
