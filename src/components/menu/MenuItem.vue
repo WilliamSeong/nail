@@ -18,11 +18,12 @@
 <style>
 
     .menu-item{
+        width: 100%;
         position: relative;
         display: flex;
         justify-content: space-between;
         z-index: 2;
-        gap: 8px;
+        gap: 1vw;
         align-items: baseline;
     }
 
@@ -41,5 +42,6 @@
 
     .item-price{
         color: black;
+        height: 100%;
     }
 </style>

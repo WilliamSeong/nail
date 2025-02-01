@@ -1,85 +1,96 @@
 <script setup lang="ts">
-  import { onMounted, onUnmounted } from 'vue'
 
-  const handleScroll = (): void => {
-    const scrollPosition = window.scrollY
-    const concealDiv = document.querySelector('.conceal-div') as HTMLElement
-    const revealDiv = document.querySelector('.reveal-div') as HTMLElement
-    concealDiv.style.transform = `translateY(${scrollPosition}px)`
-    // revealDiv.style.transform = `translateY(-${scrollPosition * .01}px)`
+  import { ref } from 'vue';
+  import Item from "./menu/MenuItem.vue"
+
+  const pop = ref(false);
+
+  function popUp() {
+    pop.value = !pop.value;
   }
-
-  onMounted(() => {
-    window.addEventListener('scroll', handleScroll)
-  })
-
-  onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-  })
+  
 </script>
 
 <template>
+  <div class="size">
+    <div class="content-container">
+      <button class="target"
+        @click="popUp">
+        Click Me!
+      </button>
 
-  <div class="conceal-reveal-div">
-    <div class="conceal-div">
-      <img class="home-img" src="https://picsum.photos/2000/500"/>
-    </div>
-
-    <div class="reveal-div">
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Perspiciatis delectus, ex tempora praesentium vel in error
-        alias tempore aperiam aut dolor. Sequi impedit esse totam
-        ab porro maiores accusamus, ut corrupti expedita ipsum
-        doloremque ea, optio iusto pariatur beatae magnam repudiandae
-        deleniti distinctio excepturi placeat, eligendi autem in veritatis.
-        Pariatur fugiat ex cupiditate dignissimos iste ratione, minus
-        consectetur ipsa repudiandae voluptas, id in vel fugit fuga aliquam,
-        a illum. Vero tenetur sit architecto ab, ad enim fugit! Ratione
-        velit nostrum iste necessitatibus nam deleniti possimus esse
-        repellendus nobis corrupti, at provident, iusto nesciunt perspiciatis
-        aliquam eum officia cumque. Voluptate, maiores.
-      </h1>
+      <div 
+        class="pop-up"
+        :class="{popout : pop}"
+        >
+          <Item name="Manicure" price="20"/>
+          <Item name="French Manicure" price="25"/>
+          <Item name="Buffin Manicure" price="25"/>
+          <Item name="Change Polish" price="13"/>
+          <Item name="Soak Off Color Gel Manicure" price="39"/>
+          <Item name="Soak Off French Gel Manicure" price="48"/>
+          <Item name="Spa Manicure" price="35"/>
+          <Item name="Kid's Manicure (under 9yr)" price="13"/>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
 
-  .conceal-reveal-div{
-    height: 200vh;
-    min-height: 80vh;
+  *{
+    outline: 2px red solid;
+  }
+  .content-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: pink;
     position: relative;
   }
 
-  .conceal-div{
-    width: 100vw;
-    height: 80vh;
+  .target{
+    padding: 1vh 5vw;
+    border-radius: min(32px, 3vw);
+    background: rgba(255,255,255,0.5);
+  }
+
+  .pop-up{
+    height: 10vw;
+    width: 10vw;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 20%;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin: auto;
-    position: fixed;
-    top: 20vh;
-    left: 0;
-    right: 0;
-    transform: translateY(0);
-    background-color: white;
-    z-index: 1;
+    background: mintcream;
+    position: absolute;
+    top: 53vh;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
   }
 
-  .home-img {
-    height: auto;
-  }
-
-  .reveal-div{
-    width: 80vw;
-    height: 80vh;
+  .popout{
+    height: 10vw;
+    width: 10vw;
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    font-size: .5vw;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin: auto;
-    position: fixed;
-    top:20vh;
-    left: 0;
-    right: 0;
-    transform: translateY(0);
+    background: mintcream;
+    position: absolute;
+    top: 53vh;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
   }
-
 </style>

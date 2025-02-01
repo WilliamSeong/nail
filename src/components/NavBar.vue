@@ -13,6 +13,7 @@
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/menu">Menu</router-link></li>
+        <li><router-link to="/test">Test</router-link></li>
         <!-- <li><router-link to="/contacta">Authorize</router-link></li>
         <li><router-link to="/contactb">Contact</router-link></li>
         <li><router-link to="/carousel">Carousel</router-link></li>
