@@ -29,7 +29,7 @@
 
     .item-name{
         color: black;
-        font-size: 2vmin;
+        font-size: .75vw;
     }
 
     .dots{

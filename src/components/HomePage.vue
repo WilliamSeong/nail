@@ -5,6 +5,7 @@
   import Nav from "./NavBar.vue"
   import Foot from "./FooterBar.vue"
   import Contact from "./ContactThird.vue";
+  import Test from "./TestComponent.vue";
 
   import nail1 from "../assets/nail-media/nail-media-1.jpeg"
   import nail2 from "../assets/nail-media/nail-media-2.jpeg"
@@ -28,6 +29,27 @@
                   nail9,
                   nail10
                 ];
+
+  const manicureServices = [
+                    { name: "Manicure", price: "20" },
+                    { name: "French Manicure", price: "25" },
+                    { name: "Buffin Manicure", price: "25" },
+                    { name: "Change Polish", price: "13" }
+                  ];
+
+  const pedicureServices = [
+                    { name: "Pedicure", price: "30" },
+                    { name: "French Pedicure", price: "35" },
+                    { name: "Buffing Pedicure", price: "35" },
+                    { name: "Change Polish", price: "15" }
+                  ];
+  const waxingServices = [
+                    { name: "Eyebrows", price: "15" },
+                    { name: "Lips", price: "12" },
+                    { name: "Chin", price: "13" },
+                    { name: "Cheeks", price: "18" }
+                  ];
+
 
   const handleScroll = (): void => {
     const scrollPosition = window.scrollY
@@ -103,11 +125,14 @@
     <div class="home-fourth">
       <div class="home-menu">
         <div class="home-menu-left">
+          <Test name="Manicure" :services="manicureServices"/>
+          <Test name="Pedicure" :services="pedicureServices"/>
+          <Test name="Waxing" :services="waxingServices"/>
 
-          <router-link to="/menu"><h1>Manicure</h1></router-link>
+          <!-- <router-link to="/menu"><h1>Manicure</h1></router-link>
           <router-link to="/menu"><h1>Pedicure</h1></router-link>
           <router-link to="/menu"><h1>Waxing</h1></router-link>
-          <router-link to="/menu"><h1>And more...!</h1></router-link>
+          <router-link to="/menu"><h1>And more...!</h1></router-link> -->
 
         </div>
 

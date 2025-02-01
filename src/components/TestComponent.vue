@@ -8,89 +8,91 @@
   function popUp() {
     pop.value = !pop.value;
   }
+
+  interface Service {
+    name: string;
+    price: string;
+  }
+
+
+  defineProps<{
+    name: String,
+    services: Service[],
+  }>();
   
 </script>
 
 <template>
-  <div class="size">
     <div class="content-container">
       <button class="target"
         @click="popUp">
-        Click Me!
+        {{ name }}
       </button>
 
       <div 
         class="pop-up"
         :class="{popout : pop}"
         >
-          <Item name="Manicure" price="20"/>
-          <Item name="French Manicure" price="25"/>
-          <Item name="Buffin Manicure" price="25"/>
-          <Item name="Change Polish" price="13"/>
-          <Item name="Soak Off Color Gel Manicure" price="39"/>
-          <Item name="Soak Off French Gel Manicure" price="48"/>
-          <Item name="Spa Manicure" price="35"/>
-          <Item name="Kid's Manicure (under 9yr)" price="13"/>
+          <div class="pop-up-items" v-for="service in services" :key="service.name">
+            <Item :name="service.name" :price="service.price" />
+          </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style>
 
   *{
-    outline: 2px red solid;
+    /* outline: 2px red solid;
+    transition: 1000ms; */
   }
   .content-container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: pink;
     position: relative;
+    width: 90%;
+    height: 20%;
+    margin: 2vw;
+    
   }
 
   .target{
     padding: 1vh 5vw;
     border-radius: min(32px, 3vw);
     background: rgba(255,255,255,0.5);
+    width: 100%;
+    height: 100%;
+    font-size:2vw;
   }
 
   .pop-up{
-    height: 10vw;
-    width: 10vw;
+    height: auto;
+    width: 25vw;
     padding: 1vw;
+    background: white;
+    border-radius: min(32px, 3vw);
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+
+    
     display: flex;
     flex-direction: column;
-    font-size: 20%;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: mintcream;
-    position: absolute;
-    top: 53vh;
+    
     visibility: hidden;
     opacity: 0;
-    transform: scale(0);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .pop-up-items{
+    width: 100%;
   }
 
   .popout{
-    height: 10vw;
-    width: 10vw;
-    padding: 1vw;
-    display: flex;
-    flex-direction: column;
-    font-size: .5vw;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: mintcream;
-    position: absolute;
-    top: 53vh;
     visibility: visible;
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(-50%) scale(1);  /* Update this to maintain centering */
   }
 </style>
