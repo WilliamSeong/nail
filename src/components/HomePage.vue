@@ -72,231 +72,313 @@
 </script>
 
 <template>
-  <div class="home-container">
-    <div class="home-first">
-      <div class="home-nav">
-        <Nav />
+  <div class="theme-nordic">
+    <div class="home-container">
+      <div class="home-first">
+        <div class="home-nav">
+          <Nav />
+        </div>
+        <img class="home-first-img" src="https://picsum.photos/seed/6/5000"/>
+        <!-- <p>Image</p> -->
       </div>
-      <img class="home-first-img" src="https://picsum.photos/seed/6/5000"/>
-       <!-- <p>Image</p> -->
-    </div>
 
 
-    <div class = "home-second">
-      <h1>
-        Lorem ipsum dolor sit amet.
-      </h1>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Hic, assumenda, dolor maxime ut non id deleniti mollitia
-        modi laudantium maiores aut quaerat ipsam. Impedit, ex.
-        Amet ad sint, praesentium, aliquid perspiciatis natus
-        aliquam expedita, vel eveniet consequuntur odit temporibus!
-        Quos alias numquam consequuntur. Temporibus expedita
-        laborum debitis, voluptatibus perspiciatis porro culpa et
-        soluta accusamus iure eum excepturi. Deleniti nobis enim
-        aperiam earum doloremque voluptatum tempora quos dolor
-        obcaecati atque. Laborum repellat doloremque ipsum obcaecati
-        at! Ipsam ex dolore beatae maiores repellendus repellat
-        reiciendis illum, excepturi ducimus ratione tenetur nemo
-        voluptate commodi vero officia, nam eligendi nisi veniam
-        nulla? Amet harum adipisci repudiandae porro blanditiis,
-        deleniti quia neque. Nam omnis cum obcaecati provident
-        tempore debitis maiores delectus numquam nesciunt
-        exercitationem veniam, illum magni officia animi unde eius
-        recusandae fugiat nemo dolores?
-      </p>
-    </div>
-
-
-    <div class="home-third">
-      <div class="foreground">
+      <div class = "home-second">
         <h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, itaque!
+          Lorem ipsum dolor sit amet.
         </h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          Hic, assumenda, dolor maxime ut non id deleniti mollitia
+          modi laudantium maiores aut quaerat ipsam. Impedit, ex.
+          Amet ad sint, praesentium, aliquid perspiciatis natus
+          aliquam expedita, vel eveniet consequuntur odit temporibus!
+          Quos alias numquam consequuntur. Temporibus expedita
+          laborum debitis, voluptatibus perspiciatis porro culpa et
+          soluta accusamus iure eum excepturi. Deleniti nobis enim
+          aperiam earum doloremque voluptatum tempora quos dolor
+          obcaecati atque. Laborum repellat doloremque ipsum obcaecati
+          at! Ipsam ex dolore beatae maiores repellendus repellat
+          reiciendis illum, excepturi ducimus ratione tenetur nemo
+          voluptate commodi vero officia, nam eligendi nisi veniam
+          nulla? Amet harum adipisci repudiandae porro blanditiis,
+          deleniti quia neque. Nam omnis cum obcaecati provident
+          tempore debitis maiores delectus numquam nesciunt
+          exercitationem veniam, illum magni officia animi unde eius
+          recusandae fugiat nemo dolores?
+        </p>
       </div>
 
-      <div class="background">
-        <img class="home-third-image" src="https://picsum.photos/seed/4/5000"/>
-      </div>
-    </div>
 
-
-    <div class="home-fourth">
-      <div class="home-menu">
-        <div class="home-menu-left">
-          <Pop name="Manicure" :services="manicureServices"/>
-          <Pop name="Pedicure" :services="pedicureServices"/>
-          <Pop name="Waxing" :services="waxingServices"/>
+      <div class="home-third">
+        <div class="foreground">
+          <h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, itaque!
+          </h1>
         </div>
 
-        <div class="home-menu-right">
-            <Carousel :slides="slides" :interval="3000" indicators controls/>
+        <div class="background">
+          <img class="home-third-image" src="https://picsum.photos/seed/4/5000"/>
         </div>
       </div>
-    </div>
 
-    <div class="home-fifth">
-      <Map />
-    </div>
 
-    <div class="home-sixth">
-      <Contact />
-    </div>
+      <div class="home-fourth">
+        <div class="home-menu">
+          <div class="home-menu-left">
+            <Pop name="Manicure" :services="manicureServices"/>
+            <Pop name="Pedicure" :services="pedicureServices"/>
+            <Pop name="Waxing" :services="waxingServices"/>
+          </div>
 
-    <div class="home-seventh">
-      <Foot />
+          <div class="home-menu-right">
+              <Carousel :slides="slides" :interval="3000" indicators controls/>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-fifth">
+        <Map />
+      </div>
+
+      <div class="home-sixth">
+        <Contact />
+      </div>
+
+      <div class="home-seventh">
+        <Foot />
+      </div>
     </div>
   </div>
 </template>
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* outline: 1px solid red;
-    transition: 1000ms; */
-  }
+  /* Color scheme variables */
+  :root {
+  /* Primary colors */
+  --primary-color: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(76, 175, 80, 0.1);
+  
+  /* Text colors */
+  --text-primary: #2C2C2C;
+  --text-light: #FFFFFF;
+  
+  /* Overlay colors */
+  --overlay-light: rgba(255, 255, 255, 0.9);
+  --overlay-dark: rgba(0, 0, 0, 0.6);
+}
 
-  .home-container{
-    height: auto;
-  }
+/* Ocean Blue Theme */
+.theme-ocean {
+  /* Primary colors */
+  --primary-color: #0277BD;
+  --primary-light: #4FC3F7;
+  --primary-dark: #01579B;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(2, 119, 189, 0.1);
+}
 
-  .home-first{
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
+/* Warm Sunset Theme */
+.theme-sunset {
+  /* Primary colors */
+  --primary-color: #FF5722;
+  --primary-light: #FFAB91;
+  --primary-dark: #D84315;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(255, 87, 34, 0.1);
+}
 
-  .home-nav{
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-  }
+/* Lavender Theme */
+.theme-lavender {
+  /* Primary colors */
+  --primary-color: #7E57C2;
+  --primary-light: #B39DDB;
+  --primary-dark: #4527A0;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(126, 87, 194, 0.1);
+}
 
-  .home-first-img {
-    width: 100%;
-    height: 60vh;
-    position: absolute;
-    z-index: 0
-  }
+/* Modern Mint Theme */
+.theme-mint {
+  /* Primary colors */
+  --primary-color: #26A69A;
+  --primary-light: #80CBC4;
+  --primary-dark: #00897B;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(38, 166, 154, 0.1);
+}
 
-  .home-second{
-    position: relative;
-    width: 100%;
-    height: 60vh;
-    background: rgb(161, 229, 164);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
+/* Nordic Theme */
+.theme-nordic {
+  /* Primary colors */
+  --primary-color: #546E7A;
+  --primary-light: #90A4AE;
+  --primary-dark: #37474F;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(84, 110, 122, 0.1);
+}
 
-  .home-second h1{
-    text-align: center;
-    margin-bottom: 2vh;
-    font-size: 5vmin;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .home-second p{
-    text-align: center;
-    width: 30vw;
-    z-index: 1;
-    font-family: 'Papyrus', 'Fantasy';
-    font-siZe: 1.5vmin;
-  }
+.home-container {
+  height: auto;
+}
 
-  .home-third{
-    height: 80vh;
-    position: relative;
-    z-index: 0;
-  }
+.home-first {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
 
-  .foreground{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background:  rgb(161, 229, 164, 0);
-    height: 50vmin;
-    width: 50vmin;
-    z-index: 1;
-  }
+.home-nav {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
 
-  .foreground h1{
-    height: 100%;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: 3vmin;
-    color:  rgb(161, 229, 164);
-  }
+.home-first-img {
+  width: 100%;
+  height: 60vh;
+  position: absolute;
+  z-index: 0;
+}
 
-  .background{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    z-index: 0;
-  }
+.home-second {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background: var(--primary-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
 
-  .home-third-image{
-    width: 100%;
-    height: 200vh;
-    object-fit: cover;
-  }
+.home-second h1 {
+  text-align: center;
+  margin-bottom: 2vh;
+  font-size: 5vmin;
+  color: var(--text-primary);
+}
 
-  .home-fourth{
-    height: 60vh;
-    background:rgb(161, 229, 164);
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.home-second p {
+  text-align: center;
+  width: 30vw;
+  z-index: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1.5vmin;
+  color: var(--text-primary);
+}
 
-  .home-menu{
-    width: 80%;
-    height: 100%;
-    display: flex;
-  }
+.home-third {
+  height: 80vh;
+  position: relative;
+  z-index: 0;
+}
 
-  .home-menu-left{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 0;
-  }
+.foreground {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--overlay-light);
+  height: 50vmin;
+  width: 50vmin;
+  z-index: 1;
+}
 
-  .home-menu-right{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.foreground h1 {
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 3vmin;
+  color: var(--primary-color);
+}
 
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+}
 
-  .home-sixth{
-    background:rgb(161, 229, 164);
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.home-third-image {
+  width: 100%;
+  height: 200vh;
+  object-fit: cover;
+}
 
-  .home-seventh{
-    height: 20vh;
-  }
+.home-fourth {
+  height: 60vh;
+  background: var(--primary-light);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-menu {
+  width: 80%;
+  height: 100%;
+  display: flex;
+}
+
+.home-menu-left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 0;
+}
+
+.home-menu-right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-sixth {
+  background: var(--primary-light);
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-seventh {
+  height: 20vh;
+  background: var(--bg-light);
+}
 
 </style>

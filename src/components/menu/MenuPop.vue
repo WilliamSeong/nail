@@ -24,41 +24,43 @@
 
 <template>
     <div class="content-container">
-      <button class="target"
-        @click="popUp">
-        {{ name }}
-      </button>
+        <button class="target"
+            @click="popUp">
+            {{ name }}
+        </button>
 
-      <div 
-        class="pop-up"
-        :class="{popout : pop}"
-        >
-          <div class="pop-up-items" v-for="service in services" :key="service.name">
-            <Item :name="service.name" :price="service.price" />
-          </div>
-          <div class="menu-router-link">
-            <router-link to="/menu" class="router-link">
-                see menu
-            </router-link>
-          </div>
-      </div>
+        <div 
+            class="pop-up"
+            :class="{popout : pop}"
+            >
+            <div class="pop-up-items" v-for="service in services" :key="service.name">
+                <Item :name="service.name" :price="service.price" />
+            </div>
+            <div class="menu-router-link">
+                <router-link to="/menu" class="router-link">
+                    see menu
+                </router-link>
+            </div>
+        </div>
     </div>
 </template>
 
-<style>
+<style scoped>
 
   *{
-    /* outline: 2px red solid; */
-    /* transition: 1000ms; */
+    outline: 2px red solid;
+    transition: 1000ms;
   }
 
   .target{
-    padding: 1vh 5vw;
+    padding: 1vh 1vw;
     border-radius: min(32px, 3vw);
     background: rgba(255,255,255,0.5);
     width: 100%;
     height: 100%;
     font-size:2vw;
+    border-width: 0;
+    font-family: Papyrus, Fantasy;
   }
 
   .target:hover{

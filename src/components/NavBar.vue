@@ -2,6 +2,8 @@
 </script>
 
 <template>
+  <div class="theme-nordic">
+
   <div id="header">
     <div id="logo">
       <h1>Nail by Young</h1>
@@ -21,89 +23,174 @@
       </ul>
     </div>
   </div>
+</div>
+
 
 </template>
 
 <style scoped>
 
-  *{
-    box-sizing: border-box;
-  }
+/* Color scheme variables */
+:root {
+  /* Primary colors */
+  --primary-color: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(76, 175, 80, 0.1);
+  
+  /* Text colors */
+  --text-primary: #2C2C2C;
+  --text-light: #FFFFFF;
+  
+  /* Overlay colors */
+  --overlay-light: rgba(255, 255, 255, 0.9);
+  --overlay-dark: rgba(0, 0, 0, 0.6);
+}
 
-  #header{
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition-duration: 500ms;
-    transition-duration: background;
-  }
+/* Ocean Blue Theme */
+.theme-ocean {
+  /* Primary colors */
+  --primary-color: #0277BD;
+  --primary-light: #4FC3F7;
+  --primary-dark: #01579B;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(2, 119, 189, 0.1);
+}
 
-  #header:hover{
-    background:  rgb(161, 229, 164)
-  }
+/* Warm Sunset Theme */
+.theme-sunset {
+  /* Primary colors */
+  --primary-color: #FF5722;
+  --primary-light: #FFAB91;
+  --primary-dark: #D84315;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(255, 87, 34, 0.1);
+}
 
-  #header:hover hr{
-    visibility: visible;
-  }
+/* Lavender Theme */
+.theme-lavender {
+  /* Primary colors */
+  --primary-color: #7E57C2;
+  --primary-light: #B39DDB;
+  --primary-dark: #4527A0;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(126, 87, 194, 0.1);
+}
 
-  #logo{
-    text-align: center;
-    color:  rgb(161, 229, 164);
-    font-family: 'Papyrus', fantasy;
-  }
+/* Modern Mint Theme */
+.theme-mint {
+  /* Primary colors */
+  --primary-color: #26A69A;
+  --primary-light: #80CBC4;
+  --primary-dark: #00897B;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(38, 166, 154, 0.1);
+}
 
-  #header:hover #logo{
-    color: white;
-  }
+/* Nordic Theme */
+.theme-nordic {
+  /* Primary colors */
+  --primary-color: #546E7A;
+  --primary-light: #90A4AE;
+  --primary-dark: #37474F;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(84, 110, 122, 0.1);
+}
 
-  #header-line{
-    width: 40vw;
-    margin: auto;
-    visibility: hidden;
-    transition-duration: 500ms;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  #contents{
-    margin-top: auto;
-    margin-left: 10vw;
-    padding: 1vh;
-  }
+#header {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background 500ms ease;
+}
 
-  ul{
-    display: inline-block;
-    list-style: none;
-  }
+#header:hover {
+  background: var(--primary-light);
+}
 
-  li:hover {
-    /* border: white 2px solid; */
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    padding: 0px 8px;
-  }
+#header:hover hr {
+  visibility: visible;
+}
 
-  li{
-    display: inline;
-    font-size: 1vw;
-    list-style-type: none;
-    margin: 10px;
-    padding: 0px 8px;
-    text-align: center;
-  }
+#logo {
+  text-align: center;
+  color: var(--primary-color);
+  font-family: Papyrus, Fantasy;
+  font-weight: 600;
+}
 
-  a{
-    color:  rgb(161, 229, 164);
-    padding: 0;
-    text-decoration: none;
-  }
+#header:hover #logo {
+  color: var(--text-light);
+}
 
-  #header:hover a{
-    color: white;
-  }
+#header-line {
+  width: 40vw;
+  margin: auto;
+  visibility: hidden;
+  transition: all 500ms ease;
+  border-color: var(--text-light);
+}
 
-  li:hover a{
-    color: #A1E5A4;
-  }
+#contents {
+  margin-top: auto;
+  margin-left: 10vw;
+  padding: 1vh;
+}
+
+ul {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  font-size: 1vw;
+  list-style-type: none;
+  margin: 10px;
+  padding: 0 8px;
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+li:hover {
+  background-color: var(--overlay-light);
+  border-radius: 10px;
+  padding: 0 8px;
+}
+
+a {
+  color: var(--primary-color);
+  padding: 0;
+  text-decoration: none;
+  transition: color 300ms ease;
+}
+
+#header:hover a {
+  color: var(--text-light);
+}
+
+li:hover a {
+  color: var(--primary-color);
+}
 
 </style>
