@@ -5,7 +5,7 @@
   import Nav from "./NavBar.vue"
   import Foot from "./FooterBar.vue"
   import Contact from "./ContactThird.vue";
-  import Test from "./TestComponent.vue";
+  import Pop from "./menu/MenuPop.vue";
 
   import nail1 from "../assets/nail-media/nail-media-1.jpeg"
   import nail2 from "../assets/nail-media/nail-media-2.jpeg"
@@ -125,15 +125,9 @@
     <div class="home-fourth">
       <div class="home-menu">
         <div class="home-menu-left">
-          <Test name="Manicure" :services="manicureServices"/>
-          <Test name="Pedicure" :services="pedicureServices"/>
-          <Test name="Waxing" :services="waxingServices"/>
-
-          <!-- <router-link to="/menu"><h1>Manicure</h1></router-link>
-          <router-link to="/menu"><h1>Pedicure</h1></router-link>
-          <router-link to="/menu"><h1>Waxing</h1></router-link>
-          <router-link to="/menu"><h1>And more...!</h1></router-link> -->
-
+          <Pop name="Manicure" :services="manicureServices"/>
+          <Pop name="Pedicure" :services="pedicureServices"/>
+          <Pop name="Waxing" :services="waxingServices"/>
         </div>
 
         <div class="home-menu-right">
@@ -281,17 +275,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .home-menu-left a{
-    margin: 1vh;
-    padding: 5vh;
-    width: 80%;
-    text-align: center;
-    border-radius: min(32px, 3vw);
-    background: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-    color: black;
+    z-index: 0;
   }
 
   .home-menu-right{
