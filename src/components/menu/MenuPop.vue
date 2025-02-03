@@ -28,7 +28,7 @@
 
   <div class="target-popup">
 
-    <div class="target"  @click="popUp"><p class="target-text">{{ name }}</p></div>
+    <div class="target"  @click="popUp">{{ name }}</div>
 
     <div class="pop-up" :class="{popout : pop}">
 
@@ -74,13 +74,8 @@
     font-family: Papyrus, fantasy;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .target-text{
-    width: 100%;
-    text-align: center;
+    display: grid;
+    place-items: center;
   }
 
   .pop-up{
@@ -123,7 +118,7 @@
     padding: 0;
     margin: 0;
     position: absolute;
-    right: 10%;
+    right: 5%;
     bottom: 5%;
   }
 
