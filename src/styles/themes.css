@@ -1,0 +1,79 @@
+/* Color scheme variables */
+:root {
+    /* Primary colors */
+    --primary-color: #4CAF50;
+    --primary-light: #81C784;
+    --primary-dark: #388E3C;
+    
+    /* Background colors */
+    --bg-light: #FFFFFF;
+    --bg-accent: rgba(76, 175, 80, 0.1);
+    
+    /* Text colors */
+    --text-primary: #2C2C2C;
+    --text-light: #FFFFFF;
+    
+    /* Overlay colors */
+    --overlay-light: rgba(255, 255, 255, 0.9);
+    --overlay-dark: rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Ocean Blue Theme */
+  .theme-ocean {
+    /* Primary colors */
+    --primary-color: #0277BD;
+    --primary-light: #4FC3F7;
+    --primary-dark: #01579B;
+    
+    /* Background colors */
+    --bg-light: #FFFFFF;
+    --bg-accent: rgba(2, 119, 189, 0.1);
+  }
+  
+  /* Warm Sunset Theme */
+  .theme-sunset {
+    /* Primary colors */
+    --primary-color: #FF5722;
+    --primary-light: #FFAB91;
+    --primary-dark: #D84315;
+    
+    /* Background colors */
+    --bg-light: #FFFFFF;
+    --bg-accent: rgba(255, 87, 34, 0.1);
+  }
+  
+  /* Lavender Theme */
+  .theme-lavender {
+    /* Primary colors */
+    --primary-color: #7E57C2;
+    --primary-light: #B39DDB;
+    --primary-dark: #4527A0;
+    
+    /* Background colors */
+    --bg-light: #FFFFFF;
+    --bg-accent: rgba(126, 87, 194, 0.1);
+  }
+  
+  /* Modern Mint Theme */
+  .theme-mint {
+    /* Primary colors */
+    --primary-color: #26A69A;
+    --primary-light: #80CBC4;
+    --primary-dark: #00897B;
+    
+    /* Background colors */
+    --bg-light: #FFFFFF;
+    --bg-accent: rgba(38, 166, 154, 0.1);
+  }
+  
+  /* Nordic Theme */
+  .theme-nordic {
+    /* Primary colors */
+    --primary-color: #546E7A;
+    --primary-light: #90A4AE;
+    --primary-dark: #37474F;
+    
+    /* Background colors */
+    --bg-light: #FFFFFF;
+    --bg-accent: rgba(84, 110, 122, 0.1);
+  }

@@ -1,25 +1,24 @@
 <script setup lang="ts">
+
+  import "../styles/themes.css";
+
 </script>
 
 <template>
   <div class="theme-nordic">
 
-  <div id="header">
-    <div id="logo">
-      <h1>Nail by Young</h1>
+  <div class="header">
+    <div class="header-name">
+      Nail by Young
     </div>
-    <div id="header-line">
+    <div class="header-line">
       <hr/>
     </div>
-    <div id="contents">
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/menu">Menu</router-link></li>
-        <li><router-link to="/test">Test</router-link></li>
-        <!-- <li><router-link to="/contacta">Authorize</router-link></li>
-        <li><router-link to="/contactb">Contact</router-link></li>
-        <li><router-link to="/carousel">Carousel</router-link></li>
-        <li><router-link to="/test">Test</router-link></li> -->
+    <div class="links">
+      <ul class="link-list">
+        <li class="list-item"><router-link to="/" class="list-item-link">Home</router-link></li>
+        <li class="list-item"><router-link to="/menu" class="list-item-link">Menu</router-link></li>
+        <li class="list-item"><router-link to="/test" class="list-item-link">Test</router-link></li>
       </ul>
     </div>
   </div>
@@ -31,166 +30,80 @@
 <style scoped>
 
 /* Color scheme variables */
-:root {
-  /* Primary colors */
-  --primary-color: #4CAF50;
-  --primary-light: #81C784;
-  --primary-dark: #388E3C;
-  
-  /* Background colors */
-  --bg-light: #FFFFFF;
-  --bg-accent: rgba(76, 175, 80, 0.1);
-  
-  /* Text colors */
-  --text-primary: #2C2C2C;
-  --text-light: #FFFFFF;
-  
-  /* Overlay colors */
-  --overlay-light: rgba(255, 255, 255, 0.9);
-  --overlay-dark: rgba(0, 0, 0, 0.6);
-}
+  * {
+    box-sizing: border-box;
+    /* outline: 2px red solid; */
+  }
 
-/* Ocean Blue Theme */
-.theme-ocean {
-  /* Primary colors */
-  --primary-color: #0277BD;
-  --primary-light: #4FC3F7;
-  --primary-dark: #01579B;
-  
-  /* Background colors */
-  --bg-light: #FFFFFF;
-  --bg-accent: rgba(2, 119, 189, 0.1);
-}
+  .header {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: 500ms;
+  }
 
-/* Warm Sunset Theme */
-.theme-sunset {
-  /* Primary colors */
-  --primary-color: #FF5722;
-  --primary-light: #FFAB91;
-  --primary-dark: #D84315;
-  
-  /* Background colors */
-  --bg-light: #FFFFFF;
-  --bg-accent: rgba(255, 87, 34, 0.1);
-}
+  .header:hover {
+    background: var(--primary-light)
+  }
 
-/* Lavender Theme */
-.theme-lavender {
-  /* Primary colors */
-  --primary-color: #7E57C2;
-  --primary-light: #B39DDB;
-  --primary-dark: #4527A0;
-  
-  /* Background colors */
-  --bg-light: #FFFFFF;
-  --bg-accent: rgba(126, 87, 194, 0.1);
-}
+  .header:hover .header-name{
+    color: var(--text-light);
+  }
 
-/* Modern Mint Theme */
-.theme-mint {
-  /* Primary colors */
-  --primary-color: #26A69A;
-  --primary-light: #80CBC4;
-  --primary-dark: #00897B;
-  
-  /* Background colors */
-  --bg-light: #FFFFFF;
-  --bg-accent: rgba(38, 166, 154, 0.1);
-}
+  .header:hover .header-line{
+    opacity: 1;
+  }
 
-/* Nordic Theme */
-.theme-nordic {
-  /* Primary colors */
-  --primary-color: #546E7A;
-  --primary-light: #90A4AE;
-  --primary-dark: #37474F;
-  
-  /* Background colors */
-  --bg-light: #FFFFFF;
-  --bg-accent: rgba(84, 110, 122, 0.1);
-}
+  .header:hover .list-item-link {
+    color: var(--text-light);
+    opacity: 1;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  .header-name{
+    width: 50vw;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 2vh;
+    text-align: center;
+    font-family: Papyrus, Fantasy;
+    font-weight: 600;
+    font-size: 2vw;
+    color: var(--primary-dark);
+    transition: 500ms;
+  }
 
-#header {
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: background 500ms ease;
-}
+  .header-line {
+    width: 40vw;
+    margin: auto;
+    opacity: 0;
+    transition: 500ms;
+  }
 
-#header:hover {
-  background: var(--primary-light);
-}
+  .links {
+    width: 80vw;
+    margin: 0 auto;
+    padding: 1vh;
+  }
 
-#header:hover hr {
-  visibility: visible;
-}
+  .link-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
 
-#logo {
-  text-align: center;
-  color: var(--primary-color);
-  font-family: Papyrus, Fantasy;
-  font-weight: 600;
-}
+  .list-item {
+    font-size: 1vw;
+    list-style-type: none;
+    margin: 0 1vw;
+  }
 
-#header:hover #logo {
-  color: var(--text-light);
-}
-
-#header-line {
-  width: 40vw;
-  margin: auto;
-  visibility: hidden;
-  transition: all 500ms ease;
-  border-color: var(--text-light);
-}
-
-#contents {
-  margin-top: auto;
-  margin-left: 10vw;
-  padding: 1vh;
-}
-
-ul {
-  display: inline-block;
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  display: inline;
-  font-size: 1vw;
-  list-style-type: none;
-  margin: 10px;
-  padding: 0 8px;
-  text-align: center;
-  transition: all 300ms ease;
-}
-
-li:hover {
-  background-color: var(--overlay-light);
-  border-radius: 10px;
-  padding: 0 8px;
-}
-
-a {
-  color: var(--primary-color);
-  padding: 0;
-  text-decoration: none;
-  transition: color 300ms ease;
-}
-
-#header:hover a {
-  color: var(--text-light);
-}
-
-li:hover a {
-  color: var(--primary-color);
-}
+  .list-item-link {
+    color: var(--text-light);
+    opacity: 0;
+    text-decoration: none;
+    transition: 500ms;
+  }
 
 </style>

@@ -7,6 +7,7 @@
 
   function popUp() {
     pop.value = !pop.value;
+    console.log("Click!");
   }
 
   interface Service {
@@ -23,61 +24,75 @@
 </script>
 
 <template>
-    <div class="content-container">
-        <button class="target"
-            @click="popUp">
-            {{ name }}
-        </button>
 
-        <div 
-            class="pop-up"
-            :class="{popout : pop}"
-            >
-            <div class="pop-up-items" v-for="service in services" :key="service.name">
-                <Item :name="service.name" :price="service.price" />
-            </div>
-            <div class="menu-router-link">
-                <router-link to="/menu" class="router-link">
-                    see menu
-                </router-link>
-            </div>
+
+  <div class="target-popup">
+
+    <div class="target"  @click="popUp"><p class="target-text">{{ name }}</p></div>
+
+    <div class="pop-up" :class="{popout : pop}">
+
+        <div class="pop-up-items" v-for="service in services" :key="service.name">
+            <Item :name="service.name" :price="service.price" />
         </div>
+
+        <div class="menu-router-link">
+            <router-link to="/menu" class="router-link">see menu</router-link>
+        </div>
+
     </div>
+
+  </div>
+
+
 </template>
 
 <style scoped>
 
   *{
-    outline: 2px red solid;
-    transition: 1000ms;
+    /* outline: 2px red solid; */
+    /* transition: 1000ms; */
+  }
+
+  .target-popup{
+    position: relative;
+
+    width: 75%;
+    height: 25%;
+    margin: 1vw;
+    border-radius: min(32px, 3vw);
+
+    background: rgba(255,255,255,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .target{
-    padding: 1vh 1vw;
-    border-radius: min(32px, 3vw);
-    background: rgba(255,255,255,0.5);
+    font-size: 2vw;
+    font-family: Papyrus, fantasy;
     width: 100%;
     height: 100%;
-    font-size:2vw;
-    border-width: 0;
-    font-family: Papyrus, Fantasy;
+    display: flex;
+    align-items: center;
   }
 
-  .target:hover{
-    cursor: pointer;
-    background: rgba(255,255,255,1);
+  .target-text{
+    width: 100%;
+    text-align: center;
   }
 
   .pop-up{
-    height: auto;
-    width: 25vw;
+    width: 80%;
     padding: 1vw;
-    background: white;
     border-radius: min(32px, 3vw);
 
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%) scale(0);
+    background: rgba(255,255,255,0.9);
+
+    position: absolute;
+    top: 90%;
+    transform: scale(0);
 
     
     display: flex;
@@ -90,6 +105,12 @@
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 9999;
+  }
+
+  .popout{
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
   }
 
   .pop-up-items{
@@ -106,9 +127,4 @@
     bottom: 5%;
   }
 
-  .popout{
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
 </style>
