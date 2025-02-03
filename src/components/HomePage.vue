@@ -73,13 +73,13 @@
 </script>
 
 <template>
-  <div class="theme-nordic">
+  <div class="theme-ocean">
     <div class="home-container">
       <div class="home-first">
         <div class="home-nav">
           <Nav />
         </div>
-        <img class="home-first-img" src="https://picsum.photos/seed/6/5000"/>
+        <img class="home-first-img" src="../assets/splash.jpg"/>
         <!-- <p>Image</p> -->
       </div>
 
@@ -119,7 +119,7 @@
         </div>
 
         <div class="background">
-          <img class="home-third-image" src="https://picsum.photos/seed/4/5000"/>
+          <img class="home-third-image" src="../assets/slime.jpg"/>
         </div>
       </div>
 
@@ -143,6 +143,7 @@
       </div>
 
       <div class="home-sixth">
+        <img class="home-sixth-image" src="../assets/light.jpg"/>
         <Contact />
       </div>
 
@@ -297,6 +298,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+  }
+
+  .home-sixth-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
   }
 
   .home-seventh {

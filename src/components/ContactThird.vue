@@ -4,16 +4,14 @@
 
   const nameValue = ref('');
   const emailValue = ref('');
-  const messageValue = ref('')
 
   async function send() {
-    console.log("Test")
     const nameElement = document.getElementById('name') as HTMLInputElement;
     const emailElement = document.getElementById('email') as HTMLInputElement;
     const messageElement = document.getElementById('message') as HTMLInputElement;
-    console.log("name:", nameElement.value);
-    console.log("email:", emailElement.value);
-    console.log("message:", messageElement.value);
+    // console.log("name:", nameElement.value);
+    // console.log("email:", emailElement.value);
+    // console.log("message:", messageElement.value);
     const nameString = nameElement.value;
     const emailString = emailElement.value;
     const messageString = messageElement.value
@@ -36,6 +34,11 @@
     } else {
       console.log("Name or email or message was blank")
     }
+
+    nameElement.value = ""
+    emailElement.value = ""
+    messageElement.value = ""
+
   }
 
 </script>
@@ -56,7 +59,7 @@
 </div>
 </template>
 
-<style>
+<style scoped>
 
   .contact{
     width: 25%;
@@ -65,6 +68,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    position: absolute;
   }
 
   .contact-left{
@@ -90,7 +94,7 @@
   }
 
   .name{
-    background: transparent;
+    background: rgba(255,255,255,0.1);
     width: 90%;
     height:10%;
     margin: 1vmin;
@@ -104,7 +108,7 @@
   }
 
   .email{
-    background: transparent;
+    background: rgba(255,255,255,0.1);
     width: 90%;
     height:10%;
     margin: 1vmin;
@@ -118,7 +122,7 @@
   }
 
   .message{
-    background: transparent;
+    background: rgba(255,255,255,0.1);
     max-width: 90%;
     min-width: 90%;
     max-height: 50%;

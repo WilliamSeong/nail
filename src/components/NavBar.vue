@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="theme-nordic">
+  <div class="theme-ocean">
 
   <div class="header">
     <div class="header-name">
