@@ -16,6 +16,8 @@
     /* Overlay colors */
     --overlay-light: rgba(255, 255, 255, 0.9);
     --overlay-dark: rgba(0, 0, 0, 0.6);
+
+    --shadow-color: rgba(0, 0, 0, 0.1);
   }
   
   /* Ocean Blue Theme */

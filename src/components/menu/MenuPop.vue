@@ -2,6 +2,7 @@
 
   import { ref } from 'vue';
   import Item from "./MenuItem.vue"
+  import "../../styles/themes.css";
 
   const pop = ref(false);
 
@@ -37,7 +38,7 @@
         </div>
 
         <div class="menu-router-link">
-            <router-link to="/menu" class="router-link">see menu</router-link>
+            <router-link to="/menu" class="menu-router-link-text">see menu</router-link>
         </div>
 
     </div>
@@ -58,32 +59,46 @@
     position: relative;
 
     width: 75%;
-    height: 25%;
-    margin: 1vw;
-    border-radius: min(32px, 3vw);
+    height: auto;
+    min-height: 120px;
+    margin: 1.5rem auto;
+    border-radius: 1rem;
 
-    background: rgba(255,255,255,0.5);
+    background: var(--bg-light);
+    box-shadow: 0 4px 6px var(--shadow-color);
 
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  }
+
+  .target-popup:hover {
+    transform: translateY(-5%);
+    box-shadow: 0 6px 12px var(--shadow-color);
+    z-index: 9999;
   }
 
   .target{
     font-size: 2vw;
-    font-family: Papyrus, fantasy;
+    font-family: Papyrus, Fantasy;
+    color: var(--primary-dark);
     width: 100%;
     height: 100%;
     display: grid;
     place-items: center;
+    cursor: pointer;
   }
 
   .pop-up{
-    width: 80%;
+    width: 90%;
+    max-width: 400px;
     padding: 1vw;
     border-radius: min(32px, 3vw);
 
-    background: rgba(255,255,255,0.9);
+    background: var(--overlay-light);
+    box-shadow: 0 8px 16px var(--shadow-color);
 
     position: absolute;
     top: 90%;
@@ -98,7 +113,7 @@
     
     visibility: hidden;
     opacity: 0;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 9999;
   }
 
@@ -106,6 +121,7 @@
     visibility: visible;
     opacity: 1;
     transform: scale(1);
+    pointer-events: auto;
   }
 
   .pop-up-items{
@@ -115,11 +131,20 @@
   .menu-router-link{
     width: auto;
     height: auto;
-    padding: 0;
-    margin: 0;
     position: absolute;
     right: 5%;
     bottom: 5%;
   }
+
+  .menu-router-link-text{
+    color: var(--primary-light);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .menu-router-link-text:hover {
+    color: var(--primary-dark);
+  }
+
 
 </style>
