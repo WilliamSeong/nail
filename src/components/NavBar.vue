@@ -68,8 +68,8 @@
     margin-top: 2vh;
     text-align: center;
     font-family: Papyrus, Fantasy;
-    font-weight: 600;
-    font-size: 2vw;
+    font-weight: 700;
+    font-size: 3vw;
     color: var(--primary-dark);
     transition: 500ms;
   }
