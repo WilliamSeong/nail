@@ -1,21 +1,73 @@
 <script setup lang="ts">
 
-  import Pop from "./menu/MenuPop.vue";
+  async function insert() {
+    await fetch("http://localhost:3000/insert")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
 
-  const manicureServices = [
-                    { name: "Manicure", price: "20" },
-                    { name: "French Manicure", price: "25" },
-                    { name: "Buffin Manicure", price: "25" },
-                    { name: "Change Polish", price: "13" }
-                  ];
+  async function read() {
+    await fetch("http://localhost:3000/read")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
 
+  async function readMany() {
+    await fetch("http://localhost:3000/read/many")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
   
+  async function update() {
+    await fetch("http://localhost:3000/update")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
+
+  async function upsert() {
+    await fetch("http://localhost:3000/upsert")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
+
+  async function updateMany() {
+    await fetch("http://localhost:3000/update/many")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
+
+  async function deleteDocument() {
+    await fetch("http://localhost:3000/delete")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
+
+  async function deleteMany() {
+    await fetch("http://localhost:3000/delete/many")
+    .then(result => result.json)
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+  }
 </script>
 
 <template>
 
   <div class="test-container">
-    <Pop name="Test" :services="manicureServices" />
+    <button @click="insert">Insert</button>
+    <button @click="read">Read</button>
+    <button @click="readMany">Read Many</button>
+    <button @click="update">Update</button>
+    <button @click="upsert">Upsert</button>
+    <button @click="updateMany">Update Many</button>
+    <button @click="deleteDocument">Delete</button>
+    <button @click="deleteMany">Delete Many</button>
   </div>
     
 </template>
@@ -34,6 +86,5 @@
     justify-content: center;
     align-items: center;
   }
-
 
 </style>

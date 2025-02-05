@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv'
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,34 +41,183 @@ async function serverStart() {
 serverStart()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Server close
+// Database Interactions
 
-async function cleanUp() {
-  console.log("Clean Up Protocol")
+// Insert
+server.get('/insert', async (req, res) => {
+  console.log("Mongo insert request received");
+  const newListing = {
+    "name" : "William Seong",
+    "email" : "seongwilliam@gmail.com",
+    "movie_id" : new ObjectId('573a1390f29313caabcd42e8'),
+    "text" : "Testing an insert one for the comment collection in the sample_mflix database",
+    "date" : new Date()
+  }
+  try{
+    const result = await createListing(client, newListing);
+    console.log(`New listing created with the following id: ${result.insertedId}`);
+  } catch(e) {
+    console.log("Insert error: ", e);
+  }
+})
 
-  await client.close();
-  console.log("Mongo DB disconnected");
-
-  console.log("Clean Up Complete")
+async function createListing(client, newListing){
+  return await client.db("sample_mflix").collection("comments").insertOne(newListing);
 }
 
-// Server Close
-server.on('close', async () => {
-  await cleanUp();
-  process.exit(0);
-});
+// Read
+server.get('/read', async (req, res) => {
+  console.log("Mongo read request received");
+  const name = "William Seong";
+  try{
+    const result = await readListing(client, name)
+    console.log(`Found a listing in the collection with the name '${result}':`);
+    console.log(result);
+  } catch(e) {
+    console.log("Read error: ", e);
+  }
+})
 
-// Server Terminate
-process.on('SIGINT', async () => {
-  await cleanUp();
-  process.exit(0);
-});
+async function readListing(client, nameOfListing) {
+  const result = await client.db("sample_mflix").collection("comments").findOne({ name : nameOfListing })
+  
+  if (result) {
+    return result;
+  } else {
+    console.log(`No listings found with the name '${nameOfListing}'`);
+  }
+}
 
-// Server Terminate
-process.on('SIGTERM', async () => {
-  await cleanUp();
-  process.exit(0);
-});
+// Read Many
+server.get('/read/many', async (req, res) => {
+  console.log("Mongo read request received");
+  const minimumRuntime = 120;
+  try{
+    const results = await readManyListing(client, minimumRuntime)
+    console.log(`Found a listing in the collection with a minimum runtime of '${minimumRuntime}':`);
+    console.log(results);
+    
+    if (results.length > 0) {
+      console.log(`Found listing(s) with runtime at least ${minimumRuntime}`);
+      results.forEach((result, i) => {
+          console.log();
+          console.log(`${i + 1}. name: ${result.title}`);
+          console.log(`   _id: ${result._id}`);
+          console.log(`   runtime: ${result.runtime}`);
+          console.log(`   lastupdated: ${new Date(result.lastupdated).toDateString()}`);
+          console.log(`   fullplot: ${result.fullplot}`);
+      });
+    } else {
+        console.log(`No listings found with runtime at least ${minimumRuntime}`);
+    }
+  } catch(e) {
+    console.log("Read error: ", e);
+  }
+})
+
+async function readManyListing(client, minimumRuntime) {
+  const cursor = await client.db("sample_mflix").collection("movies").find({ runtime : { $gte : minimumRuntime }}).limit(5);
+  const result = await cursor.toArray();
+  
+  if (result === 0) {
+    return result;
+  } else {
+    console.log(`No listings found with the minimum runtime of '${minimumRuntime}'`);
+  }
+}
+
+// Update
+server.get('/update', async (req, res) => {
+  console.log("Updating document");
+  try{
+    const results = await updateListing(client, "John Kim", { name : "William Seong" })
+    console.log(`${results.matchedCount} document(s) matched the query criteria.`);
+    console.log(`${results.modifiedCount} document(s) was/were updated.`);
+  } catch (e) {
+    console.log("Error: ", e);
+  }
+})
+
+async function updateListing(client, update, updated) {
+  return await client.db("sample_mflix").collection("comments").updateOne({ name : update }, { $set : updated });
+}
+
+// Upsert (Update if it exist, Insert if not)
+server.get('/upsert', async (req, res) => {
+  console.log("Upserting document");
+  try{
+    const results = await upsertListing(client, "John Kim", { name : "William Seong" })
+    console.log(`${results.matchedCount} document(s) matched the query criteria.`);
+    console.log(`${results.modifiedCount} document(s) was/were updated.`);
+  } catch (e) {
+    console.log("Error: ", e);
+  }
+})
+
+async function upsertListing(client, update, updated) {
+  const result = await client.db("sample_mflix").collection("comments").updateOne({ name : update }, { $set : updated }, { upsert: true });
+  if (result.upsertedCount > 0) {
+    // console.log("full result", result)
+    // full result {
+    //   acknowledged: true,
+    //   modifiedCount: 0,
+    //   upsertedId: new ObjectId('67a3d6e6ce945cb5bef1a7a0'),
+    //   upsertedCount: 1,
+    //   matchedCount: 0
+    // }
+    console.log(`One document was inserted with the id ${result.upsertedId}`);
+  } else {
+      console.log(`${result.modifiedCount} document(s) was/were updated.`);
+  }
+  return result;
+}
+
+// Update Many
+server.get('/update/many', async (req, res) => {
+  try {
+    const results = await updateMany(client, "William Seong", { email : "willerseong@gmail.com" });
+    console.log(`${results.matchedCount} document(s) matched the query criteria.`);
+    console.log(`${results.modifiedCount} document(s) was/were updated.`);
+  } catch(e) {
+    console.log("Error: ", e);
+  }
+})
+
+async function updateMany(client, update, updated) {
+  return await client.db("sample_mflix").collection("comments").updateMany({ name : update}, { $set : updated })
+}
+
+// Delete
+server.get('/delete', async (req, res) => {
+  try {
+    const result = await deleteListing(client, "William Seong");
+    // console.log("All result: ", result);
+    // All result:  { acknowledged: true, deletedCount: 1 }
+    console.log(`${result.deletedCount} document(s) was/were deleted.`);
+  } catch(e) {
+    console.log("Error: ", e);
+  }
+})
+
+async function deleteListing(client, nameOfListing) {
+  return await client.db("sample_mflix").collection("comments").deleteOne({ name : nameOfListing });
+}
+
+// Delete Many
+server.get('/delete/many', async (req, res) => {
+  try {
+    const results = await deleteMany(client, "William Seong");
+    console.log(`${results.deletedCount} document(s) was/were deleted.`);
+  } catch(e) {
+    console.log("Error: ", e);
+  }
+})
+
+async function deleteMany(client, nameOfListings) {
+  return client.db("sample_mflix").collection("comments").deleteMany({ name : nameOfListings })
+}
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Authorization
@@ -190,17 +339,31 @@ async function send(name: string ,email: string ,message: string, accessToken: s
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Server close
 
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
+async function cleanUp() {
+  console.log("Clean Up Protocol")
+
+  await client.close();
+  console.log("Mongo DB disconnected");
+
+  console.log("Clean Up Complete")
+}
+
+// Server Close
+server.on('close', async () => {
+  await cleanUp();
+  process.exit(0);
+});
+
+// Server Terminate
+process.on('SIGINT', async () => {
+  await cleanUp();
+  process.exit(0);
+});
+
+// Server Terminate
+process.on('SIGTERM', async () => {
+  await cleanUp();
+  process.exit(0);
+});
