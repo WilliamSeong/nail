@@ -1,21 +1,79 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv'
+import { MongoClient, ServerApiVersion } from 'mongodb';
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Server Start Up
 
 const server = express();
 const port = 3000;
+dotenv.config();
 
 server.use(cors({
   origin: 'http://localhost:5173',
 }));
 
-server.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+const mongodbUser = process.env.MONGODB_USER as string;
+const mongodbPassword = process.env.MONGODB_PASSWORD as string;
+const uri = `mongodb+srv://${mongodbUser}:${mongodbPassword}@young-by-nail.vhysf.mongodb.net/?retryWrites=true&w=majority&appName=young-by-nail`;
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
 
+async function serverStart() {
+  try{
+    await client.connect();
+    console.log('MongoDB connected')
+
+    server.listen(port);
+    console.log(`Express Server is listening at http://localhost:${port}`);
+  }catch(e){
+    console.log("Server Start Error:", e);
+  }
+}
+
+serverStart()
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Server close
+
+async function cleanUp() {
+  console.log("Clean Up Protocol")
+
+  await client.close();
+  console.log("Mongo DB disconnected");
+
+  console.log("Clean Up Complete")
+}
+
+// Server Close
+server.on('close', async () => {
+  await cleanUp();
+  process.exit(0);
+});
+
+// Server Terminate
+process.on('SIGINT', async () => {
+  await cleanUp();
+  process.exit(0);
+});
+
+// Server Terminate
+process.on('SIGTERM', async () => {
+  await cleanUp();
+  process.exit(0);
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Authorization
 
 // Getting RefreshToken just in case
-
 server.post('/token', async (req, res) => {
   console.log('POST request received');
   req.on('data', (data) => {
@@ -47,8 +105,8 @@ async function getRefreshToken(code : string) {
   });
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Sending message from frontend
-
 server.post('/send', async (req, res) => {
 
   const accessToken = await getAccessToken();
@@ -64,10 +122,9 @@ server.post('/send', async (req, res) => {
   res.send("Message sent!")
 })
 
-dotenv.config();
-const clientId = process.env.CLIENT_ID as string;
-const clientSecret = process.env.CLIENT_SECRET as string;
-const refreshToken = process.env.REFRESH_TOKEN as string;
+const clientId = process.env.GOOGLE_CLIENT_ID as string;
+const clientSecret = process.env.GOOGLE_CLIENT_SECRET as string;
+const refreshToken = process.env.GMAIL_REFRESH_TOKEN as string;
 
 async function getAccessToken() {
   console.log("Calling getAccessTokeen");
@@ -131,3 +188,19 @@ async function send(name: string ,email: string ,message: string, accessToken: s
     console.error("Failed to send message!");
   }
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// async function run() {
+//   try {
+//     // Connect the client to the server	(optional starting in v4.7)
+//     await client.connect();
+//     // Send a ping to confirm a successful connection
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     await client.close();
+//   }
+// }
+// run().catch(console.dir);
