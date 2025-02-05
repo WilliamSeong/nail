@@ -73,7 +73,7 @@
 </script>
 
 <template>
-  <div class="theme-ocean">
+  <div class="theme-mint">
     <div class="home-container">
       <div class="home-first">
         <div class="home-nav">
