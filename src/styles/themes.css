@@ -1,24 +1,24 @@
 /* Color scheme variables */
 :root {
-    /* Primary colors */
-    --primary-color: #4CAF50;
-    --primary-light: #81C784;
-    --primary-dark: #388E3C;
-    
-    /* Background colors */
-    --bg-light: #FFFFFF;
-    --bg-accent: rgba(76, 175, 80, 0.1);
-    
-    /* Text colors */
-    --text-primary: #2C2C2C;
-    --text-light: #FFFFFF;
-    
-    /* Overlay colors */
-    --overlay-light: rgba(255, 255, 255, 0.9);
-    --overlay-dark: rgba(0, 0, 0, 0.6);
+  /* Primary colors */
+  --primary-color: #333333;
+  --primary-light: #666666;
+  --primary-dark: #1A1A1A;
+  
+  /* Background colors */
+  --bg-light: #FFFFFF;
+  --bg-accent: rgba(0, 0, 0, 0.05);
+  
+  /* Text colors */
+  --text-primary: #2C2C2C;
+  --text-light: #FFFFFF;
+  
+  /* Overlay colors */
+  --overlay-light: rgba(255, 255, 255, 0.95);
+  --overlay-dark: rgba(0, 0, 0, 0.7);
 
-    --shadow-color: rgba(0, 0, 0, 0.1);
-  }
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
   
   /* Ocean Blue Theme */
   .theme-ocean {
