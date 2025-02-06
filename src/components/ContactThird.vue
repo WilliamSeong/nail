@@ -17,7 +17,7 @@
     const messageString = messageElement.value
 
     if (nameString != "" && emailString != "" && messageString != ""){
-      await fetch('http://localhost:3000/send', {
+      await fetch('http://localhost:3000/contact/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
