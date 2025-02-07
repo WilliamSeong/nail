@@ -8,7 +8,7 @@ import Menu from "./components/menu/MenuPage.vue";
 import Authorize from "./components/AuthorizeToken.vue";
 import Contact from "./components/ContactInfo.vue";
 import Test from "./components/TestComponent.vue";
-import Employee from "./components/EmployeeManagement.vue";
+import Employee from "./components/employee/EmployeeAdd.vue";
 
 const router = createRouter({
   history: createWebHistory(),
