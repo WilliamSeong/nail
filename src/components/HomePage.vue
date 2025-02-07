@@ -4,7 +4,7 @@
   import Carousel from "./ImageCarousel.vue"
   import Nav from "./NavBar.vue"
   import Foot from "./FooterBar.vue"
-  import Contact from "./ContactThird.vue";
+  import Contact from "./ContactInfo.vue";
   import Pop from "./menu/MenuPop.vue";
   import "../styles/themes.css";
 

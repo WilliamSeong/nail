@@ -5,24 +5,20 @@ import './types/google-maps.d.ts';
 
 import Home from "./components/HomePage.vue";
 import Menu from "./components/menu/MenuPage.vue";
+import Authorize from "./components/AuthorizeToken.vue";
 import Contact from "./components/ContactInfo.vue";
-import ContactA from "./components/ContactAnonymous.vue"
-import ContactB from "./components/ContactThird.vue"
-import Media from "./components/MediaCollection.vue"
-import Carousel from "./components/ImageCarousel.vue"
-import Test from "./components/TestComponent.vue"
+import Test from "./components/TestComponent.vue";
+import Employee from "./components/EmployeeManagement.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
       { path: '/', component: Home},
       { path: '/menu', component: Menu},
-      { path: '/contact', component: Contact },
-      { path: '/contacta', component: ContactA},
-      { path: '/contactb', component: ContactB},
-      { path: '/media', component: Media},
-      { path: '/carousel', component: Carousel},
-      { path: '/test', component: Test}
+      { path: '/test', component: Test},
+      { path: '/employee', component: Employee},
+      { path: '/authorize', component: Authorize},
+      { path: '/contact', component: Contact}
   ]
 });
 

@@ -1,66 +1,164 @@
 <script setup lang="ts">
 
-function authorize() {
-  const clientId = '306538060271-j967kuikaptabd4oq96kuck4oftnvj5o.apps.googleusercontent.com';
-  const redirectUri = 'http://localhost:5173/contact';
-  const responseType = 'token';
-  const scope = 'https://www.googleapis.com/auth/gmail.send';
-  const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
-  window.location.href = url;
-}
+  import { ref } from 'vue';
 
-async function send(){
-  const urlParams = new URLSearchParams(window.location.hash.substring(1));
-  const accessToken = urlParams.get('access_token');
-  console.log(accessToken)
+  const nameValue = ref('');
+  const emailValue = ref('');
 
-  const emailElement = document.getElementById('email') as HTMLInputElement
-  const message = emailElement ? emailElement.value : 'Hello World'
-  console.log(message)
+  async function send() {
+    const nameElement = document.getElementById('name') as HTMLInputElement;
+    const emailElement = document.getElementById('email') as HTMLInputElement;
+    const messageElement = document.getElementById('message') as HTMLInputElement;
+    // console.log("name:", nameElement.value);
+    // console.log("email:", emailElement.value);
+    // console.log("message:", messageElement.value);
+    const nameString = nameElement.value;
+    const emailString = emailElement.value;
+    const messageString = messageElement.value
 
-  // Construct MIME message
-  const messageParts = [
-    'MIME-Version: 1.0',
-    'From: "William Seong" <seongwilliam@gmail.com>',
-    'To: <seongwilliam@gmail.com>',
-    'Subject: Test Email',
-    'Content-Type: text/plain; charset=UTF-8',
-    '',
-    message
-  ].join('\r\n');
+    if (nameString != "" && emailString != "" && messageString != ""){
+      await fetch('http://localhost:3000/contact/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: nameString,
+          email: emailString,
+          message: messageString
+        })
+      })
+      .then(response => response.text())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+    } else {
+      console.log("Name or email or message was blank")
+    }
 
-  const encodedMessage = btoa(messageParts)
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '');
+    nameElement.value = ""
+    emailElement.value = ""
+    messageElement.value = ""
 
-  const request = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages/send', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      raw: encodedMessage
-    })
-  })
-
-  if (request.ok) {
-    console.log('Email sent')
-  } else {
-    console.log('Email not sent')
   }
-};
 
 </script>
 
 <template>
-  <button @click="authorize" target="blank">Authorize</button>
 
-  <input id="email"/>
-  <button @click="send">Send</button>
+  <div class="contact">
+    <div class="contact-left">
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, in!</p>
+    </div>
+    
+    <div class="contact-right">
+      <input id="name" class="name" placeholder="Name" v-model="nameValue" :class="{ 'empty': nameValue === ''}"/>
+      <input id="email" class="email" placeholder="Email" v-model="emailValue" :class="{ 'empty': emailValue === ''}"/>
+      <textarea id="message" class="message" placeholder="Message"/>
+      <button class="button" @click="send">Submit</button>
+    </div>
+</div>
 </template>
 
 <style scoped>
+
+  .contact{
+    width: 25%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+  }
+
+  .contact-left{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contact-left p{
+    font-size: 1vmax;
+  }
+
+  .contact-right{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .name{
+    background: rgba(255,255,255,0.1);
+    width: 90%;
+    height:10%;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: 1vmax;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+  }
+
+  .email{
+    background: rgba(255,255,255,0.1);
+    width: 90%;
+    height:10%;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: 1vmax;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+  }
+
+  .message{
+    background: rgba(255,255,255,0.1);
+    max-width: 90%;
+    min-width: 90%;
+    max-height: 50%;
+    min-height: 50%;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: .75vmax;
+    resize: none;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    padding: 2px;
+  }
+
+  .empty{
+    background: rgba(255,0,0,0.1);
+    border-color: rgb(255,0,0);
+  }
+
+  ::placeholder{
+    color: white;
+  }
+
+  .button{
+    width: 40%;
+    height: 10%;
+    border-style: solid;
+    border-width: 0;
+    background: rgb(255, 233, 175);
+    transition: 1000ms
+  }
+
+  .button:hover{
+    background: white;
+  }
 
 </style>

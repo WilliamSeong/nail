@@ -19,6 +19,7 @@
         <li class="list-item"><router-link to="/" class="list-item-link">Home</router-link></li>
         <li class="list-item"><router-link to="/menu" class="list-item-link">Menu</router-link></li>
         <li class="list-item"><router-link to="/test" class="list-item-link">Test</router-link></li>
+        <li class="list-item"><router-link to="/employee" class="list-item-link">Employee</router-link></li>
       </ul>
     </div>
   </div>

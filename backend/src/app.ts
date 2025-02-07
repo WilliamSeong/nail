@@ -1,9 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv'
+
 import { connectDB, closeDB } from './features/db/connection';
-import dbRoutes from "./features/db/routes";
+import dbTestRoutes from "./features/db/db-test/routes";
+import dbDevRoutes from "./features/db/db-dev/routes";
+
 import gmailRoutes from "./features/gmail/routes"
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,6 +17,8 @@ import gmailRoutes from "./features/gmail/routes"
 const server = express();
 const port = 3000;
 dotenv.config();
+server.use(express.json());
+
 
 server.use(cors({
   origin: 'http://localhost:5173',
@@ -33,7 +40,9 @@ serverStart()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Database Abstraction
 
-server.use('/db', dbRoutes);
+server.use('/db', dbTestRoutes);
+server.use('/dev', dbDevRoutes);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Gmail Abstraction

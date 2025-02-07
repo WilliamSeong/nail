@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { getClient } from "./connection";
+import { getClient } from "../connection";
 
 // Database Interactions
 
@@ -132,7 +132,7 @@ async function dbUpsert(req, res) {
 }
 
 async function upsertListing(client, update, updated) {
-    const result = await client.db("sample_mflix").collection("comments").updateOne({ name : update }, { $set : updated }, { upsert: true });
+    const result = await client.db("sample_mflix").collection("comments").updateOne({ name : update }, { $set : updated }, { upsert : true });
     if (result.upsertedCount > 0) {
         // console.log("full result", result)
         // full result {
