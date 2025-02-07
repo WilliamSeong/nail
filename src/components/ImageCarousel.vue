@@ -31,6 +31,7 @@
       default: 5000
     }
   });
+  
   function setCurrentSlide(nextSlide: number){
     currentSlide.value = nextSlide;
   }

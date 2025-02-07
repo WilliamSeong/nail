@@ -14,7 +14,7 @@
 
         console.log(employeeNameString, employeeRoleString, employeeEmailString, employeePhoneString);
 
-        await fetch("http://localhost:3000/dev/add/employee",  {
+        await fetch("http://localhost:3000/dev/employee/add",  {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

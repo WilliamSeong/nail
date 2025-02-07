@@ -94,7 +94,7 @@ async function readManyListing(client, minimumRuntime) {
     const cursor = await client.db("sample_mflix").collection("movies").find({ runtime : { $gte : minimumRuntime }}).limit(5);
     const result = await cursor.toArray();
 
-    if (result === 0) {
+    if (result != 0) {
         return result;
     } else {
         console.log(`No listings found with the minimum runtime of '${minimumRuntime}'`);
