@@ -2,23 +2,32 @@
     
     import { ref } from 'vue';
 
-    interface ReservationName {
-        name: string;
-    }
-
+    // interface ReservationTime {
+    //     name: string;
+    // }
 
     const reservationId = ref("");
     const reservationStatus = ref(false);
 
-    const times = ["10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00",
-                   "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"] 
+    const timeMap = ref(new Map<string, boolean>());
 
+    const times = ["10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00",
+                   "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"];
+
+    times.forEach(time => timeMap.value.set(time, false));
+
+    const reservationNameString = ref("");
+    const reservationContactString = ref("");
+    const reservationDateString = ref("");
+    const reservationTimeString = ref("");
+    const reservationNotesString = ref("");
     async function submit() {
 
-        const reservationNameString = (document.getElementById("reservation-name") as HTMLInputElement).value;
-        const reservationContactString = (document.getElementById("reservation-contact") as HTMLInputElement).value;
-        const reservationDateString = (document.getElementById("reservation-date") as HTMLInputElement).value;
-        const reservationNotesString = (document.getElementById("reservation-notes") as HTMLInputElement).value;
+        // const reservationNameString = (document.getElementById("reservation-name") as HTMLInputElement).value;
+        // const reservationContactString = (document.getElementById("reservation-contact") as HTMLInputElement).value;
+        // const reservationDateString = (document.getElementById("reservation-date") as HTMLInputElement).value;
+        // const reservationTimeString = (document.getElementById("reservation-time") as HTMLSelectElement).value;
+        // const reservationNotesString = (document.getElementById("reservation-notes") as HTMLInputElement).value;
 
         // console.log(reservationNameString);
         // console.log(reservationContactString);
@@ -33,10 +42,11 @@
                 'Content-Type': 'application/json',
                 },
                 body : JSON.stringify({
-                    reservationName : reservationNameString,
-                    reservationContact : reservationContactString,
-                    reservationDate : reservationDateString,
-                    reservationNotes : reservationNotesString
+                    reservationName: reservationNameString.value,
+                    reservationContact: reservationContactString.value,
+                    reservationDate: reservationDateString.value,
+                    reservationTime: reservationTimeString.value,
+                    reservationNotes: reservationNotesString.value
                 })
             })
 
@@ -56,7 +66,7 @@
         const dateString = (e.target as HTMLInputElement).value
 
         try {
-            const response = await fetch("http://localhost:3000/dev/reservation/search", {
+            const response = await fetch("http://localhost:3000/dev/reservation/time/search", {
                 method : "POST",
                 headers : {
                     'Content-Type' : 'application/json',
@@ -67,11 +77,25 @@
             })
 
             const results = await response.json();
+
+            // console.log(results);
+
+            const unavailableSet = new Set<string>();
             
-            results.forEach((result : ReservationName) => {
-                console.log(result.name);
+            results.forEach((result : any) => {
+                unavailableSet.add(result.time);
             });
+
+            timeMap.value.forEach((_, key) => {
+                if (unavailableSet.has(key)) {
+                    timeMap.value.set(key, false);
+                } else {
+                    timeMap.value.set(key, true);
+                }
+            })
+
             
+            // console.log(timeMap);
         } catch(e) {
             console.log("Reservation Search Error: ", e)
         }
@@ -82,13 +106,19 @@
 <template>
     
     <div class="reservation-container">
-        <input id="reservation-name" class="reservation-input" placeholder="name"/>
-        <input id="reservation-contact" class="reservation-input" placeholder="contact(email or phone number)"/>
-        <input id="reservation-date" class="reservation-input" type="date" @change="handleDateChange"/>
-        <textarea id="reservation-notes" class="reservation-input" placeholder="Anything you would like us to know?"></textarea>
+        <input id="reservation-name" class="reservation-input" v-model="reservationNameString" placeholder="name"/>
+        <input id="reservation-contact" class="reservation-input" v-model="reservationContactString" placeholder="contact(email or phone number)"/>
+        <input id="reservation-date" class="reservation-input" v-model="reservationDateString" type="date" @change="handleDateChange"/>
+        <select id="reservation-time" class="reservation-input" v-model="reservationTimeString">
+            <option value="" disabled selected>Select a time</option>
+            <option v-for="[time, value] in timeMap" value="time" :disabled="!value" :key="time">
+                {{ time }}
+            </option>
+        </select>
+        <textarea id="reservation-notes" class="reservation-input" v-model="reservationNotesString" placeholder="Anything you would like us to know?"></textarea>
         <button @click="submit">Submit</button>
         <div class="reservation-status" v-if="reservationStatus === true">
-            Save your reservation ID: {{ reservationId }}
+            Save your reservation code: {{ reservationId }}
         </div>
     </div>
 
@@ -129,6 +159,8 @@
 
     .reservation-status{
         color: black;
+        font-size: 2vw;
+        margin: 3vw;
     }
 
 </style>

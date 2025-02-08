@@ -2,15 +2,11 @@
     const roles = ["A", "B", "C", "D"];
 
     async function submit() {
-        const employeeNameElement = document.getElementById("employee-name") as HTMLInputElement;
-        const employeeRoleElement = document.getElementById("employee-role") as HTMLSelectElement;
-        const employeeEmailElement = document.getElementById("employee-email") as HTMLInputElement;
-        const employeePhoneElement = document.getElementById("employee-phone") as HTMLInputElement;
 
-        const employeeNameString = employeeNameElement.value;
-        const employeeRoleString = employeeRoleElement.value;
-        const employeeEmailString = employeeEmailElement.value;
-        const employeePhoneString = employeePhoneElement.value;
+        const employeeNameString = (document.getElementById("employee-name") as HTMLInputElement).value;
+        const employeeRoleString = (document.getElementById("employee-role") as HTMLSelectElement).value;
+        const employeeEmailString = (document.getElementById("employee-email") as HTMLInputElement).value;
+        const employeePhoneString = (document.getElementById("employee-phone") as HTMLInputElement).value;
 
         console.log(employeeNameString, employeeRoleString, employeeEmailString, employeePhoneString);
 
@@ -37,7 +33,7 @@
         <input id="employee-name" class="employee-input" placeholder="Employee Name"/>
         <select name="role" id="employee-role" class="employee-input">
             <option class="placeholder-option" value="" disabled selected>Select a role</option>
-                <option v-for="role in roles" :key="role" :value="role">{{role}}</option>
+            <option v-for="role in roles" :key="role" :value="role">{{role}}</option>
         </select>
         <input id="employee-email" class="employee-input" placeholder="Employee Email"/>
         <input id="employee-phone" class="employee-input" placeholder="Employee Phone"/>

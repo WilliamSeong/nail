@@ -17,7 +17,7 @@
     const id = route.params.id
 
     const employee = ref<Employee>();
-    const fetchEmployee = async () => {
+    async function fetchEmployee() {
         try {
             const response = await fetch("http://localhost:3000/dev/employee/search",{
                 method: 'POST',
@@ -30,7 +30,7 @@
             })
 
             employee.value = await response.json();
-            // console.log(employee.value);
+            console.log(employee.value);
         } catch(e) {
             console.log("Employee fetch error: ", e);
         }

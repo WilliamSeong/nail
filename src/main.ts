@@ -13,7 +13,8 @@ import EmployeeAdd from "./components/employee/EmployeeAdd.vue";
 import EmployeeSearch from "./components/employee/EmployeeSearch.vue";
 import EmployeePage from "./components/employee/EmployeePage.vue";
 
-import Reservation from "./components/reservation/ReservationGenerator.vue";
+import ReservationGenerator from "./components/reservation/ReservationGenerator.vue";
+import ReservationPage from "./components/reservation/ReservationPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,7 +25,8 @@ const router = createRouter({
       { path: '/employee/add', component: EmployeeAdd},
       { path: '/employee/search', component: EmployeeSearch},
       { path: '/employee/:id', component: EmployeePage},
-      { path: '/reservation/add', component: Reservation},
+      { path: '/reservation/add', component: ReservationGenerator},
+      { path: '/reservation/:id', component: ReservationPage},
       { path: '/authorize', component: Authorize},
       { path: '/contact', component: Contact}
   ]

@@ -3,9 +3,9 @@
   import { ref, onMounted, onBeforeUnmount, defineProps } from 'vue';
   import type { PropType } from 'vue';
 
-  import CarouselItem from "./carousel/CarouselItem.vue";
-  import CarouselControls from './carousel/CarouselControls.vue';
-  import CarouselIndicators from './carousel/CarouselIndicators.vue';
+  import CarouselItem from "./CarouselItem.vue";
+  import CarouselControls from './CarouselControls.vue';
+  import CarouselIndicators from './CarouselIndicators.vue';
 
   const currentSlide = ref(0);
   const slideInterval = ref<number | undefined>(undefined);

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { onMounted, onUnmounted } from 'vue';
+  import { onMounted, onUnmounted, ref } from 'vue';
   import Map from "./EmbeddedMap.vue";
-  import Carousel from "./ImageCarousel.vue"
+  import Carousel from "./carousel/ImageCarousel.vue";
   import Nav from "./NavBar.vue"
   import Foot from "./FooterBar.vue"
   import Contact from "./ContactInfo.vue";
@@ -60,6 +60,12 @@
     const vhInPixels = window.innerHeight * 0.1
 
     background.style.transform = `translateY(${vhInPixels - (scrollPosition * 0.5) }px)`
+  }
+
+  const reservationSearchString = ref("");
+
+  function findReservation() {
+    console.log(reservationSearchString.value);
   }
 
   onMounted(() => {
@@ -148,6 +154,14 @@
       </div>
 
       <div class="home-seventh">
+        
+        <input id="home-seventh-input" class="home-seventh-input" v-model="reservationSearchString" placeholder="Reservation Code"/>
+        <!-- <button class="home-seventh-button" @click="findReservation">Find Reservation</button> -->
+        <router-link :to="`/reservation/${reservationSearchString}`">Click me buddy</router-link>
+        
+      </div>
+
+      <div class="home-last">
         <Foot />
       </div>
     </div>
@@ -309,6 +323,40 @@
   }
 
   .home-seventh {
+    background: var(--primary-dark);
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .home-seventh-input{
+    background: rgba(255,255,255,0.1);
+    min-width: 40%;
+    width: 40%;
+    height: auto;
+    margin: 1vmin;
+    border-color: white;
+    outline: none;
+    border-style:solid;
+    border-width: 1px;
+    font-size: 1.5vmax;
+    color: black;
+    font-family:'Times New Roman', Times, serif;
+  }
+
+  .home-seventh-button{
+    border-style: solid;
+    border-width: 0;
+    background: rgb(238,232,170);
+    transition: 1000ms;
+    font-size: 1.5vmax;
+    padding: 5px;
+  }
+
+  .home-last {
     height: 20vh;
     background: var(--bg-light);
   }
