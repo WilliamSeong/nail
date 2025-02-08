@@ -64,10 +64,6 @@
 
   const reservationSearchString = ref("");
 
-  function findReservation() {
-    console.log(reservationSearchString.value);
-  }
-
   onMounted(() => {
     window.addEventListener('scroll', handleScroll)
   })
@@ -154,11 +150,12 @@
       </div>
 
       <div class="home-seventh">
-        
         <input id="home-seventh-input" class="home-seventh-input" v-model="reservationSearchString" placeholder="Reservation Code"/>
-        <!-- <button class="home-seventh-button" @click="findReservation">Find Reservation</button> -->
-        <router-link :to="`/reservation/${reservationSearchString}`">Click me buddy</router-link>
-        
+        <router-link :to="`/reservation/${reservationSearchString}`" custom v-slot="{ navigate }">
+          <button @click="navigate" :disabled="!reservationSearchString" class="home-seventh-button">
+            Find Reservation
+          </button>
+        </router-link>
       </div>
 
       <div class="home-last">
@@ -352,8 +349,15 @@
     border-width: 0;
     background: rgb(238,232,170);
     transition: 1000ms;
-    font-size: 1.5vmax;
+    font-size: 1vmax;
     padding: 5px;
+    text-decoration: none;
+    color: black;
+    transition: 500ms;
+  }
+
+  .home-seventh-button:hover{
+    background: rgb(255,255,255);
   }
 
   .home-last {

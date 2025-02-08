@@ -16,6 +16,7 @@
     const id = route.params.id
 
     const reservation = ref<Reservation>();
+    const noReservation = ref("");
     async function fetchReservation() {
         try {
             const response = await fetch("http://localhost:3000/dev/reservation/search",{
@@ -28,7 +29,12 @@
                 })
             })
 
-            reservation.value = await response.json();
+            const data = await response.json();
+            if (data.error === "Reservation Search failed") {
+                noReservation.value = "No Reservation Found";
+                return;
+            }
+            reservation.value = data;
             console.log(reservation.value);
         } catch(e) {
             console.log("Reservation fetch error: ", e);
@@ -38,7 +44,6 @@
     onMounted(() => {
         fetchReservation();
     })
-
 
 </script>
 
@@ -53,8 +58,10 @@
         <h1>{{ reservation.notes }}</h1>
         <h1>{{ reservation.status }}</h1>
 
-
     </div>
+
+    <h1 v-else>{{ noReservation }}</h1>
+
 
 </template>
 

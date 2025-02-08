@@ -16,6 +16,8 @@ import EmployeePage from "./components/employee/EmployeePage.vue";
 import ReservationGenerator from "./components/reservation/ReservationGenerator.vue";
 import ReservationPage from "./components/reservation/ReservationPage.vue";
 
+import NotFound from "./components/NotFound.vue";
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -28,7 +30,8 @@ const router = createRouter({
       { path: '/reservation/add', component: ReservationGenerator},
       { path: '/reservation/:id', component: ReservationPage},
       { path: '/authorize', component: Authorize},
-      { path: '/contact', component: Contact}
+      { path: '/contact', component: Contact},
+      { path: '/:pathMatch(.*)*', component: NotFound }
   ]
 });
 
