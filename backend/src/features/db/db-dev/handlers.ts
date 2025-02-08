@@ -4,7 +4,8 @@ import { getClient } from "../connection";
 export const dbHandlers = {
     employeeAddHandler,
     employeeSearchHandler,
-    reservationHandler
+    reservationCreateHandler,
+    reservationSearchHandler,
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,9 +80,57 @@ async function searchEmployee(client, search : string) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Make Reservation
 
-async function reservationHandler(req, res) {
-    const { name, date, notes } = req.body;
-    console.log("Name: ", name)
-    console.log("Date: ", date)
-    console.log("Notes: ", notes)
+async function reservationCreateHandler(req, res) {
+    const { reservationName, reservationContact, reservationDate, reservationNotes } = req.body;
+
+    const reservationDetails = {
+        name : reservationName,
+        contact : reservationContact,
+        date : reservationDate,
+        status : "confirmed",
+        notes : reservationNotes
+    }
+
+    try {
+        const client = await getClient();
+        const result = await createReservation(client, reservationDetails);
+        console.log("Reservation Created");
+        res.json(result);
+    } catch (e) {
+        console.log("Reservation create error: ", e);
+        res.status(500).json({ error: "Reservation failed" });
+    }
+}
+
+async function createReservation(client, reservationDetails){
+    return client.db("nail_by_young_db").collection("reservations").insertOne(reservationDetails);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Search Reservation Date
+
+
+async function reservationSearchHandler(req, res) {
+    const { reservationSearch } = req.body;
+
+    try {
+        const client = await getClient();
+        const result = await searchForReservation(client, reservationSearch);
+        console.log(result);
+        res.json(result);
+    } catch (e) {
+        console.log("Reservation create error: ", e);
+        res.status(500).json({ error: "Reservation failed" });
+    }
+}
+
+async function searchForReservation(client, reservationSearch : string){
+    const cursor = client.db("nail_by_young_db").collection("reservations").find({ date : reservationSearch }).project({ name : 1, _id : 0 });
+
+    try {
+        const idSearch = await client.db("nail_by_young_db").collection("reservations").findOne({ _id: new ObjectId(reservationSearch) }).project({ name : 1, _id : 0 });
+        if (idSearch) return idSearch;
+    } catch {}
+
+    return cursor.toArray();
 }

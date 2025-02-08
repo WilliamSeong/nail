@@ -7,6 +7,8 @@ router.post('/employee/add', dbHandlers.employeeAddHandler);
 
 router.post('/employee/search', dbHandlers.employeeSearchHandler);
 
-router.post('/reservation/make', dbHandlers.reservationHandler);
+router.post('/reservation/make', dbHandlers.reservationCreateHandler);
+
+router.post('/reservation/search', dbHandlers.reservationSearchHandler);
 
 export default router;
