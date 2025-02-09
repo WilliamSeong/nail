@@ -1,28 +1,47 @@
 <script setup lang="ts">
 
+  import { onMounted, onUnmounted, ref } from 'vue';
   import "../styles/themes.css";
+
+  const headerName = ref("hidden");
+
+  const handleScroll = (): void => {
+    const scrollPosition = window.scrollY
+
+    if (scrollPosition === 0) {
+      headerName.value = "1";
+    } else {
+      headerName.value = "0";
+    }
+  }
+
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 
 </script>
 
 <template>
-  <div class="theme-nordic">
 
-  <div class="header">
-    <div class="header-name">
-      Nail by Young
-    </div>
-    <div class="header-line">
-      <hr/>
-    </div>
-    <div class="links">
-      <ul class="link-list">
-        <li class="list-item"><router-link to="/" class="list-item-link">Home</router-link></li>
-        <li class="list-item"><router-link to="/menu" class="list-item-link">Menu</router-link></li>
-        <li class="list-item"><router-link to="/test" class="list-item-link">Test</router-link></li>
-        <li class="list-item"><router-link to="/employee/search" class="list-item-link">Employee Search</router-link></li>
-        <li class="list-item"><router-link to="/reservation/add" class="list-item-link">Reservation</router-link></li>
-      </ul>
-    </div>
+<div class="header">
+  <div class="header-name">
+    Nail by Young
+  </div>
+  <div class="header-line">
+    <hr/>
+  </div>
+  <div class="links">
+    <ul class="link-list">
+      <li class="list-item"><router-link to="/" class="list-item-link">Home</router-link></li>
+      <li class="list-item"><router-link to="/menu" class="list-item-link">Menu</router-link></li>
+      <li class="list-item"><router-link to="/test" class="list-item-link">Test</router-link></li>
+      <li class="list-item"><router-link to="/employee/search" class="list-item-link">Employee Search</router-link></li>
+      <li class="list-item"><router-link to="/reservation/add" class="list-item-link">Reservation</router-link></li>
+    </ul>
   </div>
 </div>
 
@@ -52,6 +71,7 @@
 
   .header:hover .header-name{
     color: var(--text-light);
+    opacity: 1;
   }
 
   .header:hover .header-line{
@@ -73,7 +93,8 @@
     font-weight: 700;
     font-size: 3vw;
     color: var(--primary-dark);
-    transition: 500ms;
+    transition: 500ms ease;
+    opacity: v-bind(headerName);
   }
 
   .header-line {

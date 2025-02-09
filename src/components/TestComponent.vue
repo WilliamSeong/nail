@@ -58,7 +58,7 @@
         <div class="button-container">
             <a class="see-more-btn" href="https://www.google.com/search?sca_esv=7db18dec3b276ab8&sxsrf=AHTn8zocmPl_eBxRfR3B4SSM1fpJ4HKjdQ:1739063960761&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2Kza-c3WaQ39kC07kJ0gflQYcCPHgSsrzT5Y-1daUY2NW7Gn8r3FyreDm9UWMCfolX4XfvysgordT5A8H1AJLNBXQXPZzm&q=Nail+by+Young+Reviews&sa=X&ved=2ahUKEwiDsP2MtrWLAxWfM1kFHTOTDWwQ0bkNegQIHhAE&biw=2397&bih=1400&dpr=1">See Other Reviews</a>
         </div>
-        <img class="decorative-illustration" src="../assets/review.jpg"/>
+        <img class="decorative-illustration" src="../assets/customer-review.png"/>
     </div> 
 </template>
 
@@ -69,13 +69,11 @@
 
     .review-container{
         width: 100vw;
-        max-height: 60vh;  /* Changed from height to min-height and increased */
+        height: 100%;
         display: grid;
-        background: white;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto 1fr 1fr 1fr 0.5fr; /* Changed first row to auto */
+        grid-template-rows: auto 1fr 1fr 1fr 0.5fr;
         position: relative;
-        gap: 10px; /* Add some gap between grid items */
     }
 
     .grid{
@@ -96,6 +94,7 @@
         justify-content: center;
         align-items: center;
         z-index: 1;
+        /* border: 2px red solid; */
     }
 
     .review{
@@ -106,6 +105,7 @@
         visibility: visible;
         background: white;
         border: solid;
+        margin: 1%;
     }
 
     .profile-pic {

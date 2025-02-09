@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import Nav from "./components/NavBar.vue";
-import Footer from "./components/FooterBar.vue";
+
+  import "./styles/themes.css";
+
 </script>
 
 <template>
   <div class="page-container">
-    <!-- <Nav /> -->
     <div class="content-wrap">
-      <router-view></router-view>
+      <div class="theme-mint">
+        <router-view></router-view>
+      </div>
     </div>
-    <!-- <Footer /> -->
   </div>
 </template>
 

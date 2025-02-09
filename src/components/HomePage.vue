@@ -76,94 +76,92 @@
 </script>
 
 <template>
-  <div class="theme-nordic">
-    <div class="home-container">
-      <div class="home-first">
-        <div class="home-nav">
-          <Nav />
-        </div>
-        <img class="home-first-img" src="../assets/splash.jpg"/>
+  <div class="home-container">
+    <div class="home-first">
+      <div class="home-nav">
+        <Nav />
       </div>
+      <img class="home-first-img" src="../assets/splash.jpg"/>
+    </div>
 
-      <div class = "home-second">
+    <div class = "home-second">
+      <h1>
+        Lorem ipsum dolor sit amet.
+      </h1>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Hic, assumenda, dolor maxime ut non id deleniti mollitia
+        modi laudantium maiores aut quaerat ipsam. Impedit, ex.
+        Amet ad sint, praesentium, aliquid perspiciatis natus
+        aliquam expedita, vel eveniet consequuntur odit temporibus!
+        Quos alias numquam consequuntur. Temporibus expedita
+        laborum debitis, voluptatibus perspiciatis porro culpa et
+        soluta accusamus iure eum excepturi. Deleniti nobis enim
+        aperiam earum doloremque voluptatum tempora quos dolor
+        obcaecati atque. Laborum repellat doloremque ipsum obcaecati
+        at! Ipsam ex dolore beatae maiores repellendus repellat
+        reiciendis illum, excepturi ducimus ratione tenetur nemo
+        voluptate commodi vero officia, nam eligendi nisi veniam
+        nulla? Amet harum adipisci repudiandae porro blanditiis,
+        deleniti quia neque. Nam omnis cum obcaecati provident
+        tempore debitis maiores delectus numquam nesciunt
+        exercitationem veniam, illum magni officia animi unde eius
+        recusandae fugiat nemo dolores?
+      </p>
+    </div>
+
+
+    <div class="home-third">
+      <div class="foreground">
         <h1>
-          Lorem ipsum dolor sit amet.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, itaque!
         </h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Hic, assumenda, dolor maxime ut non id deleniti mollitia
-          modi laudantium maiores aut quaerat ipsam. Impedit, ex.
-          Amet ad sint, praesentium, aliquid perspiciatis natus
-          aliquam expedita, vel eveniet consequuntur odit temporibus!
-          Quos alias numquam consequuntur. Temporibus expedita
-          laborum debitis, voluptatibus perspiciatis porro culpa et
-          soluta accusamus iure eum excepturi. Deleniti nobis enim
-          aperiam earum doloremque voluptatum tempora quos dolor
-          obcaecati atque. Laborum repellat doloremque ipsum obcaecati
-          at! Ipsam ex dolore beatae maiores repellendus repellat
-          reiciendis illum, excepturi ducimus ratione tenetur nemo
-          voluptate commodi vero officia, nam eligendi nisi veniam
-          nulla? Amet harum adipisci repudiandae porro blanditiis,
-          deleniti quia neque. Nam omnis cum obcaecati provident
-          tempore debitis maiores delectus numquam nesciunt
-          exercitationem veniam, illum magni officia animi unde eius
-          recusandae fugiat nemo dolores?
-        </p>
       </div>
 
+      <div class="background">
+        <img class="home-third-image" src="../assets/slime.jpg"/>
+      </div>
+    </div>
 
-      <div class="home-third">
-        <div class="foreground">
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, itaque!
-          </h1>
+
+    <div class="home-fourth">
+      <div class="home-menu">
+        <div class="home-menu-left">
+          <Pop name="Manicure" :services="manicureServices"/>
+          <Pop name="Pedicure" :services="pedicureServices"/>
+          <Pop name="Waxing" :services="waxingServices"/>
         </div>
 
-        <div class="background">
-          <img class="home-third-image" src="../assets/slime.jpg"/>
+        <div class="home-menu-right">
+            <Carousel :slides="slides" :interval="3000" indicators controls/>
         </div>
       </div>
+    </div>
 
+    <div class="home-fifth">
+      <Map />
+    </div>
 
-      <div class="home-fourth">
-        <div class="home-menu">
-          <div class="home-menu-left">
-            <Pop name="Manicure" :services="manicureServices"/>
-            <Pop name="Pedicure" :services="pedicureServices"/>
-            <Pop name="Waxing" :services="waxingServices"/>
-          </div>
+    <div class="home-sixth">
+      <img class="home-sixth-image" src="../assets/light.jpg"/>
+      <Contact />
+    </div>
 
-          <div class="home-menu-right">
-              <Carousel :slides="slides" :interval="3000" indicators controls/>
-          </div>
-        </div>
-      </div>
+    <div class="home-seventh">
+      <input id="home-seventh-input" class="home-seventh-input" v-model="reservationSearchString" placeholder="Reservation Code"/>
+      <router-link :to="`/reservation/${reservationSearchString}`" custom v-slot="{ navigate }">
+        <button @click="navigate" :disabled="!reservationSearchString" class="home-seventh-button">
+          Find Reservation
+        </button>
+      </router-link>
+    </div>
 
-      <div class="home-fifth">
-        <Map />
-      </div>
+    <div class="home-eight">
+      <Review />
+    </div>
 
-      <div class="home-sixth">
-        <img class="home-sixth-image" src="../assets/light.jpg"/>
-        <Contact />
-      </div>
-
-      <div class="home-seventh">
-        <input id="home-seventh-input" class="home-seventh-input" v-model="reservationSearchString" placeholder="Reservation Code"/>
-        <router-link :to="`/reservation/${reservationSearchString}`" custom v-slot="{ navigate }">
-          <button @click="navigate" :disabled="!reservationSearchString" class="home-seventh-button">
-            Find Reservation
-          </button>
-        </router-link>
-      </div>
-
-      <div class="home-eight">
-        <Review />
-      </div>
-
-      <div class="home-last">
-        <Foot />
-      </div>
+    <div class="home-last">
+      <Foot />
     </div>
   </div>
 </template>
@@ -191,8 +189,8 @@
 
   .home-nav {
     width: 100%;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
+    z-index: 2;
   }
 
   .home-first-img {
@@ -324,7 +322,7 @@
 
   .home-seventh {
     background: var(--primary-dark);
-    height: 60vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -364,7 +362,7 @@
   }
 
   .home-eight{
-    background: white;
+    background: var(--primary-light);
     height: 50vh;
     display: flex;
     flex-direction: column;
