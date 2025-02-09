@@ -26,7 +26,7 @@
   #footer-bar {
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: gray;
     color: white;
     margin-top: auto;
     display: flex;

@@ -6,6 +6,7 @@
   import Foot from "./FooterBar.vue"
   import Contact from "./ContactInfo.vue";
   import Pop from "./menu/MenuPop.vue";
+  import Review from "./TestComponent.vue";
   import "../styles/themes.css";
 
   import nail1 from "../assets/nail-media/nail-media-1.jpeg"
@@ -75,16 +76,14 @@
 </script>
 
 <template>
-  <div class="theme-mint">
+  <div class="theme-nordic">
     <div class="home-container">
       <div class="home-first">
         <div class="home-nav">
           <Nav />
         </div>
         <img class="home-first-img" src="../assets/splash.jpg"/>
-        <!-- <p>Image</p> -->
       </div>
-
 
       <div class = "home-second">
         <h1>
@@ -156,6 +155,10 @@
             Find Reservation
           </button>
         </router-link>
+      </div>
+
+      <div class="home-eight">
+        <Review />
       </div>
 
       <div class="home-last">
@@ -360,9 +363,19 @@
     background: rgb(255,255,255);
   }
 
+  .home-eight{
+    background: white;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
   .home-last {
     height: 20vh;
-    background: var(--bg-light);
+    background: var(--primary-light);
   }
 
 </style>
