@@ -63,6 +63,7 @@
     flex-direction: column;
     position: relative;
     transition: 500ms;
+    position: fixed;
   }
 
   .header:hover {

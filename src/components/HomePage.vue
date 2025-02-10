@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import { onMounted, onUnmounted, ref } from 'vue';
-  import Map from "./EmbeddedMap.vue";
+  import Map from "./maps/EmbeddedMap.vue";
   import Carousel from "./carousel/ImageCarousel.vue";
   import Nav from "./NavBar.vue"
   import Foot from "./FooterBar.vue"
-  import Contact from "./ContactInfo.vue";
+  import Contact from "./gmail/ContactInfo.vue";
   import Pop from "./menu/MenuPop.vue";
-  import Review from "./TestComponent.vue";
+  import Review from "./reviews/ReviewsComponent.vue";
   import "../styles/themes.css";
 
   import nail1 from "../assets/nail-media/nail-media-1.jpeg"

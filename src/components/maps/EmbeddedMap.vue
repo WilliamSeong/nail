@@ -1,6 +1,6 @@
 <script lang="ts">
   import { defineComponent, onMounted } from 'vue';
-  import markerimg from "../assets/nail-img-3.jpg";
+  import markerimg from "../../assets/nail-img-3.jpg";
 
   export default defineComponent({
   setup() {

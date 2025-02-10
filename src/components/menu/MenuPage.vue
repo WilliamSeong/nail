@@ -13,11 +13,10 @@
       <img class="menu-page-background-image" src="../../assets/ocean.jpg" />
     </div>
 
-    <div class="menu-page-contents">
-    
-      <div class="menu-nav">
+    <div class="menu-nav">
         <Nav />
-      </div>
+    </div>
+
 
 
       <div class="menu-container">
@@ -126,10 +125,9 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
-<style>
+<style scoped>
 
 /* Color scheme variables */
   * {
@@ -154,18 +152,6 @@
   .menu-page-background-image{
     width: 100%;
     height: 100%;
-  }
-
-  .menu-page-contents{
-  }
-
-  .menu-nav {
-    background: var(--primary-light);
-  }
-
-  .menu-nav a,
-  .menu-nav h1 {
-    color: var(--text-primary);
   }
 
   .menu-container {

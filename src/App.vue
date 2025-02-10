@@ -5,26 +5,15 @@
 </script>
 
 <template>
-  <div class="page-container">
-    <div class="content-wrap">
-      <div class="theme-mint">
-        <router-view></router-view>
-      </div>
-    </div>
+  <div class="theme-sunset">
+    <router-view></router-view>
   </div>
 </template>
 
 <style scoped>
   *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    background-color: white;
   }
-
-  .page-container {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 </style>

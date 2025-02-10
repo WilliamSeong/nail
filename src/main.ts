@@ -5,8 +5,8 @@ import './types/google-maps.d.ts';
 
 import Home from "./components/HomePage.vue";
 import Menu from "./components/menu/MenuPage.vue";
-import Authorize from "./components/AuthorizeToken.vue";
-import Contact from "./components/ContactInfo.vue";
+import Authorize from "./components/gmail/AuthorizeToken.vue";
+import Contact from "./components/gmail/ContactInfo.vue";
 import Test from "./components/TestComponent.vue";
 
 import EmployeeAdd from "./components/employee/EmployeeAdd.vue";

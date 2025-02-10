@@ -29,7 +29,6 @@
 
     .item-name{
         color: black;
-        font-size: .75vw;
     }
 
     .dots{

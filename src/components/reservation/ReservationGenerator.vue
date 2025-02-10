@@ -29,10 +29,11 @@
         // const reservationTimeString = (document.getElementById("reservation-time") as HTMLSelectElement).value;
         // const reservationNotesString = (document.getElementById("reservation-notes") as HTMLInputElement).value;
 
-        // console.log(reservationNameString);
-        // console.log(reservationContactString);
-        // console.log(reservationDateString);
-        // console.log(reservationNotesString);
+        console.log(reservationNameString);
+        console.log(reservationContactString);
+        console.log(reservationDateString);
+        console.log(reservationTimeString);
+        console.log(reservationNotesString);
 
         try {
             console.log("Reservation request sent");
@@ -111,7 +112,7 @@
         <input id="reservation-date" class="reservation-input" v-model="reservationDateString" type="date" @change="handleDateChange"/>
         <select id="reservation-time" class="reservation-input" v-model="reservationTimeString">
             <option value="" disabled selected>Select a time</option>
-            <option v-for="[time, value] in timeMap" value="time" :disabled="!value" :key="time">
+            <option v-for="[time, value] in timeMap" :value="time" :disabled="!value" :key="time">
                 {{ time }}
             </option>
         </select>
