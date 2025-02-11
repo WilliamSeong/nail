@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="theme-sunset">
+  <div class="theme-nordic">
     <router-view></router-view>
   </div>
 </template>
