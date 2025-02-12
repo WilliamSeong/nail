@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    
+    import Review from ".././TestComponent.vue"
 
 </script>
 
@@ -7,13 +9,16 @@
         <div class="review-header">
             <h1>Leave us a review</h1>
         </div>
-        <div class="grid">
-            <img class="profile-pic left" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D">
-            <div class="review">
-                Got a gel manicure and my 5 year old got a manicure. Employees were very friendly and accommodating. Our nails look great. I could tell they take great care with cleanliness and sanitizing.
+        <div class="grid-1">
+            <Review name="David" review="Testing the review card" :stars=5 />
+             <div class="grid-1-child">
+                <div class="grid-1-child-1" >
 
-                Edit: two weeks later my gel manicure still looks perfect.
-            </div> 
+                </div>
+                <div class="grid-1-child-1" >
+
+                </div>
+             </div>
         </div>
         <div class="grid">
             <div class="review">
@@ -71,8 +76,8 @@
         width: 100vw;
         height: 100%;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto 1fr 1fr 1fr 0.5fr;
+        grid-template-columns: 50% 50%r;
+        grid-template-rows: 12.5% 25% 25% 25% 12.5%;
         position: relative;
     }
 
@@ -81,7 +86,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 20px; /* Add space between profile pic and review */
         z-index: 1;
     }
 

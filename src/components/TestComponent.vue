@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+    import Stars from "./reviews/ReviewStars.vue";
+
     defineProps<{
             name : string,
             review : string,
@@ -10,15 +12,18 @@
 
 <template>
 
-    <div class="review-card">
+    <div class="review-card-container">
         <div class="review-profile">
             <img class="review-profile-img" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D"
         </div>
         <div class="review-message">
             Message
         </div>
+        <div class="review-provider">
+            Google
+        </div>
         <div class="review-rating">
-            Rating
+            <Stars :stars="stars" />
         </div>
         
     </div>
@@ -31,14 +36,13 @@
         outline: 1px red solid;
     }
 
-    .review-card{
-
-        width: 999px;
-        height: 333px;
+    .review-card-container{
+        width: 100%;
+        height: 100%;
 
         display: grid;
-        grid-template-columns: 1fr 5fr 6fr;
-        grid-template-rows: 20% 60% 20%;
+        grid-template-columns: 1fr 1fr 4fr 6fr;
+        grid-template-rows: 20% 60% 5% 10% 5%;
 
     }
 
@@ -55,13 +59,18 @@
     }
 
     .review-message{
-        grid-column: span 2;
+        grid-column: span 3;
         grid-row: span 2
     }
 
-    .review-rating{
-        grid-row: 3;
+    .review-provider{
+        grid-row: 3/ span 3;
         grid-column: span 2;
+    }
+
+    .review-rating{
+        grid-row: 4;
+        grid-column: 3;
     }
   
 
