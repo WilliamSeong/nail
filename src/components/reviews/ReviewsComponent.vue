@@ -5,80 +5,91 @@
 </script>
 
 <template>
-    <div class="review-container">
+    <div class="review-component-container">
         <div class="review-header">
             <h1>Leave us a review</h1>
         </div>
         <div class="grid-1">
-            <Review name="David" review="Testing the review card" :stars=5 />
-             <div class="grid-1-child">
-                <div class="grid-1-child-1" >
-
+            <div class="review-card-container">
+                <div class="review-profile">
+                    image
                 </div>
-                <div class="grid-1-child-1" >
-
+                <div class="review-message">
+                    Message
                 </div>
-             </div>
+                <div class="review-provider">
+                    Google
+                </div>
+                <div class="review-rating">
+                    Stars
+                </div>
+                
+            </div>
         </div>
         <div class="grid">
-            <div class="review">
-                Got a gel manicure and my 5 year old got a manicure. Employees were very friendly and accommodating. Our nails look great. I could tell they take great care with cleanliness and sanitizing.
-
-                Edit: two weeks later my gel manicure still looks perfect.
-            </div> 
-            <img class="profile-pic left" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D">
         </div>
         <div class="grid">
-            <img class="profile-pic left" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D">
-            <div class="review">
-                Got a gel manicure and my 5 year old got a manicure. Employees were very friendly and accommodating. Our nails look great. I could tell they take great care with cleanliness and sanitizing.
-
-                Edit: two weeks later my gel manicure still looks perfect.
-            </div> 
         </div>
         <div class="grid">
-            <div class="review">
-                Got a gel manicure and my 5 year old got a manicure. Employees were very friendly and accommodating. Our nails look great. I could tell they take great care with cleanliness and sanitizing.
-
-                Edit: two weeks later my gel manicure still looks perfect.
-            </div> 
-            <img class="profile-pic left" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D">
         </div>
         <div class="grid">
-            <img class="profile-pic left" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D">
-            <div class="review">
-                Got a gel manicure and my 5 year old got a manicure. Employees were very friendly and accommodating. Our nails look great. I could tell they take great care with cleanliness and sanitizing.
-
-                Edit: two weeks later my gel manicure still looks perfect.
-            </div> 
         </div>
         <div class="grid">
-            <div class="review">
-                Got a gel manicure and my 5 year old got a manicure. Employees were very friendly and accommodating. Our nails look great. I could tell they take great care with cleanliness and sanitizing.
-
-                Edit: two weeks later my gel manicure still looks perfect.
-            </div> 
-            <img class="profile-pic left" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D">
         </div>
         <div class="button-container">
             <a class="see-more-btn" href="https://www.google.com/search?sca_esv=7db18dec3b276ab8&sxsrf=AHTn8zocmPl_eBxRfR3B4SSM1fpJ4HKjdQ:1739063960761&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2Kza-c3WaQ39kC07kJ0gflQYcCPHgSsrzT5Y-1daUY2NW7Gn8r3FyreDm9UWMCfolX4XfvysgordT5A8H1AJLNBXQXPZzm&q=Nail+by+Young+Reviews&sa=X&ved=2ahUKEwiDsP2MtrWLAxWfM1kFHTOTDWwQ0bkNegQIHhAE&biw=2397&bih=1400&dpr=1">See Other Reviews</a>
         </div>
-        <img class="decorative-illustration" src="../assets/customer-review.png"/>
     </div> 
 </template>
 
 <style scoped>
     *{
-        /* border: 2px red solid; */
+        border: 2px red solid;
     }
-
-    .review-container{
-        width: 100vw;
+    .review-component-container{
+        width: 100%;
         height: 100%;
         display: grid;
-        grid-template-columns: 50% 50%r;
+        grid-template-columns: 50% 50%;
         grid-template-rows: 12.5% 25% 25% 25% 12.5%;
-        position: relative;
+    }
+
+    .review-card-container{
+
+        width: 80%;
+        height: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 4fr 6fr;
+        grid-template-rows: 20% 60% 5% 10% 5%;
+
+    }
+
+
+    .review-profile{
+        width: 100%;
+        height: 100%;
+    }
+
+    .review-profile-img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .review-message{
+        grid-column: span 3;
+        grid-row: span 2
+    }
+
+    .review-provider{
+        grid-row: 3/ span 3;
+        grid-column: span 2;
+    }
+
+    .review-rating{
+        grid-row: 4;
+        grid-column: 3;
     }
 
     .grid{
@@ -93,31 +104,16 @@
         position: relative;
         grid-column: 1/ span 2;
         grid-row: 1;
-        text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 1;
-        /* border: 2px red solid; */
-    }
-
-    .review{
-        width: 60%;
-        border-radius: min(32px, 3vw);
-        padding: 1vw;
-        text-align: center;
-        visibility: visible;
-        background: white;
-        border: solid;
-        margin: 1%;
     }
 
     .profile-pic {
-        width: 50px;  /* Fixed size for profile picture */
-        height: 50px;
+        width: 5%;
+        aspect-ratio: 1;
         border-radius: 50%;
-        background-color: #ddd;  /* Placeholder color */
-        flex-shrink: 0;  /* Prevent the circle from shrinking */
     }
 
     .profile-pic.left {
@@ -130,12 +126,11 @@
 
     .button-container {
         position: relative;
-        grid-column: 1 / span 2; /* Make button span both columns */
-        grid-row: 5; /* Place in the fourth row */
+        grid-column: 1 / span 2;
+        grid-row: 5;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 0; /* Remove margin since we're using grid positioning */
         z-index: 1;
     }
 
@@ -155,15 +150,4 @@
         background-color: #357ABD;
     }
 
-    .decorative-illustration {
-        position: absolute;
-        width: 40%;
-        height: 80%;  /* Limit the height to avoid extending into header */
-        top: 60%;     /* Move it down slightly */
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-        opacity: 0.2;
-        object-fit: contain;
-    }
 </style>
