@@ -53,25 +53,26 @@
                   ];
 
 
-  const handleScroll = (): void => {
-    const scrollPosition = window.scrollY
-    const foreground = document.querySelector('.foreground') as HTMLElement
-    const background = document.querySelector('.background') as HTMLElement
+  // const handleScroll = (): void => {
+  //   const scrollPosition = window.scrollY
+  //   const foreground = document.querySelector('.foreground') as HTMLElement
+  //   const background = document.querySelector('.background') as HTMLElement
 
-    const vhInPixels = window.innerHeight * 0.1
-
-    background.style.transform = `translateY(${vhInPixels - (scrollPosition * 0.5) }px)`
-  }
+  //   const vhInPixels = window.innerHeight * 0.1
+  //   console.log("vh: ", vhInPixels, "scrollPostion: ", scrollPosition);
+  //   console.log("Image location: ", vhInPixels - (scrollPosition * 0.5));
+  //   background.style.transform = `translateY(${vhInPixels - (scrollPosition * 0.01) }px)`
+  // }
 
   const reservationSearchString = ref("");
 
-  onMounted(() => {
-    window.addEventListener('scroll', handleScroll)
-  })
+  // onMounted(() => {
+  //   window.addEventListener('scroll', handleScroll)
+  // })
 
-  onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-  })
+  // onUnmounted(() => {
+  //   window.removeEventListener('scroll', handleScroll)
+  // })
 
 </script>
 
@@ -166,16 +167,15 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    /* outline: 2px red solid; */
-
+    outline: 2px red solid;
   }
 
   .home-container {
+    width: 100vw;
     height: auto;
   }
 
@@ -184,7 +184,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
   }
 
   .home-nav {
@@ -196,8 +195,7 @@
   .home-first-img {
     width: 100%;
     height: 60vh;
-    position: absolute;
-    z-index: 0;
+    z-index: 1
   }
 
   .home-second {
@@ -256,7 +254,7 @@
   }
 
   .background {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     height: 100vh;
@@ -268,6 +266,10 @@
     width: 100%;
     height: 200vh;
     object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
   }
 
   .home-fourth {
@@ -372,8 +374,9 @@
   }
 
   .home-last {
-    height: 20vh;
-    background: var(--primary-light);
+    height: 10vh;
+    position: relative;
+    z-index: 1;
   }
 
 </style>

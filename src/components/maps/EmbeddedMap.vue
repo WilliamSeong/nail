@@ -47,7 +47,7 @@
   <div id="map"></div>
 </template>
 
-<style>
+<style scoped>
 #map {
   width: 30vw;
   padding-bottom: 30%;

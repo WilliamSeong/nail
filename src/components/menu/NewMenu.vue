@@ -195,4 +195,9 @@
         align-items: baseline;
     }
 
+    .home-last{
+        height: 10vh;
+        width: vw;
+    }
+
 </style>

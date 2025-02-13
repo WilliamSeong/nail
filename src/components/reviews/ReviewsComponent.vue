@@ -28,7 +28,7 @@
             <Review name="Isabella Smith" profilePicture="" review="Gel manicure from Veronica was perfect! She is very meticulous yet still efficient and everything was very clean. Prices super reasonable for the quality. Just make sure to make an appointment in advance" reviewLink="https://maps.app.goo.gl/TneKHPpq44bQXXoQ7" :stars="5"/>
         </div>
         <div class="button-container">
-            <a class="see-more-btn" href="https://g.page/r/CZjBtYPULy-lEBM/review">Leave a Review!</a>
+            <a class="see-more-btn" href="https://g.page/r/CZjBtYPULy-lEBM/review" target="_blank">Leave a Review!</a>
         </div>
     </div> 
 </template>
