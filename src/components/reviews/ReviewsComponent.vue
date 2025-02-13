@@ -1,6 +1,6 @@
 <script setup lang="ts">
     
-    import Review from ".././TestComponent.vue"
+    import Review from "./ReviewCard.vue"
 
 </script>
 

@@ -49,8 +49,8 @@
         grid-template-columns: 10% 90%;
         grid-template-rows: 20% 60% 20%;
         background: white;
-        padding: 5px;
-        border-radius: min(42px, 3vw);
+        padding: 10px;
+        border-radius: min(20px, 3vw);
     }
 
     .review-profile{
