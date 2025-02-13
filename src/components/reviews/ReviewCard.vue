@@ -13,25 +13,24 @@
 </script>
 
 <template>
-
-    <div class="review-card-container">
-        <div class="review-profile">
-            <img class="review-profile-img" src="../../assets/avatar.png" />
-        </div>
-        <div class="review-name">
-            <a class="review-name-link" :href="reviewLink" target="_blank">{{name}}</a>
-        </div>
-        <div class="review-message">
-            {{review}}
-        </div>
-        <div class="review-provider">
-            <a href="https://g.page/r/CZjBtYPULy-lEBM/review" target="_blank"><img class="review-provider-img" src="../../assets/image.png" /></a>
-        </div>
-        <div class="review-rating">
-            <Stars :count="5" />
-        </div>
-        
-    </div>
+        <a class="review-card-container" :href="reviewLink">
+            <div class="review-profile">
+                <img class="review-profile-img" src="../../assets/avatar.png" />
+            </div>
+            <div class="review-name">
+                <a class="review-name-link" :href="reviewLink" target="_blank">{{name}}</a>
+            </div>
+            <div class="review-message">
+                {{review}}
+            </div>
+            <div class="review-provider">
+                <a href="https://g.page/r/CZjBtYPULy-lEBM/review" target="_blank"><img class="review-provider-img" src="../../assets/image.png" /></a>
+            </div>
+            <div class="review-rating">
+                <Stars :count="stars" />
+            </div>
+            
+        </a>
 
 </template>
 
@@ -51,6 +50,9 @@
         background: white;
         padding: 10px;
         border-radius: min(20px, 3vw);
+
+        text-decoration: none;
+        color: black;
     }
 
     .review-profile{

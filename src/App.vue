@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="theme-nordic">
+  <div class="theme-mint">
     <router-view></router-view>
   </div>
 </template>

@@ -11,7 +11,7 @@
     <div class="gold-stars" v-for="_ in count">
         <img class="gold-star-img" src="../../assets/star.png" />
     </div>
-    <div class="gray-stars" v-for="n in (5-count)">
+    <div class="gray-stars" v-for="_ in (5-count)">
         <img class="gray-star-img" src="../../assets/star.png" />
     </div>
 
