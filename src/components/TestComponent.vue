@@ -4,7 +4,9 @@
 
     defineProps<{
             name : string,
+            profilePicture: string,
             review : string,
+            reviewLink : string,
             stars : number,
         }>();
 
@@ -14,16 +16,19 @@
 
     <div class="review-card-container">
         <div class="review-profile">
-            <img class="review-profile-img" src="https://plus.unsplash.com/premium_photo-1694819488591-a43907d1c5cc?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D" />
+            <img class="review-profile-img" src="../assets/avatar.png" />
+        </div>
+        <div class="review-name">
+            <a class="review-name-link" :href="reviewLink" target="_blank">{{name}}</a>
         </div>
         <div class="review-message">
-            Message
+            {{review}}
         </div>
         <div class="review-provider">
-            Google
+            <a href="https://g.page/r/CZjBtYPULy-lEBM/review" target="_blank"><img class="review-provider-img" src="../assets/image.png" /></a>
         </div>
         <div class="review-rating">
-            <Stars :stars="stars" />
+            <Stars :count="5" />
         </div>
         
     </div>
@@ -33,42 +38,61 @@
 <style scoped>
 
     *{
-        outline: 1px red solid;
+        /* outline: 1px red solid; */
     }
 
     .review-card-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr 4fr 6fr;
-        grid-template-rows: 20% 60% 5% 10% 5%;
+        width: 60%;
+        height: 90%;
 
+        display: grid;
+        grid-template-columns: 10% 90%;
+        grid-template-rows: 20% 60% 20%;
+        background: white;
+        padding: 5px;
+        border-radius: min(42px, 3vw);
     }
 
     .review-profile{
         width: 100%;
         height: 100%;
+        grid-row: span 2;
+        display: flex;
+        align-items: center;
     }
 
     .review-profile-img{
-        height: 100%;
         width: 100%;
-        object-fit: cover;
+        aspect-ratio: 1;
+    }
 
+    .review-name-link{
+        text-decoration: none;
+        color: black;
+        font-size: 1vmax;
     }
 
     .review-message{
-        grid-column: span 3;
-        grid-row: span 2
+        grid-column: 2;
+        grid-row: 2;
     }
 
     .review-provider{
-        grid-row: 3/ span 3;
-        grid-column: span 2;
+        grid-row: 3;
+        display: flex;
+        justify-content: center;
+    }
+
+    .review-provider-img{
+        height: 100%;
     }
 
     .review-rating{
-        grid-row: 4;
-        grid-column: 3;
+        grid-row: 3;
+        grid-column: 2;
+        display: flex;
     }
-  
 
+
+  
 </style>

@@ -9,32 +9,23 @@
         <div class="review-header">
             <h1>Leave us a review</h1>
         </div>
-        <div class="grid-1">
-            <div class="review-card-container">
-                <div class="review-profile">
-                    image
-                </div>
-                <div class="review-message">
-                    Message
-                </div>
-                <div class="review-provider">
-                    Google
-                </div>
-                <div class="review-rating">
-                    Stars
-                </div>
-                
-            </div>
+        <div class="grid">
+            <Review name="Sammy White" profilePicture="" review="Amy is the best! She can recreate every design" reviewLink="https://maps.app.goo.gl/PSQb3XVjnFz1P9Ey6" :stars="3"/>
         </div>
         <div class="grid">
+            <Review name="william" profilePicture="../assets/avatar.png" review="my review" :stars="3"/>
         </div>
         <div class="grid">
+            <Review name="william" review="my review" :stars="3"/>
         </div>
         <div class="grid">
+            <Review name="william" review="my review" :stars="3"/>
         </div>
         <div class="grid">
+            <Review name="william" review="my review" :stars="3"/>
         </div>
         <div class="grid">
+            <Review name="william" review="my review" :stars="3"/>
         </div>
         <div class="button-container">
             <a class="see-more-btn" href="https://www.google.com/search?sca_esv=7db18dec3b276ab8&sxsrf=AHTn8zocmPl_eBxRfR3B4SSM1fpJ4HKjdQ:1739063960761&si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2Kza-c3WaQ39kC07kJ0gflQYcCPHgSsrzT5Y-1daUY2NW7Gn8r3FyreDm9UWMCfolX4XfvysgordT5A8H1AJLNBXQXPZzm&q=Nail+by+Young+Reviews&sa=X&ved=2ahUKEwiDsP2MtrWLAxWfM1kFHTOTDWwQ0bkNegQIHhAE&biw=2397&bih=1400&dpr=1">See Other Reviews</a>
@@ -44,7 +35,7 @@
 
 <style scoped>
     *{
-        border: 2px red solid;
+        /* border: 2px red solid; */
     }
     .review-component-container{
         width: 100%;
@@ -54,43 +45,7 @@
         grid-template-rows: 12.5% 25% 25% 25% 12.5%;
     }
 
-    .review-card-container{
-
-        width: 80%;
-        height: 100%;
-
-        display: grid;
-        grid-template-columns: 1fr 1fr 4fr 6fr;
-        grid-template-rows: 20% 60% 5% 10% 5%;
-
-    }
-
-
-    .review-profile{
-        width: 100%;
-        height: 100%;
-    }
-
-    .review-profile-img{
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-
-    .review-message{
-        grid-column: span 3;
-        grid-row: span 2
-    }
-
-    .review-provider{
-        grid-row: 3/ span 3;
-        grid-column: span 2;
-    }
-
-    .review-rating{
-        grid-row: 4;
-        grid-column: 3;
-    }
+    
 
     .grid{
         position: relative;
