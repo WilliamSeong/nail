@@ -168,15 +168,8 @@
 </template>
 
 <style scoped>
-  * {
-    margin: 0;
-    padding: 0;
-    outline: 2px red solid;
-  }
-
   .home-container {
-    width: 100vw;
-    height: auto;
+    width: 100%;
   }
 
   .home-first {

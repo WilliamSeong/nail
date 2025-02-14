@@ -23,12 +23,6 @@
     const reservationNotesString = ref("");
     async function submit() {
 
-        // const reservationNameString = (document.getElementById("reservation-name") as HTMLInputElement).value;
-        // const reservationContactString = (document.getElementById("reservation-contact") as HTMLInputElement).value;
-        // const reservationDateString = (document.getElementById("reservation-date") as HTMLInputElement).value;
-        // const reservationTimeString = (document.getElementById("reservation-time") as HTMLSelectElement).value;
-        // const reservationNotesString = (document.getElementById("reservation-notes") as HTMLInputElement).value;
-
         console.log(reservationNameString);
         console.log(reservationContactString);
         console.log(reservationDateString);
@@ -129,9 +123,6 @@
 
 <style scoped>
 
-    *{
-        /* outline: 2px red solid; */
-    }
 
     .reservation-container{
         background: lavender;

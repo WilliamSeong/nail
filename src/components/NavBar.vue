@@ -37,28 +37,20 @@
   <div class="links">
     <ul class="link-list">
       <li class="list-item"><router-link to="/" class="list-item-link">Home</router-link></li>
-      <li class="list-item"><router-link to="/menu" class="list-item-link">Menu</router-link></li>
+      <li class="list-item"><router-link to="/menu" class="list-item-link">Services</router-link></li>
       <li class="list-item"><router-link to="/test" class="list-item-link">Test</router-link></li>
       <li class="list-item"><router-link to="/employee/search" class="list-item-link">Employee Search</router-link></li>
-      <li class="list-item"><router-link to="/reservation/add" class="list-item-link">Reservation</router-link></li>
+      <li class="list-item"><router-link to="/reservation/search" class="list-item-link">Reservation</router-link></li>
     </ul>
   </div>
 </div>
 
-
 </template>
 
 <style scoped>
-
-/* Color scheme variables */
-  * {
-    box-sizing: border-box;
-    /* outline: 2px red solid; */
-  }
-
   .header {
     height: auto;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -67,7 +59,7 @@
   }
 
   .header:hover {
-    background: var(--primary-light)
+    background: var(--primary-dark)
   }
 
   .header:hover .header-name{

@@ -15,5 +15,8 @@ router.post('/reservation/time/search', dbHandlers.availableReservationSearchHan
 
 router.post('/reservation/search', dbHandlers.reservationSearchHandler);
 
+router.post('/reservation/search/2', dbHandlers.reservationSearchHandler2);
+
+
 
 export default router;

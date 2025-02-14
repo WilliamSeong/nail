@@ -22,11 +22,11 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   #footer-bar {
     width: 100%;
     height: 100%;
-    background: gray;
+    background: var(--primary-dark);
     color: white;
     margin-top: auto;
     display: flex;

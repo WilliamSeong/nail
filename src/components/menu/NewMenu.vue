@@ -136,10 +136,10 @@
     }
     
     .menu-container{
-        width: 100vw;
-        height: auto;
+        width: 100%;
+        height: 100%;
         position: relative;
-        background: var(--primary-color);
+        background: var(--primary-light);
         padding-top: var(--navHeight);
     }
 
@@ -195,9 +195,13 @@
         align-items: baseline;
     }
 
+    .menu-waxing{
+        padding-bottom: 5vh;
+    }
+
     .home-last{
         height: 10vh;
-        width: vw;
+        width: 100%;
     }
 
 </style>
