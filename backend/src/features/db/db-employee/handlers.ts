@@ -10,43 +10,14 @@ export const dbHandlers = {
 // Add Employee
 async function employeeAddHandler(req, res){
 
-    const { employeeName, employeeRole, employeeEmail, employeePhone} = req.body;
+    const { employeeName, employeeRole, employeeEmail, employeePhone, employeeSchedule } = req.body;
 
     const employeeInfo = {
         "name" : employeeName,
         "email" : employeeEmail,
         "phone" : employeePhone,
         "role" : employeeRole,
-        "schedule" : {
-            "monday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            },
-            "tuseday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            },
-            "wednesday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            },
-            "thursday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            },
-            "friday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            },
-            "saturday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            },
-            "sunday" : {
-                "start_time" : "10:30",
-                "end_time" : "20:00"
-            }
-        },
+        "schedule" : employeeSchedule,
         "exceptions" : []
       };
 
