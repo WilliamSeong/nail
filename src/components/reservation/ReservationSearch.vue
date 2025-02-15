@@ -17,7 +17,7 @@
 
     async function submit() {
         console.log(reservationSearchString.value);
-        const response = await fetch("http://localhost:3000/dev/reservation/search/2", {
+        const response = await fetch("http://localhost:3000/db/reservation/search/2", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

@@ -1,56 +1,56 @@
 <script setup lang="ts">
 
   async function insert() {
-    await fetch("http://localhost:3000/db/insert")
+    await fetch("http://localhost:3000/test/db/insert")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
 
   async function read() {
-    await fetch("http://localhost:3000/db/read")
+    await fetch("http://localhost:3000/test/db/read")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
 
   async function readMany() {
-    await fetch("http://localhost:3000/db/read/many")
+    await fetch("http://localhost:3000/test/db/read/many")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
   
   async function update() {
-    await fetch("http://localhost:3000/db/update")
+    await fetch("http://localhost:3000/test/db/update")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
 
   async function upsert() {
-    await fetch("http://localhost:3000/db/upsert")
+    await fetch("http://localhost:3000/test/db/upsert")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
 
   async function updateMany() {
-    await fetch("http://localhost:3000/db/update/many")
+    await fetch("http://localhost:3000/test/db/update/many")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
 
   async function deleteDocument() {
-    await fetch("http://localhost:3000/db/delete")
+    await fetch("http://localhost:3000/test/db/delete")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));
   }
 
   async function deleteMany() {
-    await fetch("http://localhost:3000/db/delete/many")
+    await fetch("http://localhost:3000/test/db/delete/many")
     .then(result => result.json)
     .then(data => console.log(data))
     .catch(error => console.log(error));

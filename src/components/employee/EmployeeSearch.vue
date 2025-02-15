@@ -17,7 +17,7 @@
         const employeeSearchElement = document.getElementById("search-box") as HTMLInputElement
         const employeeSearchString = employeeSearchElement.value;
 
-        const response = await fetch("http://localhost:3000/dev/employee/search",{
+        const response = await fetch("http://localhost:3000/db/employee/search",{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -31,7 +31,7 @@
 
         try {
             console.log("Reservation request sent");
-            const result = await fetch("http://localhost:3000/dev/reservation/make", {
+            const result = await fetch("http://localhost:3000/db/reservation/make", {
                 method : "POST",
                 headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@
         const dateString = (e.target as HTMLInputElement).value
 
         try {
-            const response = await fetch("http://localhost:3000/dev/reservation/time/search", {
+            const response = await fetch("http://localhost:3000/db/reservation/time/search", {
                 method : "POST",
                 headers : {
                     'Content-Type' : 'application/json',

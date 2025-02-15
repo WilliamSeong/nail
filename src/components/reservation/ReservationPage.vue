@@ -22,7 +22,7 @@
     const noReservation = ref("");
     async function fetchReservation() {
         try {
-            const response = await fetch("http://localhost:3000/dev/reservation/search",{
+            const response = await fetch("http://localhost:3000/db/reservation/search",{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

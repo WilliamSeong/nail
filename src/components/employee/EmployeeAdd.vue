@@ -1,5 +1,9 @@
 <script setup lang="ts">
+
     const roles = ["A", "B", "C", "D"];
+
+    const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
 
     async function submit() {
 
@@ -10,7 +14,7 @@
 
         console.log(employeeNameString, employeeRoleString, employeeEmailString, employeePhoneString);
 
-        await fetch("http://localhost:3000/dev/employee/add",  {
+        await fetch("http://localhost:3000/db/employee/add",  {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,11 +42,24 @@
         <input id="employee-email" class="employee-input" placeholder="Employee Email"/>
         <input id="employee-phone" class="employee-input" placeholder="Employee Phone"/>
 
-        <button @click="submit">Submit</button>
+        <div class="employee-schedule">
+            <div v-for="day in days">
+                <h1>{{ day }}</h1>
+                <input type="time" step="1800"/>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="submit-button" @click="submit">Submit</button>
+        </div>
     </div>
 </template>
 
 <style scoped>
+
+    *{
+        /* outline: 2px red solid; */
+    }
 
     .employee-container{
         background: lavender;
@@ -66,6 +83,30 @@
         font-size: 1.5vmax;
         color: black;
         font-family:'Times New Roman', Times, serif;
+    }
+
+    .employee-schedule{
+        width: 50vw;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        height: 10%;
+    }
+
+
+    .submit-button{
+        margin: 1vw;
+        background: rgba(255,255,255,0.5);
+        border: 1px black solid;
+        width: 40%;
+        height: 80%;
+        font-size: 1vw;
     }
 
 </style>

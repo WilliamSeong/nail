@@ -4,7 +4,10 @@ import dotenv from 'dotenv'
 
 import { connectDB, closeDB } from './features/db/connection';
 import dbTestRoutes from "./features/db/db-test/routes";
-import dbDevRoutes from "./features/db/db-dev/routes";
+
+import dbEmployeeRoutes from "./features/db/db-employee/routes";
+import dbReservationRoutes from "./features/db/db-reservation/routes";
+
 
 import gmailRoutes from "./features/gmail/routes"
 
@@ -40,8 +43,9 @@ serverStart()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Database Abstraction
 
-server.use('/db', dbTestRoutes);
-server.use('/dev', dbDevRoutes);
+server.use('/test/db', dbTestRoutes);
+server.use('/db/employee', dbEmployeeRoutes);
+server.use('/db/reservation', dbReservationRoutes);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Gmail Abstraction
