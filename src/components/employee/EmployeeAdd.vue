@@ -15,7 +15,7 @@
     type WeekSchedule = {
         [key in 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday']: Shifts;
     }
-
+    
     const schedule = reactive<WeekSchedule>({
         monday : {
             start_time : "",

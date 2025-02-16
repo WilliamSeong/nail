@@ -3,6 +3,20 @@
     import { ref, onMounted } from 'vue';
     import { useRoute } from 'vue-router';
 
+    interface Shifts {
+        start_time : string;
+        end_tim : string;
+    }
+
+    interface WeekSchedule {
+        monday : Shifts;
+        tuesday : Shifts;
+        wednesday: Shifts;
+        thursday: Shifts;
+        friday: Shifts;
+        saturday: Shifts;
+        sunday: Shifts;
+    }
 
     interface Employee {
         _id: string;
@@ -10,8 +24,8 @@
         email: string;
         phone: string;
         role: string;
+        schedule: WeekSchedule;
     }
-
 
     const route = useRoute()
     const id = route.params.id
@@ -49,6 +63,7 @@
         <h1>Email: {{ employee.email }}</h1>
         <h1>Phone: {{ employee.phone }}</h1>
         <h1>Role: {{ employee.role }}</h1>
+        <p>Schedule: {{  employee.schedule }}</p>
     </div>
 
 </template>
