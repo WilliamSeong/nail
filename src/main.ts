@@ -7,7 +7,10 @@ import Home from "./components/HomePage.vue";
 import Menu from "./components/menu/NewMenu.vue";
 import Authorize from "./components/gmail/AuthorizeToken.vue";
 import Contact from "./components/gmail/ContactInfo.vue";
+
 import Test from "./components/TestComponent.vue";
+import Test2 from "./components/TestComponent2.vue";
+
 
 import EmployeeAdd from "./components/employee/EmployeeAdd.vue";
 import EmployeeSearch from "./components/employee/EmployeeSearch.vue";
@@ -26,6 +29,8 @@ const router = createRouter({
       { path: '/menu', component: Menu},
       
       { path: '/test', component: Test},
+      { path: '/test2', component: Test2},
+
 
       { path: '/employee/add', component: EmployeeAdd},
       { path: '/employee/search', component: EmployeeSearch},

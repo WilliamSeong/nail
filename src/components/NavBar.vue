@@ -39,6 +39,7 @@
       <li class="list-item"><router-link to="/" class="list-item-link">Home</router-link></li>
       <li class="list-item"><router-link to="/menu" class="list-item-link">Services</router-link></li>
       <li class="list-item"><router-link to="/test" class="list-item-link">Test</router-link></li>
+      <li class="list-item"><router-link to="/test2" class="list-item-link">Test2</router-link></li>
       <li class="list-item"><router-link to="/employee/search" class="list-item-link">Employee Search</router-link></li>
       <li class="list-item"><router-link to="/reservation/search" class="list-item-link">Reservation</router-link></li>
     </ul>
