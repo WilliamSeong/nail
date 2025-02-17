@@ -126,9 +126,12 @@
                     {{ formatTime(time) }}
                 </div>
             </div>
-            <div v-for="day in days" :key="day" class="day-column" v-if="employee">
+            <div v-for="(day, index) in days" :key="day" class="day-column" v-if="employee">
             <!-- Day header -->
-                <div class="day-header" :style="{height : `${100/cellCount}%`}"><h1>{{ day }}</h1></div>
+                <div class="day-header" :style="{height : `${100/cellCount}%`}">
+                    <h1>{{ day }}</h1>
+                    <h2>{{ makeWeek(index).toLocaleDateString("en-US") }}</h2>
+                </div>
                 <!-- Time grid -->
                 <div v-for="time in timeSlots" :key="time" class="grid-cell" :style="{height : `${100/cellCount}%`}">
                     <div class="shift" v-if="time > employee.schedule[day].start_time && time <= employee.schedule[day].end_time" >
@@ -141,10 +144,10 @@
 
 
 
-    <!-- <div class="button-container">
+    <div class="button-container">
         <button @click="prevSunday">Prev</button>
         <button @click="nextSunday">Next</button>
-    </div> -->
+    </div>
     
     <!-- <div class="calendar-container">
         <div class="placeholder">
@@ -195,8 +198,9 @@
 
     .day-header{
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-end;
+        align-items: center;
     }
 
     .grid-cell{
