@@ -51,7 +51,7 @@ async function employeeSearchHandler(req, res){
         const client = await getClient();
         const results = await searchEmployee(client, employeeSearch);
 
-        // console.log(results);
+        console.log(results);
         
         res.json(results);
     } catch(e) {
