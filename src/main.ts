@@ -15,6 +15,7 @@ import Test2 from "./components/TestComponent2.vue";
 import EmployeeAdd from "./components/employee/EmployeeAdd.vue";
 import EmployeeSearch from "./components/employee/EmployeeSearch.vue";
 import EmployeePage from "./components/employee/EmployeePage.vue";
+import EmployeeEdit from "./components/employee/EmployeeEdit.vue";
 
 import ReservationSearch from "./components/reservation/ReservationSearch.vue";
 import ReservationGenerator from "./components/reservation/ReservationGenerator.vue";
@@ -34,7 +35,8 @@ const router = createRouter({
 
       { path: '/employee/add', component: EmployeeAdd},
       { path: '/employee/search', component: EmployeeSearch},
-      { path: '/employee/:id', component: EmployeePage},
+      { path: '/employee/page/:id', component: EmployeePage},
+      { path: '/employee/edit/:id', component: EmployeeEdit},
 
       { path: '/reservation/search', component: ReservationSearch},
       { path: '/reservation/add', component: ReservationGenerator},

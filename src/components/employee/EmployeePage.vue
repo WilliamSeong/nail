@@ -119,6 +119,7 @@
 <template>
 
     <div class="employee-page-container" v-if="employee">
+        <router-link :to="`/employee/edit/${employee._id}`" target="_blank">Edit Profile</router-link>
         <h1>Name: {{ employee.name }}</h1>
         <h1>Email: {{ employee.email }}</h1>
         <h1>Phone: {{ employee.phone }}</h1>

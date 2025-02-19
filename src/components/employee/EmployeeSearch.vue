@@ -45,7 +45,7 @@
             <p>Name: {{ employee.name }}</p>
             <p>ID: {{ employee._id }}</p>
             <p>Phone: {{ employee.phone }}</p>
-            <router-link :to="`/employee/${employee._id}`" target="_blank">View Profile</router-link>
+            <router-link :to="`/employee/page/${employee._id}`" target="_blank">View Profile</router-link>
         </div>
     </div>
 </template>
