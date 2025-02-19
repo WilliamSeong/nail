@@ -11,29 +11,18 @@
         end_time : string;
     }
 
-    interface WeekSchedule {
-        monday : Shifts;
-        tuesday : Shifts;
-        wednesday: Shifts;
-        thursday: Shifts;
-        friday: Shifts;
-        saturday: Shifts;
-        sunday: Shifts;
-    }
-
     interface Employee {
         _id: string;
         name: string;
         email: string;
         phone: string;
         role: string;
-        schedule: WeekSchedule;
+        schedule: Record<string, Shifts[]>;
     }
 
     type WeekDay = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
 
     const days : WeekDay[] = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"] as WeekDay[];
-
 
     const employee = ref<Employee>();
     async function fetchEmployee() {
@@ -49,7 +38,6 @@
             })
 
             employee.value = await response.json();
-            console.log(employee.value);
         } catch(e) {
             console.log("Employee fetch error: ", e);
         }
@@ -65,6 +53,7 @@
         const sunday = new Date();
         sunday.setDate(recentSunday);
         currentSunday.value = sunday;
+        console.log(currentSunday.value);
     }
 
     function prevSunday() {
@@ -81,8 +70,9 @@
     const cellCount = ref(0);
 
     function makeWeek(i : number) {
-        const unixCode = new Date(currentSunday.value).setDate(currentSunday.value.getDate() + (i - 1));
+        const unixCode = new Date(currentSunday.value).setDate(currentSunday.value.getDate() + i);
         const day = new Date(unixCode)
+        console.log(day.toISOString().split('T')[0]);
         return day;
     }
 
@@ -124,6 +114,10 @@
         <h1>Email: {{ employee.email }}</h1>
         <h1>Phone: {{ employee.phone }}</h1>
         <h1>Role: {{ employee.role }}</h1>
+
+        <button @click="prevSunday">Prev</button>
+        <button @click="nextSunday">Next</button>
+
         <div class="calendar">
             <div class="time-column">
                 <div class="header-spacer" :style="{height : `${100/cellCount}%`}"></div>
@@ -139,7 +133,9 @@
                 </div>
                 <!-- Time grid -->
                 <div v-for="time in timeSlots" :key="time" class="grid-cell" :style="{height : `${100/cellCount}%`}">
-                    <div class="shift" v-if="time > employee.schedule[day].start_time && time <= employee.schedule[day].end_time" >
+                    <div class="work-day" v-for="shift in employee.schedule[makeWeek(index).toISOString().split('T')[0]]" >
+                        <div class="shifts" v-if="makeWeek(index).toISOString().split('T')[0] in employee.schedule && (time > shift.start_time && time <= shift.end_time)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,6 +145,10 @@
 </template>
 
 <style scoped>
+
+    *{
+        /* outline: 1px red solid; */
+    }
     .calendar{
         width: 80vw;
         height: 90vh;
@@ -181,7 +181,11 @@
         border-right: 1px gray solid;
     }
 
-    .shift{
+    .work-day{
+        height: 100%
+    }
+
+    .shifts{
         background: rgb(123, 123, 206);
         height: 100%;
     }

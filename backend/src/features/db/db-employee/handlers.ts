@@ -4,21 +4,21 @@ import { getClient } from "../connection";
 export const dbHandlers = {
     employeeAddHandler,
     employeeSearchHandler,
+    employeeEditHandler,
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Add Employee
 async function employeeAddHandler(req, res){
 
-    const { employeeName, employeeRole, employeeEmail, employeePhone, employeeSchedule } = req.body;
+    const { employeeName, employeeRole, employeeEmail, employeePhone } = req.body;
 
     const employeeInfo = {
         "name" : employeeName,
         "email" : employeeEmail,
         "phone" : employeePhone,
         "role" : employeeRole,
-        "schedule" : employeeSchedule,
-        "exceptions" : []
+        "schedule" : []
       };
 
     try{
@@ -39,6 +39,32 @@ async function addEmployee(client, updateName, updatePhone, employeeInfo) {
     const result = client.db("nail_by_young_db").collection("employee").updateOne({ name : updateName, phone : updatePhone }, { $set: employeeInfo }, { upsert : true});
     return result;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Edit Employee
+async function employeeEditHandler(req, res){
+
+    const { employeeId, employeeShiftDay } = req.body;
+
+    try{
+            const client = await getClient();
+            const result = await editEmployee(client, employeeId, employeeShiftDay);
+            console.log(result);
+            if (result.matchedCount === 1){
+                console.log(`Employee Information Updated`);
+            } else {
+                console.log(`New employee created with the following id: ${result.upsertedId}`);
+            }
+        } catch(e) {
+            console.log("Insert error: ", e);
+        }
+}
+
+async function editEmployee(client, updateId, employeeShift) {
+    const result = await client.db("nail_by_young_db").collection("employee").updateOne({ _id : ObjectId.createFromHexString(updateId) }, { $set: { [`schedule.${employeeShift}`]: [] }});
+    return result;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Search Employee
@@ -79,3 +105,5 @@ async function searchEmployee(client, search : string) {
     return cursor.toArray();
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Edit Employee
