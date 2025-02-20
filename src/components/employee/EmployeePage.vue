@@ -72,7 +72,7 @@
     function makeWeek(i : number) {
         const unixCode = new Date(currentSunday.value).setDate(currentSunday.value.getDate() + i);
         const day = new Date(unixCode)
-        console.log(day.toISOString().split('T')[0]);
+        // console.log(day.toISOString().split('T')[0]);
         return day;
     }
 
@@ -129,13 +129,12 @@
             <!-- Day header -->
                 <div class="day-header" :style="{height : `${100/cellCount}%`}">
                     <h1>{{ day }}</h1>
-                    <h2>{{ makeWeek(index).toLocaleDateString("en-US") }}</h2>
+                    <h2>{{ makeWeek(index).toLocaleDateString('en-CA') }}</h2>
                 </div>
                 <!-- Time grid -->
                 <div v-for="time in timeSlots" :key="time" class="grid-cell" :style="{height : `${100/cellCount}%`}">
-                    <div class="work-day" v-for="shift in employee.schedule[makeWeek(index).toISOString().split('T')[0]]" >
-                        <div class="shifts" v-if="makeWeek(index).toISOString().split('T')[0] in employee.schedule && (time > shift.start_time && time <= shift.end_time)">
-                        </div>
+                    <div class="work-day" v-for="shift in employee.schedule[makeWeek(index).toLocaleDateString('en-CA')]" v-if="makeWeek(index).toLocaleDateString('en-CA') in employee.schedule" >
+                        <div class="shifts" v-if="(time > shift.start_time && time <= shift.end_time)"></div>
                     </div>
                 </div>
             </div>
