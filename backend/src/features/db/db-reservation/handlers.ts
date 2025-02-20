@@ -5,7 +5,8 @@ export const dbHandlers = {
     reservationCreateHandler,
     availableReservationSearchHandler,
     reservationSearchHandler,
-    reservationSearchHandler2
+    reservationSearchHandler2,
+    reservationCalendarHandler
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,4 +129,29 @@ async function searchReservation(client, search : string) {
     } catch {}
  
     return cursor.toArray();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Search Reservation for Calendar
+
+async function reservationCalendarHandler(req, res) {
+
+    const { start_date, end_date } = req.body;
+    console.log(start_date, end_date);
+
+    try {
+        console.log("We in reservation calendar");
+        const client = await getClient();
+        const result = await reservationCalendar(client, start_date, end_date);
+
+        res.json(result);
+    } catch(e) {
+        console.log("Reserevation Calendar Error: ", e);
+    }
+}
+
+async function reservationCalendar(client, start_date, end_date) {
+    const cursor = await client.db("nail_by_young_db").collection("reservations").find({date : {$gte : start_date, $lte : end_date}}).sort({ time: 1 }).project({_id : 0, name : 1, date : 1, time : 1});
+    const result = cursor.toArray();
+    return result;
 }

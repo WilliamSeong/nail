@@ -13,6 +13,8 @@ router.post('/search', dbHandlers.reservationSearchHandler);
 
 router.post('/search/2', dbHandlers.reservationSearchHandler2);
 
+router.post('/calendar', dbHandlers.reservationCalendarHandler);
+
 
 
 export default router;

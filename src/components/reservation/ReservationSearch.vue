@@ -42,6 +42,7 @@
         <div class="button-container">
             <router-link to="/reservation/add" class="reservation-add-button">Reservation Add</router-link>
             <button @click="submit" class="submit-button">Submit</button>
+            <router-link to="/reservation/calendar" class="reservation-add-button">Reservation Calendar</router-link>
         </div>
 
         <div class="search-results" v-for="reservation in reservations" :key="reservation._id">

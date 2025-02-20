@@ -20,6 +20,7 @@ import EmployeeEdit from "./components/employee/EmployeeEdit.vue";
 import ReservationSearch from "./components/reservation/ReservationSearch.vue";
 import ReservationGenerator from "./components/reservation/ReservationGenerator.vue";
 import ReservationPage from "./components/reservation/ReservationPage.vue";
+import ReservationCalendar from "./components/reservation/ReservationCalendar.vue";
 
 import NotFound from "./components/NotFound.vue";
 
@@ -41,6 +42,7 @@ const router = createRouter({
       { path: '/reservation/search', component: ReservationSearch},
       { path: '/reservation/add', component: ReservationGenerator},
       { path: '/reservation/:id', component: ReservationPage},
+      { path: '/reservation/calendar', component: ReservationCalendar},
 
       { path: '/authorize', component: Authorize},
       { path: '/contact', component: Contact},
