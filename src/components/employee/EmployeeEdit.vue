@@ -43,12 +43,10 @@
     };
 // Employee Change
 
-    const employeeNameString = ref("");
     const employeeShiftDayString = ref("");
     const employeeStartTimeString = ref("");
     const employeeEndTimeString = ref("");
     async function change() {
-        console.log(employeeNameString.value);
         console.log(employeeShiftDayString.value);
 
         try{
@@ -103,9 +101,7 @@
 
 <!-- Implement front end for employee editing, create new page, add router link to employee Page same logic as router link in employee search with _id in url, then do a fetch for all the employee information -->
     <div class="employee-edit-container">
-        <label htmlFor="employee-name">Name:</label>
-        <input id="employee.name" v-if="employee" v-model="employeeNameString"/>
-        
+        <h1 v-if="employee">{{ employee.name }}</h1>        
         <input type="date" v-model="employeeShiftDayString"/>
         <div>
             <select v-model="employeeStartTimeString">
@@ -124,7 +120,7 @@
             </select>
         </div>
     </div>
-    <button @click="change">Change</button>
+    <button @click="change">Add Shift</button>
 </template>
 
 <style scoped>
