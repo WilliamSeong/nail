@@ -59,9 +59,9 @@
                 },
                 body : JSON.stringify({
                     employeeId : id,
-                    employeeShiftDay : employeeShiftDayString,
-                    employeeStartTime : employeeStartTimeString,
-                    employeeEndTime : employeeEndTimeString
+                    employeeShiftDay : employeeShiftDayString.value,
+                    employeeStartTime : employeeStartTimeString.value,
+                    employeeEndTime : employeeEndTimeString.value
                 })
             })
         } catch(e) {
@@ -94,6 +94,7 @@
 // OnMounted
     onMounted(() => {
         fetchEmployee();
+        times.value = generateTimeSlots(10, 20);
     })
 
 </script>

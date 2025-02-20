@@ -18,7 +18,7 @@ async function employeeAddHandler(req, res){
         "email" : employeeEmail,
         "phone" : employeePhone,
         "role" : employeeRole,
-        "schedule" : []
+        "schedule" : {}
       };
 
     try{
@@ -44,11 +44,14 @@ async function addEmployee(client, updateName, updatePhone, employeeInfo) {
 // Edit Employee
 async function employeeEditHandler(req, res){
 
-    const { employeeId, employeeShiftDay } = req.body;
+    const { employeeId, employeeShiftDay, employeeStartTime, employeeEndTime } = req.body;
+
+    const shift = {start_time : employeeStartTime, end_time : employeeEndTime };
+
 
     try{
             const client = await getClient();
-            const result = await editEmployee(client, employeeId, employeeShiftDay);
+            const result = await editEmployee(client, employeeId, employeeShiftDay, shift);
             console.log(result);
             if (result.matchedCount === 1){
                 console.log(`Employee Information Updated`);
@@ -60,8 +63,25 @@ async function employeeEditHandler(req, res){
         }
 }
 
-async function editEmployee(client, updateId, employeeShift) {
-    const result = await client.db("nail_by_young_db").collection("employee").updateOne({ _id : ObjectId.createFromHexString(updateId) }, { $set: { [`schedule.${employeeShift}`]: [] }});
+async function editEmployee(client, updateId, employeeDay, employeeShift) {
+
+
+    const result = await client.db("nail_by_young_db").collection("employee").updateOne(
+                                                                                { _id : ObjectId.createFromHexString(updateId) }, 
+                                                                                [
+                                                                                    { 
+                                                                                      $set: { 
+                                                                                        [`schedule.${employeeDay}`]: { 
+                                                                                          $cond: { 
+                                                                                            if: { $isArray: [`$schedule.${employeeDay}`] }, 
+                                                                                            then: { $concatArrays: [`$schedule.${employeeDay}`, [employeeShift]] }, 
+                                                                                            else: [employeeShift] 
+                                                                                          } 
+                                                                                        } 
+                                                                                      } 
+                                                                                    }
+                                                                                  ]
+                                                                            );
     return result;
 }
 
