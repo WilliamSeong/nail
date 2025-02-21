@@ -137,10 +137,9 @@ async function searchReservation(client, search : string) {
 async function reservationCalendarHandler(req, res) {
 
     const { start_date, end_date } = req.body;
-    console.log(start_date, end_date);
 
     try {
-        console.log("We in reservation calendar");
+        console.log("Fetching reservation calendar information");
         const client = await getClient();
         const result = await reservationCalendar(client, start_date, end_date);
 

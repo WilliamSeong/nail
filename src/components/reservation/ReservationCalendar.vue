@@ -37,6 +37,14 @@ import { ref, onMounted, watch, reactive } from 'vue';
         return day;
     }
 
+    function formatTime(time: string): string {
+        const timeInt = time.split(':');
+        const hour = parseInt(timeInt[0]);
+        const minute = timeInt[1];
+        const isPM = hour >= 12;
+        return `${(isPM && hour != 12) ? hour-12 : hour}:${minute} ${isPM ? 'pm' : 'am'}`;
+    }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch Reservations
 
@@ -104,9 +112,9 @@ import { ref, onMounted, watch, reactive } from 'vue';
                     
                 </div>
                 <div v-if="reservations[makeWeek(index).toLocaleDateString('en-CA')]">
-                    <div v-for="reservation in reservations[makeWeek(index).toLocaleDateString('en-CA')]">
-                        <h1>{{reservation.name}}</h1>
-                        <p>{{reservation.time}}</p>
+                    <div class="reservation-event" v-for="reservation in reservations[makeWeek(index).toLocaleDateString('en-CA')]">
+                        <h1>{{ reservation.name }}</h1>
+                        <p>{{ formatTime(reservation.time)}}</p>
                     </div>
                 </div>
             </div>
@@ -124,6 +132,10 @@ import { ref, onMounted, watch, reactive } from 'vue';
 
     .day-column{
         border-right: 1px gray solid;
+    }
+
+    .reservation-event{
+        background: lightblue;
     }
 
 </style>
