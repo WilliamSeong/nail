@@ -41,11 +41,14 @@
             <button @click="submit" class="submit-button">Submit</button>
         </div>
 
-        <div class="search-results" v-for="employee in employees" :key="employee._id">
+        <div class="search-results" v-for="employee in employees" v-if="employees.length > 0" :key="employee._id">
             <p>Name: {{ employee.name }}</p>
             <p>ID: {{ employee._id }}</p>
             <p>Phone: {{ employee.phone }}</p>
             <router-link :to="`/employee/page/${employee._id}`" target="_blank">View Profile</router-link>
+        </div>
+        <div v-else>
+            <h1>No Employees</h1>
         </div>
     </div>
 </template>
